@@ -67,6 +67,29 @@ Com ele instalado tem que coloca-lo no package.json
 
 Com teste se esse pacote está sendo utilizado, caso não rode o npm install e reinicie os servidores.
 
+#### 3. Publicar no npmjs
+
+1. Crie uma conta no https://www.npmjs.com/
+2. Execute no terminal npm login e logar com as credenciais criadas no npmjs
+3. Execute ```npm publish``` na pasta do projeto
+4. E então use em outros projetos!
+
+#### 4. Publicar documentação github pages
+
+Rode o comando para criar uma pagina com a build do projeto example do seu repositório.
+
+```
+npm run deploy
+```
+
+#### 5. Atualizando um projeto.
+
+Versões: MAJOR.MINOR.PATCH
+
+* **MAJOR**: Versão em que fizeste modificações incompatives com versões anteriores, ou seja, que irá quebrar algo anteriormente feito.
+* **MINOR**: Quando você adicionar funcionalidades que são compativeis com versões anteriores.
+* **PATCH**: Correções de erros/bugs compativeis com versões anteriores.
+
 ## Licença
 
 MIT © [VictorDeon](https://github.com/VictorDeon)
