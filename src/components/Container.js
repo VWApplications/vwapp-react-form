@@ -13,8 +13,8 @@ export const Container = props => {
   delete state.className;
 
   return (
-    <div {...state} className={`container${screen}${fluid}${className}`}>
+    <main {...state} className={`container${screen}${fluid}${className}`}>
       {props.children}
-    </div>
+    </main>
   );
 }

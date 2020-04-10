@@ -1,6 +1,6 @@
 # vwapp-react-bootstrap-4
 
-> Componentes bootstrap4 usando react.
+Componentes bootstrap4 de forma mais legivel usando react.
 
 [![NPM](https://img.shields.io/npm/v/vwapp-react-bootstrap-4.svg)](https://www.npmjs.com/package/vwapp-react-bootstrap-4) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -93,6 +93,116 @@ As propriedades devem ser listadas de forma proporcional o primeiro elemento de 
   </Col>
 </Row>
 ```
+
+```html
+<div class="row">
+  <div class="col-sm-6 cols-md-3">
+    // Elementos...
+  </div>
+  <div class="col-sm-6 cols-md-9">
+    // Elementos...
+  </div>
+</div>
+```
+
+### 2. Typography
+
+Alguns componentes relacionados a tipografia.
+
+#### Componentes
+
+* Title
+* BlockQuote
+* Box
+* Json
+* Line
+* BreakLine
+
+#### Propriedades:
+
+Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (className, id, ...).
+
+#### Exemplo:
+
+```jsx
+<Title size="xl" subtitle="Subtitulo.">Ola mundo h1!</Title>
+<Title size="lg">Ola mundo h2!</Title>
+<Title size="md">Ola mundo h3!</Title>
+<Title size="sm">Ola mundo h4!</Title>
+<Title size="xs">Ola mundo h5!</Title>
+<BlockQuote>Ola mundo</BlockQuote>
+<Box>Ctrl + P</Box>
+<Json values={{name: "Victor Deon", job: "Software Enginer"}} />
+<Line />
+<BreakLine />
+```
+
+```html
+<h1>Ola mundo h1! <small>Subtitulo.</small></h1>
+<h2>Ola mundo h2!</h2>
+<h2>Ola mundo h3!</h2>
+<h2>Ola mundo h4!</h2>
+<h2>Ola mundo h5!</h2>
+<blockquote class="blockquote-footer">Ola mundo</blockquote>
+<kbd>Ctrl + P</kbd>
+<pre>{
+  "name": "Victor Deon",
+  "job": "Software Engineer"
+}</pre>
+<hr />
+<br />
+```
+
+## Constantes de classe para estilos
+
+Contante default **style** com ela você consegue inserir as classes usando uma lista.
+
+```jsx
+import styles, { COLORS } from 'vwapp-react-bootstrap-4';
+
+const { backgroundDark, textWhite } = COLORS;
+
+<Container fluid className={style([backgroundDark, textWhite])}>
+  // ...
+</Container>
+```
+
+#### 1. COLORS
+
+* **textPrimary**: 'text-primary',
+* **textSuccess**: 'text-success',
+* **textInfo**: 'text-info',
+* **textWarning**: 'text-warning',
+* **textDanger**: 'text-danger',
+* **textSecundary**: 'text-secondary',
+* **textWhite**: 'text-white',
+* **textDark**: 'text-dark'
+* **backgroundPrimary**: 'bg-primary',
+* **backgroundSuccess**: 'bg-success',
+* **backgroundInfo**: 'bg-info',
+* **backgroundWarning**: 'bg-warning',
+* **backgroundDanger**: 'bg-danger',
+* **backgroundSecundary**: 'bg-secondary',
+* **backgroundDark**: 'bg-dark',
+* **backgroundLight**: 'bg-light'
+
+#### 2. TYPOGRAPHY
+
+* **bold**: 'font-weight-bold',
+* **italic**: 'font-italic',
+* **light**: 'font-weight-light',
+* **small**: 'small',
+* **big**: 'lead',
+* **alignLeft**: 'text-left',
+* **alignRight**: 'text-right',
+* **alignCenter**: 'text-center',
+* **justify**: 'text-justify',
+* **break**: 'text-break',
+* **noDecoration**: 'text-decoration-none',
+* **lowercase**: 'text-lowercase',
+* **uppercase**: 'text-uppercase',
+* **capitalize**: 'text-capitalize',
+* **listUnstyled**: 'list-unstyled'
 
 ## Contribuir
 
