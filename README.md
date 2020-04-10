@@ -15,13 +15,83 @@ npm install --save vwapp-react-bootstrap-4
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'vwapp-react-bootstrap-4'
+import { Container } from 'vwapp-react-bootstrap-4'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return (
+      <Container fluid className="bg-dark">
+        <p>Container fluid</p>
+      </Container>
+    )
   }
 }
+```
+
+## Documentação
+
+### 1. Container
+
+Os contêineres são usados ​​para preencher o conteúdo dentro deles.
+
+#### Propriedades:
+
+* **fluid**: Faz o container ter a largura total. (Booleano) - Padrão false.
+
+* **className**: Insere novos estilos para o container. (String) - Padrão null.
+
+* **screen**: Cria containers responsivos. (String) - Padrão null.
+
+  ![ex](https://user-images.githubusercontent.com/14116020/79019115-f3b96a80-7b4b-11ea-8600-1a3c6077c7c8.png)
+
+#### Exemplo:
+
+```jsx
+<Container screen="sm" className="bg-dark">
+  // Outros elementos...
+</Container>
+```
+
+```html
+<div class="container-sm bg-dark">
+  // Outros elementos...
+</div>
+```
+
+### 2. Grid
+
+O sistema de grid do Bootstrap é construído com flexbox e permite até 12 colunas na página.
+
+#### Componentes
+
+* Row
+* Col
+
+#### Propriedades (Col):
+
+As propriedades devem ser listadas de forma proporcional o primeiro elemento de **screens** tem como size o primeiro elemento de **sizes**.
+
+* **screen**: Tipos de telas. (Lista) - Padrão automatico.
+
+  - **"xs"**: Extra Small - Telas menores que 576px
+  - **"sm"**: Small - Telas menores que 768px
+  - **"md"**: Medium - Telas menores que 992px
+  - **"lg"**: Large - Telas menores que 1200px
+  - **"xl"**: Extra Large - Telas maiores que 1200px
+
+* **size**: É um número que somando com as outras colunas da tag Row tem que dar exatamente 12. (Lista) - Padrão automatico.
+
+#### Exemplo:
+
+```jsx
+<Row>
+  <Col screens=["sm", "md"] sizes=["6", "3"]>
+    // Elementos...
+  </Col>
+  <Col screens=["sm", "md"] sizes=["6", "9"]>
+    // Elementos...
+  </Col>
+</Row>
 ```
 
 ## Contribuir
