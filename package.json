@@ -2,7 +2,7 @@
   "name": "vwapp-react-bootstrap-4",
   "version": "1.0.0",
   "description": "Componentes bootstrap usando react.",
-  "author": "Victor Deon",
+  "author": "VictorDeon",
   "license": "MIT",
   "repository": "VictorDeon/vwapp-react-bootstrap-4",
   "main": "dist/index.js",

@@ -1,6 +1,6 @@
 # vwapp-react-bootstrap-4
 
-> Componentes bootstrap usando react.
+> Componentes bootstrap4 usando react.
 
 [![NPM](https://img.shields.io/npm/v/vwapp-react-bootstrap-4.svg)](https://www.npmjs.com/package/vwapp-react-bootstrap-4) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -27,4 +27,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [Victor Deon](https://github.com/Victor Deon)
+MIT © [VictorDeon](https://github.com/VictorDeon)
