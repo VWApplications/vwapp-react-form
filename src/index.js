@@ -8,6 +8,7 @@ export { Row, Col } from './components/Grid';
 export { Title, BlockQuote, Box, Json, Line, BreakLine } from './components/Typography';
 export { COLORS, TYPOGRAPHY } from './constants';
 export { Table, TableLine, TableCol } from './components/Table';
+export { ButtonGroup, Button } from './components/Button';
 export { Image } from './components/Image';
 export { Alert } from './components/Alert';
 export default style;

@@ -2,7 +2,7 @@ import React from 'react'
 import style, {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
-  Alert
+  Alert, Button, ButtonGroup
 } from 'vwapp-react-bootstrap-4';
 
 const App = () => {
@@ -27,9 +27,27 @@ const App = () => {
         </Col>
       </Row>
       <Row>
-        <Alert type="success" dismissible>
-          <b>Parabéns</b> Você venceu!
-        </Alert>
+        <Col>
+          <Alert type="success" dismissible>
+            <b>Parabéns</b> Você venceu!
+          </Alert>
+        </Col>
+        <Col>
+        <ButtonGroup>
+          <Button type="dark" onClick={() => console.log("Sony")}>Sony</Button>
+          <Button
+            type="dark"
+            dropdown={{
+              id: "my-drop",
+              className: "my-class",
+              items: [
+                {title: "Tablet", onClick: () => console.log("Tablet"), id: "my-item"},
+                {title: "Smartphone", onClick: () => console.log("Smartphone")},
+              ]
+            }}
+          />
+        </ButtonGroup>
+        </Col>
       </Row>
       <Row className={style(["pt-3"])}>
         <Col screens={["xs"]} sizes={["12"]}>

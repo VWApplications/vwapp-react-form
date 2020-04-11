@@ -282,6 +282,97 @@ Componentes relacionados a criação de alertas.
 </div>
 ```
 
+### 7. Button
+
+Componentes relacionados a criação de botões.
+
+#### Componentes
+
+* ButtonGroup
+* Button
+
+#### Propriedades especificas (Button):
+
+* **type**: Tipo de botão. (String - default null).
+
+  - **primary**: Botão com preenchimento azul.
+  - **secondary**: Botao com preenchimento cinza.
+  - **success**: Botao com preenchimento verde.
+  - **info**: Botão com preenchimento azul claro.
+  - **warning**: Botão com preenchimento amarelo.
+  - **danger**: Botão com preenchimento vermelho.
+  - **dark**: Botão com preenchimento escuro.
+  - **light**: Botão com preenchimento claro.
+  - **link**: Botão com preenchimento transparente.
+
+* **outline**: Faz com que a cor de preenchimento vire cor de borda. (Booleano - default false).
+
+* **disabled**: Botão desabilitado. (Booleano - default false).
+
+* **size**: Tamanho do botão. (String - default null)
+
+  - **lg**: Largo.
+  - **sm**: Curto.
+  - **block**: Preenche todo o espaço da tela na qual foi inserido.
+
+* **dropdown**: Objeto com a seguinte sintaxe: (Objeto - default null).
+
+  ```jsx
+  // Atributos com ... pode ser qualquer um que se encaixe em um button ou div. (id, className, e etc...)
+  // Os citados são obrigatórios (title, onClick) para cada item.
+  {
+    ...,
+    itens: [
+      {title: "Título do item.", onClick: () => {...}, ...},
+      {title: "Título do item.", onClick: () => {...}, ...},
+      ...
+    ]
+  }
+  ```
+
+#### Propriedades especificas (ButtonGroup):
+
+Por padrão os botões são alinhados horizontalmente.
+
+* **size**: Tamanho dos botões dentro do grupo. (String - default null)
+
+  - **lg**: Largo.
+  - **sm**: Curto.
+
+* **vertical**: Agrupa os botões na vertical. (Booleano - default false)
+
+#### Exemplo:
+
+```jsx
+<ButtonGroup>
+  <Button type="dark" onClick={() => console.log("Sony")}>Sony</Button>
+  <Button
+    type="dark"
+    dropdown={{
+      id: "my-drop",
+      className: "my-class",
+      items: [
+        {title: "Tablet", onClick: () => console.log("Tablet"), id: "my-item"},
+        {title: "Smartphone", onClick: () => console.log("Smartphone")},
+      ]
+    }}
+  />
+</ButtonGroup>
+```
+
+```html
+<div class="btn-group">
+  <button type="button" class="btn btn-dark">Sony</button>
+  <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <div class="dropdown-menu">
+    <button class="btn btn-link dropdown-item" onClick="console.log('Tablet')">Tablet</button>
+    <button class="btn btn-link dropdown-item" onClick="console.log('Smartphone')">Smartphone</button>
+  </div>
+</div>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.

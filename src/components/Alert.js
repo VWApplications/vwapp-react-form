@@ -24,7 +24,7 @@ export class Alert extends React.Component {
 
   render() {
     return (
-      <div className={style(['alert', `alert-${this.type}`, ...this.styles])}>
+      <div {...this.state} className={style(['alert', `alert-${this.type}`, ...this.styles])}>
         {this.closeButton}
         {this.childrens}
       </div>
