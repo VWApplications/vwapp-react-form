@@ -4,7 +4,7 @@ import style from '../constants';
 export class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props };
+    this.attributes = { ...props };
     this.className = props.className || '';
     this.rounded = props.rounded ? 'rounded' : '';
     this.circle = props.circle ? 'rounded-circle' : '';
@@ -19,17 +19,17 @@ export class Image extends React.Component {
     if (this.center) this.styles.push(this.center);
     if (this.className) this.styles.push(this.className);
 
-    delete this.state.rounded;
-    delete this.state.circle;
-    delete this.state.thumbnail;
-    delete this.state.center;
+    delete this.attributes.rounded;
+    delete this.attributes.circle;
+    delete this.attributes.thumbnail;
+    delete this.attributes.center;
   }
 
   render() {
     if (this.childrens) {
-      return <img {...this.state} className={style(['img-fluid', ...this.styles])}>{this.childrens}</img>;
+      return <img {...this.attributes} className={style(['img-fluid', ...this.styles])}>{this.childrens}</img>;
     } else {
-      return <img {...this.state} className={style(['img-fluid', ...this.styles])} />;
+      return <img {...this.attributes} className={style(['img-fluid', ...this.styles])} />;
     }
   }
 }

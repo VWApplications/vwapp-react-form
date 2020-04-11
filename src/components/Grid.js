@@ -10,16 +10,16 @@ export const Row = props => (
 );
 
 export const Col = props => {
-  const state = { ...props };
-  delete state.screens;
-  delete state.sizes;
+  const attributes = { ...props };
+  delete attributes.screens;
+  delete attributes.sizes;
 
   if (!props.screens || !props.sizes) {
-    return <div {...state} className={style(['col', props.className || ''])}>{props.children}</div>;
+    return <div {...attributes} className={style(['col', props.className || ''])}>{props.children}</div>;
   }
 
   if (props.screens.length !== props.sizes.length) {
-    return <div {...state} className={style(['col', props.className || ''])}>{props.children}</div>;
+    return <div {...attributes} className={style(['col', props.className || ''])}>{props.children}</div>;
   }
 
   let className = '';
@@ -37,5 +37,5 @@ export const Col = props => {
     firstScreen = props.screens[i + 1];
   }
 
-  return <div {...state} className={style([className, props.className || ''])}>{props.children}</div>;
+  return <div {...attributes} className={style([className, props.className || ''])}>{props.children}</div>;
 }

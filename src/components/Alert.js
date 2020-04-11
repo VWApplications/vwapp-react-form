@@ -4,7 +4,7 @@ import style from '../constants';
 export class Alert extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props };
+    this.attributes = { ...props };
     this.childrens = props.children;
     this.className = props.className;
     this.type = props.type;
@@ -18,13 +18,13 @@ export class Alert extends React.Component {
       this.styles.push(this.dismissible);
     }
 
-    delete this.state.type;
-    delete this.state.dismissible;
+    delete this.attributes.type;
+    delete this.attributes.dismissible;
   }
 
   render() {
     return (
-      <div {...this.state} className={style(['alert', `alert-${this.type}`, ...this.styles])}>
+      <div {...this.attributes} className={style(['alert', `alert-${this.type}`, ...this.styles])}>
         {this.closeButton}
         {this.childrens}
       </div>

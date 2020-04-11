@@ -1,19 +1,19 @@
 import React from 'react';
 
 export const Container = props => {
-  const state = { ...props };
+  const attributes = { ...props };
 
   const screen = props.screen ? `-${props.screen}` : '';
-  delete state.screen;
+  delete attributes.screen;
 
   const fluid = props.fluid && !props.screen ? '-fluid' : '';
-  delete state.fluid;
+  delete attributes.fluid;
 
   const className = props.className ? ` ${props.className}` : '';
-  delete state.className;
+  delete attributes.className;
 
   return (
-    <main {...state} className={`container${screen}${fluid}${className}`}>
+    <main {...attributes} className={`container${screen}${fluid}${className}`}>
       {props.children}
     </main>
   );

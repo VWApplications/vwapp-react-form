@@ -4,20 +4,20 @@ import style from '../constants';
 export const TableLine = props => <tr {...props}>{props.children}</tr>;
 
 export const TableCol = props => {
-  const state = { ...props };
-  delete state.bold;
+  const attributes = { ...props };
+  delete attributes.bold;
 
   if (props.bold) {
-    return <th {...state}>{props.children}</th>;
+    return <th {...attributes}>{props.children}</th>;
   }
 
-  return <td {...state}>{props.children}</td>;
+  return <td {...attributes}>{props.children}</td>;
 }
 
 export class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props };
+    this.attributes = { ...props };
     this.headers = props.headers;
     this.className = props.className || '';
     this.striped = props.striped ? 'table-striped' : '';
@@ -48,24 +48,24 @@ export class Table extends React.Component {
     if (this.small) this.styles.push(this.small);
     if (this.className) this.styles.push(this.className);
 
-    delete this.state.headers;
-    delete this.state.striped;
-    delete this.state.bordered;
-    delete this.state.borderless;
-    delete this.state.hover;
-    delete this.state.dark;
-    delete this.state.headerDark;
-    delete this.state.small;
-    delete this.state.attrTHeader;
-    delete this.state.attrHeaderLine;
-    delete this.state.attrHeaderItens;
-    delete this.state.attrTBody;
+    delete this.attributes.headers;
+    delete this.attributes.striped;
+    delete this.attributes.bordered;
+    delete this.attributes.borderless;
+    delete this.attributes.hover;
+    delete this.attributes.dark;
+    delete this.attributes.headerDark;
+    delete this.attributes.small;
+    delete this.attributes.attrTHeader;
+    delete this.attributes.attrHeaderLine;
+    delete this.attributes.attrHeaderItens;
+    delete this.attributes.attrTBody;
   }
 
   render() {
     return (
       <div className='table-responsive'>
-        <table {...this.state} className={style(['table', ...this.styles])}>
+        <table {...this.attributes} className={style(['table', ...this.styles])}>
           <thead {...this.attrTHeader}>
             <tr {...this.attrHeaderLine}>
               {this.headers.map((header, index) => (
