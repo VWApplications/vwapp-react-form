@@ -3,7 +3,8 @@ import {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
-  ProgressBarSlice, toString, Spinner, Pagination
+  ProgressBarSlice, toString, Spinner, Pagination,
+  BreadCrumb
 } from 'vwapp-react-components';
 
 const App = () => {
@@ -77,7 +78,14 @@ const App = () => {
       </Row>
       <Row className={toString(["pt-3"])}>
         <Col>
-            <Pagination totalItens={120} />
+          <Pagination totalItens={120} />
+        </Col>
+        <Col>
+          <BreadCrumb navigation={[
+            {title: "Home", url: "/", state: null, id: 'home'},
+            {title: "Perfil", url: "/profile", state: null},
+            {title: "Calculo 01", url: `/profile/calculo-1/detail`, state: { teste: 0 }}
+          ]} redirectFunction={(url, state) => console.log(url, state)} />
         </Col>
       </Row>
     </Container>
