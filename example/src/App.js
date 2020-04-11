@@ -3,7 +3,7 @@ import {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
-  ProgressBarSlice, toString, Spinner
+  ProgressBarSlice, toString, Spinner, Pagination
 } from 'vwapp-react-components';
 
 const App = () => {
@@ -62,7 +62,7 @@ const App = () => {
         </Col>
       </Row>
       <Row className={toString(["pt-3"])}>
-        <Col screens={["xs"]} sizes={["12"]}>
+        <Col>
           <Table hover bordered headerDark attrTBody={{id: "my-tbody"}} headers={["Nome", "Telefone"]}>
             <TableLine>
               <TableCol id="jp" bold>João</TableCol>
@@ -73,6 +73,11 @@ const App = () => {
               <TableCol>(61) 93840-2233</TableCol>
             </TableLine>
           </Table>
+        </Col>
+      </Row>
+      <Row className={toString(["pt-3"])}>
+        <Col>
+            <Pagination totalItens={120} />
         </Col>
       </Row>
     </Container>
