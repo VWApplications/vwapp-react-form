@@ -8,19 +8,24 @@ export class BreadCrumb extends Component {
     this.classNames = ['breadcrumb'];
     if (props.className) this.classNames.push(this.className);
 
+    this.navigation = props.navigation || [];
+
     this.attributes = { ...props };
     delete this.attributes.navigation;
     delete this.attributes.redirectFunction;
   }
 
   render() {
-    const { navigation, redirectFunction } = this.props;
+    const { redirectFunction } = this.props;
+
+    if (!redirectFunction) return null;
 
     return (
       <ul {...this.attributes} className={toString([...this.classNames])}>
-        {navigation.map((item, index) => {
+        {this.navigation.map((item, index) => {
           const linkClassNames = ['btn', 'btn-link'];
           if (item.className) linkClassNames.push(item.className);
+
           const linkAttributes = { ...item };
           delete linkAttributes.title;
 

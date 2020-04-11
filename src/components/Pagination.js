@@ -6,9 +6,7 @@ export class Pagination extends React.Component {
     super(props);
     this.attributes = { ...props };
     this.className = props.className;
-    this.state = { activePage: 1 };
 
-    this.totalItens = props.totalItens;
     this.itemPerPage = props.itemPerPage || 20;
     this.pageRange = props.pageRange || 5;
     this.firstPageText = props.firstPageText || 'Primeiro';
@@ -20,11 +18,13 @@ export class Pagination extends React.Component {
     if (this.className) this.classNames.push(this.className);
   }
 
-  __handlePagination = page => {
-    this.setState({ activePage: page });
-  };
-
   render() {
+    const { handlePagination, activePage, totalItens } = this.props;
+
+    if (!handlePagination || !activePage || !totalItens) {
+      return null;
+    }
+
     return (
       <ExternalPagination
         firstPageText={this.firstPageText}
@@ -35,11 +35,11 @@ export class Pagination extends React.Component {
         innerClass='pagination'
         linkClass='page-link'
         activeLinkClass='text-white'
-        activePage={this.state.activePage}
+        activePage={activePage}
+        totalItemsCount={totalItens}
         itemsCountPerPage={this.itemPerPage}
-        totalItemsCount={this.totalItens}
         pageRangeDisplayed={this.pageRange}
-        onChange={this.__handlePagination}
+        onChange={page => handlePagination(page)}
       />
     )
   }

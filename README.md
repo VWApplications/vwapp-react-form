@@ -491,6 +491,95 @@ Componentes relacionados a criação de spinners.
 <div class="spinner-grow text-info"></div>
 ```
 
+### 11. Pagination
+
+Componentes relacionados a criação de paginações.
+
+#### Componentes
+
+* Pagination
+
+#### Propriedades especificas:
+
+* **totalItens**: Total de itens que será paginado. (Inteiro - obrigatório)
+
+* **activePage**: Página ativa pelo usuário na função handlePagination. (Inteiro - obrigatório)
+
+* **itemPerPage**: Quantidade de itens que aparecerá por páginas. (Inteiro - default 20)
+
+* **pageRange**: Quantidade de páginas que irá aparecer no componente de cada vez. (Inteiro - default 5)
+
+* **firstPageText**: Título ou Icone que ao clicar vai voltar para a primeira página. (String - default "Primeiro")
+
+* **lastPageText**: Título ou Icone que ao clicar vai redirecionar para a última página. (String - default "Último")
+
+* **prevPageText**: Título ou Icone que ao clicar vai voltar para a página anterior. (String - default "<<")
+
+* **nextPageText**: Título ou Icone que ao clicar vai avançar para a próxima página. (String - default ">>")
+
+* **handlePagination**: Função que irá tratar a paginação. (Função - Obrigatório).
+
+#### Exemplo:
+
+```jsx
+<Pagination
+  totalItens={60}
+  itemPerPage={20}
+  activePage={this.state.activePage}
+  handlePagination={this.__handlePagination}
+/>
+```
+
+```html
+<ul class="pagination">
+  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Go to first page">Primeiro</a></li>
+  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Go to previous page">&lt;&lt;</a></li>
+  <li class="page-item active"><a class="page-link text-white" href="#" aria-label="Go to page number 1">1</a></li>
+  <li class="page-item"><a class="page-link" href="#" aria-label="Go to page number 2">2</a></li>
+  <li class="page-item"><a class="page-link" href="#" aria-label="Go to page number 3">3</a></li>
+  <li class="page-item"><a class="page-link" href="#" aria-label="Go to next page">&gt;&gt;</a></li>
+  <li class="page-item"><a class="page-link" href="#" aria-label="Go to last page">Último</a></li>
+</ul>
+```
+
+### 12. BreadCrumbs
+
+Componentes relacionados a criação de breadcrumbs.
+
+#### Componentes
+
+* BreadCrumb
+
+#### Propriedades especificas:
+
+* **navigation**: Lista de objetos com os dados de navegação do breadcrumb. (Lista - default []).
+
+* **redirectFunction**: Função responsável por fazer o redirecionamento ao clicar no link do breadcrumb. (Função - obrigatório).
+
+#### Exemplo:
+
+```jsx
+<BreadCrumb navigation={[
+  {title: "Home", id: 'home', url: "/", state: null},
+  {title: "Perfil", url: "/profile", state: null},
+  {title: "Calculo 01", url: `/profile/calculo-1/detail`, state: { teste: 0 }}
+]} redirectFunction={(url, state) => dispatch(push(url, state))} />
+```
+
+```html
+<ul class="breadcrumb">
+  <li class="breadcrumb-item">
+    <button id="home" type="button" class="btn btn-link">Home</button>
+  </li>
+  <li class="breadcrumb-item">
+    <button type="button" class="btn btn-link">Perfil</button>
+  </li>
+  <li class="breadcrumb-item">
+    <button type="button" class="btn btn-link">Calculo 01</button>
+  </li>
+</ul>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
