@@ -30,15 +30,15 @@ class Example extends Component {
 
 ## Documentação
 
+Além das propriedades especificas de cada componente, também pode ser inserido outras propriedades como: id, className, ...
+
 ### 1. Container
 
 Os contêineres são usados ​​para preencher o conteúdo dentro deles.
 
-#### Propriedades:
+#### Propriedades Especificas:
 
 * **fluid**: Faz o container ter a largura total. (Booleano) - Padrão false.
-
-* **className**: Insere novos estilos para o container. (String) - Padrão null.
 
 * **screen**: Cria containers responsivos. (String) - Padrão null.
 
@@ -118,9 +118,15 @@ Alguns componentes relacionados a tipografia.
 * Line
 * BreakLine
 
-#### Propriedades especificas:
+#### Propriedades especificas (Title):
 
-Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (className, id, ...).
+* **size**: Tamanho do título: vai do xl até o xs que são respectivamente h1 até h5.
+
+* **subtitle**: Um subtitulo que vai ser inserido dentro do titulo.
+
+#### Propriedades especificias (Json):
+
+* **values**: Dicionário com chave e valor.
 
 #### Exemplo:
 
@@ -297,21 +303,6 @@ Componentes relacionados a criação de botões.
 
 * **disabled**: Botão desabilitado. (Booleano - default false).
 
-* **dropdown**: Objeto com a seguinte sintaxe: (Objeto - default null).
-
-  ```jsx
-  // Atributos com ... pode ser qualquer um que se encaixe em um button ou div. (id, className, e etc...)
-  // Os citados são obrigatórios (title, onClick) para cada item.
-  {
-    ...,
-    itens: [
-      {title: "Título do item.", onClick: () => {...}, ...},
-      {title: "Título do item.", onClick: () => {...}, ...},
-      ...
-    ]
-  }
-  ```
-
 * **size**: Tamanho do botão. (String - default null)
 
   - **lg**: Largo.
@@ -345,31 +336,15 @@ Por padrão os botões são alinhados horizontalmente.
 
 ```jsx
 <ButtonGroup>
-  <Button type="dark" onClick={() => console.log("Sony")}>Sony</Button>
-  <Button
-    type="dark"
-    dropdown={{
-      id: "my-drop",
-      className: "my-class",
-      items: [
-        {title: "Tablet", onClick: () => console.log("Tablet"), id: "my-item"},
-        {title: "Smartphone", onClick: () => console.log("Smartphone")},
-      ]
-    }}
-  />
+  <Button type="dark" onClick={() => console.log("Tablet")}>Tablet</Button>
+  <Button type="dark" onClick={() => console.log("Smartphone")}>Smartphone</Button>
 </ButtonGroup>
 ```
 
 ```html
 <div class="btn-group">
-  <button type="button" class="btn btn-dark">Sony</button>
-  <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-    <span class="caret"></span>
-  </button>
-  <div class="dropdown-menu">
-    <button class="btn btn-link dropdown-item" id="my-item">Tablet</button>
-    <button class="btn btn-link dropdown-item">Smartphone</button>
-  </div>
+  <button type="button" class="btn btn-dark">Tablet</button>
+  <button type="button" class="btn btn-dark">Smartphone</button>
 </div>
 ```
 
@@ -631,6 +606,54 @@ Componentes relacionados a criação de listas.
   <li class="list-group-item active">Item 01</li>
   <li class="list-group-item">Item 02</li>
 </ul>
+```
+
+### 14. Card
+
+Componentes relacionados a criação de cards.
+
+#### Componentes
+
+* CardGroup
+* Card
+* CardHeader
+* CardBody
+* CardFooter
+
+#### Propriedades especificas (CardGroup):
+
+* **margins**: Especifica espaços entre cada Card dentro do CardGroup.
+
+#### Exemplo:
+
+```jsx
+<CardGroup margins>
+  <Card className="bg-success">
+    <CardHeader>Header</CardHeader>
+    <CardBody>Content</CardBody>
+    <CardFooter>Footer</CardFooter>
+  </Card>
+  <Card className="bg-primary">
+    <CardHeader>Header</CardHeader>
+    <CardBody>Content</CardBody>
+    <CardFooter>Footer</CardFooter>
+  </Card>
+</CardGroup>
+```
+
+```html
+<div class="card-deck">
+  <div class="card bg-success">
+    <div class="card-header">Header</div>
+    <div class="card-body">Content</div>
+    <div class="card-footer">Footer</div>
+  </div>
+  <div class="card bg-primary">
+    <div class="card-header">Header</div>
+    <div class="card-body">Content</div>
+    <div class="card-footer">Footer</div>
+  </div>
+</div>
 ```
 
 ## Constantes de classe para estilos

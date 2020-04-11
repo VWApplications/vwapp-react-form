@@ -4,7 +4,8 @@ import {
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
   ProgressBarSlice, toString, Spinner, Pagination,
-  BreadCrumb, BreadCrumbItem, List, ListItem
+  BreadCrumb, BreadCrumbItem, List, ListItem,
+  CardGroup, Card, CardHeader, CardBody, CardFooter
 } from 'vwapp-react-components';
 
 class App extends React.Component {
@@ -119,6 +120,22 @@ class App extends React.Component {
               <ListItem actived>Item 01</ListItem>
               <ListItem>Item 02</ListItem>
             </List>
+          </Col>
+        </Row>
+        <Row className={toString(["pt-3"])}>
+          <Col>
+            <CardGroup spaces>
+              <Card>
+                <CardHeader className="bg-dark text-white">Header</CardHeader>
+                <CardBody>Content</CardBody>
+                <CardFooter>Footer</CardFooter>
+              </Card>
+              <Card>
+                <CardHeader className="bg-dark text-white">Header</CardHeader>
+                <CardBody>Content</CardBody>
+                <CardFooter>Footer</CardFooter>
+              </Card>
+            </CardGroup>
           </Col>
         </Row>
       </Container>
