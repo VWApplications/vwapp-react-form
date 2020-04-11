@@ -10,9 +10,10 @@ export class Badge extends React.Component {
     this.type = props.type;
     this.rounded = props.rounded ? 'badge-pill' : '';
 
-    this.styles = [];
+    this.styles = ['badge'];
     if (this.type) this.styles.push(`badge-${this.type}`);
     if (this.rounded) this.styles.push(this.rounded);
+    if (this.className) this.styles.push(this.className);
 
     delete this.attributes.type;
     delete this.attributes.rounded;
@@ -20,7 +21,7 @@ export class Badge extends React.Component {
 
   render() {
     return (
-      <span {...this.attributes} className={style(['badge', ...this.styles])}>
+      <span {...this.attributes} className={style([...this.styles])}>
         {this.childrens}
       </span>
     )

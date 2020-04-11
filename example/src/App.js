@@ -2,7 +2,8 @@ import React from 'react'
 import style, {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
-  Alert, Button, ButtonGroup, Badge
+  Alert, Button, ButtonGroup, Badge, ProgressBar,
+  ProgressBarSlice
 } from 'vwapp-react-components';
 
 const App = () => {
@@ -24,6 +25,15 @@ const App = () => {
             src="https://user-images.githubusercontent.com/14116020/79032358-28451a80-7b7c-11ea-9762-96738acbeee9.png"
             alt="Cidade"
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ProgressBar>
+            <ProgressBarSlice type="success" progress="30">Iniciante</ProgressBarSlice>
+            <ProgressBarSlice type="warning" progress="40">Médio</ProgressBarSlice>
+            <ProgressBarSlice type="danger" progress="15">Profissional</ProgressBarSlice>
+          </ProgressBar>
         </Col>
       </Row>
       <Row>

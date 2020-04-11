@@ -410,6 +410,54 @@ Componentes relacionados a criação de badges.
 <span class="badge badge-success badge-pill">Você venceu!</span>
 ```
 
+### 9. Badge
+
+Componentes relacionados a criação de barras de progresso.
+
+#### Componentes
+
+* ProgressBar
+* ProgressBarSlice
+
+#### Propriedades especificas (ProgressBarSlice):
+
+* **progress**: Valor entre 0 e 100. É o nível que a barra de progresso terá. (String - default 0)
+
+* **type**: Tipo de Badge. (String - default primary).
+
+  - **success**: Badge de sucesso (verde).
+  - **info**: Badge de informação (azul claro).
+  - **warning**: Badge de aviso (amarelo).
+  - **danger**: Badge de perigo (vermelho).
+  - **primary**: Badge padrão (azul).
+  - **secondary**: Badge secundário (cinza).
+  - **dark**: Badge negro (negro).
+  - **light**: Badge branco (branco).
+
+#### Exemplo:
+
+```jsx
+<ProgressBar>
+  <ProgressBarSlice type="success" progress="30">Iniciante</ProgressBarSlice>
+  <ProgressBarSlice type="warning" progress="40">Médio</ProgressBarSlice>
+  <ProgressBarSlice type="danger" progress="30">Profissional</ProgressBarSlice>
+</ProgressBar>
+```
+
+```html
+<div class="progress">
+  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:40%">
+    Free Space
+  </div>
+  <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:10%">
+    Warning
+  </div>
+  <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:20%">
+    Danger
+  </div>
+</div>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.

@@ -9,6 +9,7 @@ export { Title, BlockQuote, Box, Json, Line, BreakLine } from './components/Typo
 export { COLORS, TYPOGRAPHY } from './constants';
 export { Table, TableLine, TableCol } from './components/Table';
 export { ButtonGroup, Button } from './components/Button';
+export { ProgressBar, ProgressBarSlice } from './components/ProgressBar';
 export { Image } from './components/Image';
 export { Alert } from './components/Alert';
 export { Badge } from './components/Badges';
