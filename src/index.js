@@ -11,6 +11,7 @@ export { ButtonGroup, Button } from './bootstrap/Button';
 export { ProgressBar, ProgressBarSlice } from './bootstrap/ProgressBar';
 export { BreadCrumb, BreadCrumbItem } from './bootstrap/BreadCrumb';
 export { CardGroup, Card, CardHeader, CardBody, CardFooter } from './bootstrap/Cards';
+export { Dropdown, DropLink, DropDivider, DropHeader, DropText } from './bootstrap/Dropdown';
 export { Image } from './bootstrap/Image';
 export { Alert } from './bootstrap/Alert';
 export { Badge } from './bootstrap/Badges';

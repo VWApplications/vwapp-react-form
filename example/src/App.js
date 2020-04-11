@@ -5,7 +5,8 @@ import {
   Alert, Button, ButtonGroup, Badge, ProgressBar,
   ProgressBarSlice, toString, Spinner, Pagination,
   BreadCrumb, BreadCrumbItem, List, ListItem,
-  CardGroup, Card, CardHeader, CardBody, CardFooter
+  CardGroup, Card, CardHeader, CardBody, CardFooter,
+  Dropdown, DropLink, DropDivider, DropHeader, DropText
 } from 'vwapp-react-components';
 
 class App extends React.Component {
@@ -136,6 +137,15 @@ class App extends React.Component {
                 <CardFooter>Footer</CardFooter>
               </Card>
             </CardGroup>
+          </Col>
+          <Col>
+            <Dropdown title="Ordernar" type="primary">
+              <DropHeader>Ordenação</DropHeader>
+              <DropLink onClick={() => console.log('Ordenando por nome!')}>Por nome</DropLink>
+              <DropLink onClick={() => console.log('Ordenando por data!')}>Por data de criação</DropLink>
+              <DropDivider />
+              <DropText>Desenvolvimento</DropText>
+            </Dropdown>
           </Col>
         </Row>
       </Container>

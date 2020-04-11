@@ -656,6 +656,77 @@ Componentes relacionados a criação de cards.
 </div>
 ```
 
+### 15. DropDown
+
+Componentes relacionados a criação de botões dropdown.
+
+#### Componentes
+
+* Dropdown
+* DropLink
+* DropDivider
+* DropHeader
+* DropText
+
+#### Propriedades especificas (Dropdown):
+
+* **outline**: Faz com que a cor de preenchimento vire cor de borda. (Booleano - default false).
+
+* **disabled**: Botão desabilitado. (Booleano - default false).
+
+* **attrMenu**: Objeto com atributos especificos da div que encapsula os itens do dropdown. Por exemplo: {id: '', className: '', ...}.
+
+* **size**: Tamanho do botão. (String - default null)
+
+  - **lg**: Largo.
+  - **sm**: Curto.
+  - **block**: Preenche todo o espaço da tela na qual foi inserido.
+
+* **type**: Tipo de botão. (String - default null).
+
+  - **primary**: Botão com preenchimento azul.
+  - **secondary**: Botao com preenchimento cinza.
+  - **success**: Botao com preenchimento verde.
+  - **info**: Botão com preenchimento azul claro.
+  - **warning**: Botão com preenchimento amarelo.
+  - **danger**: Botão com preenchimento vermelho.
+  - **dark**: Botão com preenchimento escuro.
+  - **light**: Botão com preenchimento claro.
+  - **link**: Botão com preenchimento transparente.
+
+#### Propriedades especificas (DropLink):
+
+* **disabled**: Botão desabilitado. (Booleano - default false).
+
+* **actived**: Estiliza um link para ativo. (Booleano - default false).
+
+#### Exemplo:
+
+```jsx
+<Dropdown title="Ordernar">
+  <DropHeader>Ordenação</DropHeader>
+  <DropLink onClick={() => console.log('Ordenando por nome!')}>Por nome</DropLink>
+  <DropLink onClick={() => console.log('Ordenando por data!')}>Por data de criação</DropLink>
+  <DropDivider />
+  <DropText>Desenvolvimento</DropText>
+</Dropdown>
+```
+
+```html
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Ordenação
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-header">Ordenações</div>
+    <button class="btn btn-link dropdown-item">Por nome</button>
+    <button class="btn btn-link dropdown-item">Por data de criação</button>
+    <div class="dropdown-divider"></div>
+    <span class="dropdown-item-text">Desenvolvimento</span>
+  </div>
+</div>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
