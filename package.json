@@ -1,10 +1,20 @@
 {
   "name": "vwapp-react-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Componentes bootstrap usando react.",
-  "author": "VictorDeon",
+  "keywords": [
+    "bootstrap",
+    "bootstrap4",
+    "components",
+    "styles",
+    "react"
+  ],
+  "author": "Victor Deon <vwapplication@gmail.com>",
   "license": "MIT",
   "repository": "VictorDeon/vwapp-react-components",
+  "bugs": {
+    "url": "https://github.com/VictorDeon/vwapp-react-components/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -22,6 +32,12 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
+    "bootstrap": "^4.4.1"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -55,6 +71,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {}
+  ]
 }

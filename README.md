@@ -79,6 +79,7 @@ As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro el
   - **"lg"**: Large - Telas menores que 1200px
   - **"xl"**: Extra Large - Telas maiores que 1200px
 
+
 * **size**: É um número que somando com as outras colunas da tag Row tem que dar exatamente 12. (Lista) - Padrão automatico.
 
 #### Exemplo:
@@ -265,6 +266,7 @@ Componentes relacionados a criação de alertas.
   - **dark**: Alerta negro (negro).
   - **light**: Alerta branco (branco).
 
+
 * **dismissible**: Faz aparecer um botão para remover o alerta da tela.
 
 #### Exemplo:
@@ -305,6 +307,7 @@ Componentes relacionados a criação de botões.
   - **light**: Botão com preenchimento claro.
   - **link**: Botão com preenchimento transparente.
 
+
 * **outline**: Faz com que a cor de preenchimento vire cor de borda. (Booleano - default false).
 
 * **disabled**: Botão desabilitado. (Booleano - default false).
@@ -314,6 +317,7 @@ Componentes relacionados a criação de botões.
   - **lg**: Largo.
   - **sm**: Curto.
   - **block**: Preenche todo o espaço da tela na qual foi inserido.
+
 
 * **dropdown**: Objeto com a seguinte sintaxe: (Objeto - default null).
 
@@ -455,6 +459,10 @@ npm install --save-dev nome-do-pacote
 Com ele instalado tem que coloca-lo no package.json
 
 ```json
+"dependencies": {
+  "nome-do-pacote": "^versao",
+  "...": "..."
+},
 "peerDependencies": {
   "nome-do-pacote": "^versao",
   "...": "..."
