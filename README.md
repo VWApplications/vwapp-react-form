@@ -71,6 +71,8 @@ O sistema de grid do Bootstrap é construído com flexbox e permite até 12 colu
 
 As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro elemento de **screens** tem como size o primeiro elemento de **sizes**.
 
+* **size**: É um número que somando com as outras colunas da tag Row tem que dar exatamente 12. (Lista) - Padrão automatico.
+
 * **screen**: Tipos de telas. (Lista) - Padrão automatico.
 
   - **"xs"**: Extra Small - Telas menores que 576px
@@ -78,9 +80,6 @@ As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro el
   - **"md"**: Medium - Telas menores que 992px
   - **"lg"**: Large - Telas menores que 1200px
   - **"xl"**: Extra Large - Telas maiores que 1200px
-
-
-* **size**: É um número que somando com as outras colunas da tag Row tem que dar exatamente 12. (Lista) - Padrão automatico.
 
 #### Exemplo:
 
@@ -255,6 +254,8 @@ Componentes relacionados a criação de alertas.
 
 #### Propriedades especificas:
 
+* **dismissible**: Faz aparecer um botão para remover o alerta da tela.
+
 * **type**: Tipo de alerta. (String - default primary).
 
   - **success**: Alerta de sucesso (verde).
@@ -265,9 +266,6 @@ Componentes relacionados a criação de alertas.
   - **secondary**: Alerta secundário (cinza).
   - **dark**: Alerta negro (negro).
   - **light**: Alerta branco (branco).
-
-
-* **dismissible**: Faz aparecer um botão para remover o alerta da tela.
 
 #### Exemplo:
 
@@ -295,29 +293,9 @@ Componentes relacionados a criação de botões.
 
 #### Propriedades especificas (Button):
 
-* **type**: Tipo de botão. (String - default null).
-
-  - **primary**: Botão com preenchimento azul.
-  - **secondary**: Botao com preenchimento cinza.
-  - **success**: Botao com preenchimento verde.
-  - **info**: Botão com preenchimento azul claro.
-  - **warning**: Botão com preenchimento amarelo.
-  - **danger**: Botão com preenchimento vermelho.
-  - **dark**: Botão com preenchimento escuro.
-  - **light**: Botão com preenchimento claro.
-  - **link**: Botão com preenchimento transparente.
-
-
 * **outline**: Faz com que a cor de preenchimento vire cor de borda. (Booleano - default false).
 
 * **disabled**: Botão desabilitado. (Booleano - default false).
-
-* **size**: Tamanho do botão. (String - default null)
-
-  - **lg**: Largo.
-  - **sm**: Curto.
-  - **block**: Preenche todo o espaço da tela na qual foi inserido.
-
 
 * **dropdown**: Objeto com a seguinte sintaxe: (Objeto - default null).
 
@@ -334,16 +312,34 @@ Componentes relacionados a criação de botões.
   }
   ```
 
+* **size**: Tamanho do botão. (String - default null)
+
+  - **lg**: Largo.
+  - **sm**: Curto.
+  - **block**: Preenche todo o espaço da tela na qual foi inserido.
+
+* **type**: Tipo de botão. (String - default null).
+
+  - **primary**: Botão com preenchimento azul.
+  - **secondary**: Botao com preenchimento cinza.
+  - **success**: Botao com preenchimento verde.
+  - **info**: Botão com preenchimento azul claro.
+  - **warning**: Botão com preenchimento amarelo.
+  - **danger**: Botão com preenchimento vermelho.
+  - **dark**: Botão com preenchimento escuro.
+  - **light**: Botão com preenchimento claro.
+  - **link**: Botão com preenchimento transparente.
+
 #### Propriedades especificas (ButtonGroup):
 
 Por padrão os botões são alinhados horizontalmente.
+
+* **vertical**: Agrupa os botões na vertical. (Booleano - default false)
 
 * **size**: Tamanho dos botões dentro do grupo. (String - default null)
 
   - **lg**: Largo.
   - **sm**: Curto.
-
-* **vertical**: Agrupa os botões na vertical. (Booleano - default false)
 
 #### Exemplo:
 
@@ -667,10 +663,6 @@ Com ele instalado tem que coloca-lo no package.json
   "...": "..."
 },
 "peerDependencies": {
-  "nome-do-pacote": "^versao",
-  "...": "..."
-},
-"devDependencies": {
   "nome-do-pacote": "^versao",
   "...": "..."
 }
