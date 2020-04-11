@@ -389,40 +389,40 @@ const { backgroundDark, textWhite } = COLORS;
 
 #### 1. COLORS
 
-* **textPrimary**: 'text-primary',
-* **textSuccess**: 'text-success',
-* **textInfo**: 'text-info',
-* **textWarning**: 'text-warning',
-* **textDanger**: 'text-danger',
-* **textSecundary**: 'text-secondary',
-* **textWhite**: 'text-white',
-* **textDark**: 'text-dark'
-* **backgroundPrimary**: 'bg-primary',
-* **backgroundSuccess**: 'bg-success',
-* **backgroundInfo**: 'bg-info',
-* **backgroundWarning**: 'bg-warning',
-* **backgroundDanger**: 'bg-danger',
-* **backgroundSecundary**: 'bg-secondary',
-* **backgroundDark**: 'bg-dark',
-* **backgroundLight**: 'bg-light'
+* **textPrimary**: Cor do texto azul.
+* **textSuccess**: Cor do texto verde.
+* **textInfo**: Cor do texto azul claro.
+* **textWarning**: Cor do texto amarelo.
+* **textDanger**: Cor do texto vermelho.
+* **textSecundary**: Cor do texto cinza.
+* **textWhite**: Cor do texto branco.
+* **textDark**: Cor do texto escuro.
+* **backgroundPrimary**: Fundo azul.
+* **backgroundSuccess**: Fundo verde.
+* **backgroundInfo**: Fundo azul claro.
+* **backgroundWarning**: Fundo amarelo.
+* **backgroundDanger**: Fundo vermelho.
+* **backgroundSecundary**: Fundo cinza.
+* **backgroundDark**: Fundo escuro.
+* **backgroundLight**: Fundo claro.
 
 #### 2. TYPOGRAPHY
 
-* **bold**: 'font-weight-bold',
-* **italic**: 'font-italic',
-* **light**: 'font-weight-light',
-* **small**: 'small',
-* **big**: 'lead',
-* **alignLeft**: 'text-left',
-* **alignRight**: 'text-right',
-* **alignCenter**: 'text-center',
-* **justify**: 'text-justify',
-* **break**: 'text-break',
-* **noDecoration**: 'text-decoration-none',
-* **lowercase**: 'text-lowercase',
-* **uppercase**: 'text-uppercase',
-* **capitalize**: 'text-capitalize',
-* **listUnstyled**: 'list-unstyled'
+* **bold**: Texto em negrito.
+* **italic**: Texto em italico.
+* **light**: Texto mais claro.
+* **small**: Texto pequeno.
+* **big**: Texto grande.
+* **alignLeft**: Texto a esquerda.
+* **alignRight**: Texto a direita.
+* **alignCenter**: Texto ao centro.
+* **justify**: Texto justificado.
+* **break**: Fazer o texto quebrar linha se chegar ao final da pagina.
+* **noDecoration**: Remove o underline em baixo do link, ```<a>```.
+* **lowercase**: Texto em caixa baixa.
+* **uppercase**: Texto em caixa alta.
+* **capitalize**: Primeira letra do texto maiuscula.
+* **listUnstyled**: Remove os pontos da lista.
 
 ## Contribuir
 
