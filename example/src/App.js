@@ -1,7 +1,8 @@
 import React from 'react'
 import style, {
   Container, Row, Col, Title, Image, Json,
-  COLORS, Table, TableCol, TableLine, BlockQuote
+  COLORS, Table, TableCol, TableLine, BlockQuote,
+  Alert
 } from 'vwapp-react-bootstrap-4';
 
 const App = () => {
@@ -24,6 +25,11 @@ const App = () => {
             alt="Cidade"
           />
         </Col>
+      </Row>
+      <Row>
+        <Alert type="success" dismissible>
+          <b>Parabéns</b> Você venceu!
+        </Alert>
       </Row>
       <Row className={style(["pt-3"])}>
         <Col screens={["xs"]} sizes={["12"]}>

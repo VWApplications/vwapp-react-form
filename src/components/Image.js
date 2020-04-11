@@ -17,6 +17,7 @@ export class Image extends React.Component {
     if (this.circle) this.styles.push(this.circle);
     if (this.thumbnail) this.styles.push(this.thumbnail);
     if (this.center) this.styles.push(this.center);
+    if (this.className) this.styles.push(this.className);
 
     delete this.state.rounded;
     delete this.state.circle;
@@ -26,9 +27,9 @@ export class Image extends React.Component {
 
   render() {
     if (this.childrens) {
-      return <img {...this.state} className={style(['img-fluid', ...this.styles, this.className])}>{this.childrens}</img>;
+      return <img {...this.state} className={style(['img-fluid', ...this.styles])}>{this.childrens}</img>;
     } else {
-      return <img {...this.state} className={style(['img-fluid', ...this.styles, this.className])} />;
+      return <img {...this.state} className={style(['img-fluid', ...this.styles])} />;
     }
   }
 }

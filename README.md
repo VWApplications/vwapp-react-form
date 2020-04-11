@@ -244,6 +244,44 @@ Componentes relacionados a criação de imagens.
 <img className="img-fluid rounded-circle mx-auto d-block" src="img.png" alt="Imagem" />
 ```
 
+### 6. Alert
+
+Componentes relacionados a criação de alertas.
+
+#### Componentes
+
+* Alert
+
+#### Propriedades especificas:
+
+* **type**: Tipo de alerta. (String - default primary).
+
+  - **success**: Alerta de sucesso (verde).
+  - **info**: Alerta de informação (azul claro).
+  - **warning**: Alerta de aviso (amarelo).
+  - **danger**: Alerta de perigo (vermelho).
+  - **primary**: Alerta padrão (azul).
+  - **secondary**: Alerta secundário (cinza).
+  - **dark**: Alerta negro (negro).
+  - **light**: Alerta branco (branco).
+
+* **dismissible**: Faz aparecer um botão para remover o alerta da tela.
+
+#### Exemplo:
+
+```jsx
+<Alert type="success" dismissible>
+  <b>Parabéns</b> Você venceu!
+</Alert>
+```
+
+```html
+<div class="alert alert-success alert-dismissible fade show">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <b>Parabéns</b> Você venceu!
+</div>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.

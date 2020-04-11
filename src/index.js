@@ -1,6 +1,7 @@
-import 'jquery';
-import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min.js';
+import 'popper.js/dist/umd/popper.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import style from './constants';
 export { Container } from './components/Container';
 export { Row, Col } from './components/Grid';
@@ -8,4 +9,5 @@ export { Title, BlockQuote, Box, Json, Line, BreakLine } from './components/Typo
 export { COLORS, TYPOGRAPHY } from './constants';
 export { Table, TableLine, TableCol } from './components/Table';
 export { Image } from './components/Image';
+export { Alert } from './components/Alert';
 export default style;

@@ -46,6 +46,7 @@ export class Table extends React.Component {
     if (this.hover) this.styles.push(this.hover);
     if (this.dark) this.styles.push(this.dark);
     if (this.small) this.styles.push(this.small);
+    if (this.className) this.styles.push(this.className);
 
     delete this.state.headers;
     delete this.state.striped;
@@ -64,7 +65,7 @@ export class Table extends React.Component {
   render() {
     return (
       <div className='table-responsive'>
-        <table {...this.state} className={style(['table', ...this.styles, this.className])}>
+        <table {...this.state} className={style(['table', ...this.styles])}>
           <thead {...this.attrTHeader}>
             <tr {...this.attrHeaderLine}>
               {this.headers.map((header, index) => (
