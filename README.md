@@ -105,7 +105,7 @@ As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro el
 </div>
 ```
 
-### 2. Typography
+### 3. Typography
 
 Alguns componentes relacionados a tipografia.
 
@@ -153,13 +153,15 @@ Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (classNam
 <br />
 ```
 
-### 2. Table
+### 4. Table
 
 Componentes relacionados a criação de tabelas.
 
 #### Componentes
 
 * Table
+* TableLine
+* TableCol
 
 #### Propriedades especificas (Table):
 
@@ -215,6 +217,31 @@ Componentes relacionados a criação de tabelas.
     </tbody>
   </table>
 </div>
+```
+
+### 5. Image
+
+Componentes relacionados a criação de imagens.
+
+#### Componentes
+
+* Image
+
+#### Propriedades especificas:
+
+* **rounded**: Adiciona as bordas da imagem arredondados. (Booleano - default false).
+* **circle**: Faz a imagem ficar circular. (Booleano - default false).
+* **thumbnail**: Coloca bordas na imagem. (Booleano - default false).
+* **center**: Centraliza a imagem. (Booleano - default false).
+
+#### Exemplo:
+
+```jsx
+<Image circle center src="img.png" alt="Imagem" />
+```
+
+```html
+<img className="img-fluid rounded-circle mx-auto d-block" src="img.png" alt="Imagem" />
 ```
 
 ## Constantes de classe para estilos

@@ -1,26 +1,31 @@
 import React from 'react'
 import style, {
-  Container, Row, Col, Title, Box, Json,
-  COLORS, Table, TableCol, TableLine
+  Container, Row, Col, Title, Image, Json,
+  COLORS, Table, TableCol, TableLine, BlockQuote
 } from 'vwapp-react-bootstrap-4';
 
 const App = () => {
   const { backgroundDark, backgroundLight, textWhite } = COLORS;
 
   return (
-    <Container fluid className={style([backgroundDark, textWhite])}>
-      <Row>
-        <Col screens={["xs", "sm", "lg"]} sizes={["3", "4", "2"]}>
+    <Container fluid className={style([backgroundLight, textWhite])}>
+      <Row className={style([backgroundDark])}>
+        <Col screens={["xs", "sm", "lg"]} sizes={["12", "4", "2"]}>
           <Title size="md" subtitle="react">Ola mundo!</Title>
         </Col>
-        <Col screens={["xs", "sm", "lg"]} sizes={["3", "4", "8"]}>
+        <Col screens={["xs", "sm", "lg"]} sizes={["12", "4", "3"]}>
           <Json className={textWhite} values={{name: "Victor Deon", job: "Software Engineer"}} />
         </Col>
-        <Col screens={["xs", "sm", "lg"]} sizes={["3", "4", "2"]}>
-          <Box>Ctrl + P</Box>
+        <Col screens={["xs", "sm", "lg"]} sizes={["12", "4", "7"]}>
+        <BlockQuote>Teste de blockquote</BlockQuote>
+          <Image
+            circle center width="100" className="pb-3"
+            src="https://user-images.githubusercontent.com/14116020/79032358-28451a80-7b7c-11ea-9762-96738acbeee9.png"
+            alt="Cidade"
+          />
         </Col>
       </Row>
-      <Row className={style([backgroundLight, "pt-3"])}>
+      <Row className={style(["pt-3"])}>
         <Col screens={["xs"]} sizes={["12"]}>
           <Table hover bordered headerDark attrTBody={{id: "my-tbody"}} headers={["Nome", "Telefone"]}>
             <TableLine>

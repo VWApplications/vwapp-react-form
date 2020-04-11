@@ -19,6 +19,7 @@ export class Table extends React.Component {
     super(props);
     this.state = { ...props };
     this.headers = props.headers;
+    this.className = props.className || '';
     this.striped = props.striped ? 'table-striped' : '';
     this.bordered = props.bordered ? 'table-bordered' : '';
     this.borderless = props.borderless ? 'table-borderless' : '';
@@ -63,7 +64,7 @@ export class Table extends React.Component {
   render() {
     return (
       <div className='table-responsive'>
-        <table {...this.state} className={style(['table', ...this.styles])}>
+        <table {...this.state} className={style(['table', ...this.styles, this.className])}>
           <thead {...this.attrTHeader}>
             <tr {...this.attrHeaderLine}>
               {this.headers.map((header, index) => (

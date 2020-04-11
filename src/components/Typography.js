@@ -1,4 +1,5 @@
 import React from 'react';
+import style from '../constants';
 
 export class Title extends React.Component {
   constructor(props) {
@@ -34,12 +35,20 @@ export class Title extends React.Component {
   }
 }
 
-export const BlockQuote = props => <blockquote {...props} className='blockquote-footer'>{props.children}</blockquote>;
+export const BlockQuote = props => (
+  <blockquote {...props} className={style(['blockquote-footer', props.className || ''])}>
+    {props.children}
+  </blockquote>
+);
+
 export const Box = props => <kbd {...props}>{props.children}</kbd>;
+
 export const Json = props => {
   const state = { ...props };
   delete state.values;
   return <pre {...state}>{JSON.stringify(props.values, undefined, 2)}</pre>
 }
-export const Line = props => (<hr {...props} />)
-export const BreakLine = props => (<br {...props} />)
+
+export const Line = props => <hr {...props} />;
+
+export const BreakLine = props => <br {...props} />;
