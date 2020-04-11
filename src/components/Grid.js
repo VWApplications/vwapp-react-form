@@ -1,6 +1,13 @@
 import React from 'react';
+import style from '../constants';
 
-export const Row = props => <div {...props} className='row'>{props.children}</div>;
+export const Row = props => (
+  <div
+    {...props}
+    className={style(['row', props.className ? props.className : ''])}>
+    {props.children}
+  </div>
+);
 
 export const Col = props => {
   const state = { ...props };

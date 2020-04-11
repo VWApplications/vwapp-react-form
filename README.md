@@ -67,9 +67,9 @@ O sistema de grid do Bootstrap é construído com flexbox e permite até 12 colu
 * Row
 * Col
 
-#### Propriedades (Col):
+#### Propriedades especificas (Col):
 
-As propriedades devem ser listadas de forma proporcional o primeiro elemento de **screens** tem como size o primeiro elemento de **sizes**.
+As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro elemento de **screens** tem como size o primeiro elemento de **sizes**.
 
 * **screen**: Tipos de telas. (Lista) - Padrão automatico.
 
@@ -118,7 +118,7 @@ Alguns componentes relacionados a tipografia.
 * Line
 * BreakLine
 
-#### Propriedades:
+#### Propriedades especificas:
 
 Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (className, id, ...).
 
@@ -153,9 +153,73 @@ Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (classNam
 <br />
 ```
 
+### 2. Table
+
+Componentes relacionados a criação de tabelas.
+
+#### Componentes
+
+* Table
+
+#### Propriedades especificas (Table):
+
+* **striped**: Adiciona listas de zebra a uma tabela. (Booleano - default false).
+* **bordered**: Adiciona bordas em todos os lados da tabela e células. (Booleano - default false).
+* **borderless**: Remove todas as bordas da tabela. (Booleano - default false).
+* **hover**: Adiciona listas de zebra a tabela ao passar o mouse sobre ela. (Booleano - default false).
+* **dark**: Deixa a tabela toda escura. (Booleano - default false).
+* **headerDark**: Deixa o header da tabela escuro. (Booleano - default false).
+* **small**: Deixa a tabela menos espaçada. (Booleano - default false).
+* **attrTHeader**: Atributos adicionais para a tag ```<theader>```, por exemplo, className, id, ...
+* **attrHeaderLine**: Atributos adicionais para a tag ```<tr>``` do header, por exemplo, className, id, ...
+* **attrHeaderItens**: Atributos adicionais para a tag ```<th>``` do header, por exemplo, className, id, ...
+* **attrTBody**: Atributos adicionais para a tag ```<tbody>```, por exemplo, className, id, ...
+
+#### Propriedades especificas (TableCol):
+
+* **bold**: A presença desse atributo booleano faz com que a coluna seja do tipo ```<th>```. (Booleano - default false = ```<td>```)
+
+#### Exemplo:
+
+```jsx
+<Table hover bordered headerDark headers={["Nome", "Telefone"]} attrTBody={{id: "my-tbody"}}>
+  <TableLine>
+    <TableCol id="jp" bold>João</TableCol>
+    <TableCol>(61) 99928-4948</TableCol>
+  </TableLine>
+  <TableLine>
+    <TableCol bold>Maria</TableCol>
+    <TableCol>(61) 93840-2233</TableCol>
+  </TableLine>
+</Table>
+```
+
+```html
+<div class='table-responsive'>
+  <table class="table table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody id="my-tbody">
+      <tr>
+        <th id="jp">João</th>
+        <td>(61) 99928-4948</td>
+      </tr>
+      <tr>
+        <th>Maria</th>
+        <td>(61) 93840-2233</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
 ## Constantes de classe para estilos
 
-Contante default **style** com ela você consegue inserir as classes usando uma lista.
+Contante default **style**, com ela você consegue inserir as classes usando uma lista.
 
 ```jsx
 import styles, { COLORS } from 'vwapp-react-bootstrap-4';
@@ -245,12 +309,12 @@ Com ele instalado tem que coloca-lo no package.json
 }
 ```
 
-Com teste se esse pacote está sendo utilizado, caso não rode o npm install e reinicie os servidores.
+Com isso, teste se esse pacote está sendo utilizado, caso não rode o npm install e reinicie os servidores.
 
 #### 3. Publicar no npmjs
 
 1. Crie uma conta no https://www.npmjs.com/
-2. Execute no terminal npm login e logar com as credenciais criadas no npmjs
+2. Execute no terminal ```npm login``` e logar com as credenciais criadas no npmjs
 3. Execute ```npm publish``` na pasta do projeto
 4. E então use em outros projetos!
 
@@ -273,3 +337,5 @@ Versões: MAJOR.MINOR.PATCH
 ## Licença
 
 MIT © [VictorDeon](https://github.com/VictorDeon)
+
+Criado a partir do pacote: [Create React Library](https://github.com/transitive-bullshit/create-react-library)

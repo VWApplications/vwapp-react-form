@@ -46,7 +46,11 @@ export default (styles = []) => {
     if (index === 0) {
       className += `${style}`;
     } else {
-      className += ` ${style}`;
+      if (style) {
+        className += ` ${style}`;
+      } else {
+        className += `${style}`;
+      }
     }
   });
 

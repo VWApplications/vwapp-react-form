@@ -6,4 +6,5 @@ export { Container } from './components/Container';
 export { Row, Col } from './components/Grid';
 export { Title, BlockQuote, Box, Json, Line, BreakLine } from './components/Typography';
 export { COLORS, TYPOGRAPHY } from './constants';
+export { Table, TableLine, TableCol } from './components/Table';
 export default style;
