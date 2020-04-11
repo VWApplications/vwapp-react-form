@@ -61,20 +61,12 @@ class App extends React.Component {
           </Col>
           <Col>
           <ButtonGroup>
-            <Button type="dark" onClick={() => console.log("Sony")}>
+            <Button type="dark" onClick={() => console.log("Smartphone")}>
               <Spinner type="success" /> Carregando...
             </Button>
-            <Button
-              type="dark"
-              dropdown={{
-                id: "my-drop",
-                className: "my-class",
-                items: [
-                  {title: "Tablet", onClick: () => console.log("Tablet"), id: "my-item"},
-                  {title: "Smartphone", onClick: () => console.log("Smartphone")},
-                ]
-              }}
-            />
+            <Button type="dark" onClick={() => console.log("Tablet")}>
+              Tablet
+            </Button>
           </ButtonGroup>
           </Col>
         </Row>

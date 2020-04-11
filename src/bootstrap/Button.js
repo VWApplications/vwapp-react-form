@@ -27,7 +27,6 @@ export class Button extends React.Component {
     this.outline = props.outline;
     this.disabled = props.disabled ? 'disabled' : '';
     this.size = props.size ? `btn-${props.size}` : '';
-    this.dropdown = props.dropdown;
 
     this.classNames = ['btn'];
     if (this.className) this.classNames.push(this.className);
@@ -45,49 +44,13 @@ export class Button extends React.Component {
     delete this.attributes.disabled;
     delete this.attributes.size;
     delete this.attributes.outline;
-    delete this.attributes.dropdown;
   }
 
   render() {
-    let btn = (
+    return (
       <button {...this.attributes} className={toString([...this.classNames])}>
         {this.childrens}
       </button>
     );
-
-    if (this.dropdown) {
-      const menuClassNames = ['dropdown-menu'];
-      if (this.dropdown.className) menuClassNames.push(this.dropdown.className);
-
-      const menuAttributes = { ...this.dropdown };
-      delete menuAttributes.items;
-
-      btn = (
-        <div className='btn-group'>
-          <button
-            {...this.attributes}
-            className={toString([...this.classNames, 'dropdown-toggle', 'dropdown-toggle-split'])}
-            data-toggle='dropdown'
-          />
-          <div {...menuAttributes} className={toString([...menuClassNames])}>
-            {this.dropdown.items.map((item, index) => {
-              const classNames = ['btn', 'btn-link', 'dropdown-item'];
-              if (item.className) classNames.push(item.className);
-
-              const attributes = { ...item };
-              delete attributes.title;
-
-              return (
-                <button key={index} {...attributes} className={toString([...classNames])}>
-                  {item.title}
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      )
-    }
-
-    return btn;
   }
 }
