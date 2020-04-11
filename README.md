@@ -4,17 +4,13 @@ Componentes customizados usando o bootstrap4 de forma mais legivel no react.
 
 [![NPM](https://img.shields.io/npm/v/vwapp-react-bootstrap-4.svg)](https://www.npmjs.com/package/vwapp-react-bootstrap-4) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-***
 ## Instalação.
-***
 
 ```bash
 npm install --save vwapp-react-bootstrap-4
 ```
 
-***
 ## Uso
-***
 
 ```jsx
 import React, { Component } from 'react'
@@ -32,11 +28,9 @@ class Example extends Component {
 }
 ```
 
-***
 ## Documentação
-***
+
 ### 1. Container
-***
 
 Os contêineres são usados ​​para preencher o conteúdo dentro deles.
 
@@ -64,9 +58,7 @@ Os contêineres são usados ​​para preencher o conteúdo dentro deles.
 </div>
 ```
 
-***
 ### 2. Grid
-***
 
 O sistema de grid do Bootstrap é construído com flexbox e permite até 12 colunas na página.
 
@@ -113,9 +105,7 @@ As propriedades devem ser listadas de forma proporcional, ou seja, o primeiro el
 </div>
 ```
 
-***
 ### 3. Typography
-***
 
 Alguns componentes relacionados a tipografia.
 
@@ -163,9 +153,7 @@ Pode se inserir qualquer atributo que as tags h1-h5 suportam no react. (classNam
 <br />
 ```
 
-***
 ### 4. Table
-***
 
 Componentes relacionados a criação de tabelas.
 
@@ -231,9 +219,7 @@ Componentes relacionados a criação de tabelas.
 </div>
 ```
 
-***
 ### 5. Image
-***
 
 Componentes relacionados a criação de imagens.
 
@@ -258,9 +244,7 @@ Componentes relacionados a criação de imagens.
 <img className="img-fluid rounded-circle mx-auto d-block" src="img.png" alt="Imagem" />
 ```
 
-***
 ### 6. Alert
-***
 
 Componentes relacionados a criação de alertas.
 
@@ -298,9 +282,7 @@ Componentes relacionados a criação de alertas.
 </div>
 ```
 
-***
 ### 7. Button
-***
 
 Componentes relacionados a criação de botões.
 
@@ -391,9 +373,7 @@ Por padrão os botões são alinhados horizontalmente.
 </div>
 ```
 
-***
 ## Constantes de classe para estilos
-***
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
 
@@ -407,9 +387,7 @@ const { backgroundDark, textWhite } = COLORS;
 </Container>
 ```
 
-***
 #### 1. COLORS
-***
 
 * **textPrimary**: Cor do texto azul.
 * **textSuccess**: Cor do texto verde.
@@ -428,9 +406,7 @@ const { backgroundDark, textWhite } = COLORS;
 * **backgroundDark**: Fundo escuro.
 * **backgroundLight**: Fundo claro.
 
-***
 #### 2. TYPOGRAPHY
-***
 
 * **bold**: Texto em negrito.
 * **italic**: Texto em italico.
@@ -448,9 +424,7 @@ const { backgroundDark, textWhite } = COLORS;
 * **capitalize**: Primeira letra do texto maiuscula.
 * **listUnstyled**: Remove os pontos da lista.
 
-***
 ## Contribuir
-***
 
 #### 1. Como rodar o ambiente de desenvolvimento:
 
@@ -516,9 +490,7 @@ Versões: MAJOR.MINOR.PATCH
 * **MINOR**: Quando você adicionar funcionalidades que são compativeis com versões anteriores.
 * **PATCH**: Correções de erros/bugs compativeis com versões anteriores.
 
-***
 ## Licença
-***
 
 MIT © [VictorDeon](https://github.com/VictorDeon)
 
