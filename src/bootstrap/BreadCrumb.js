@@ -2,46 +2,47 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { toString } from '../constants';
 
-export class BreadCrumb extends Component {
+export const BreadCrumb = props => {
+  const classNames = ['breadcrumb'];
+  if (props.className) classNames.push(props.className);
+
+  const attributes = { ...props };
+
+  return (
+    <ul {...attributes} className={toString([...classNames])}>
+      {props.children}
+    </ul>
+  );
+}
+
+export class BreadCrumbItem extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['breadcrumb'];
+    this.childrens = props.children;
+    this.classNames = ['btn', 'btn-link'];
     if (props.className) this.classNames.push(this.className);
 
-    this.navigation = props.navigation || [];
-
     this.attributes = { ...props };
-    delete this.attributes.navigation;
+    delete this.attributes.url;
+    delete this.attributes.state;
     delete this.attributes.redirectFunction;
   }
 
   render() {
-    const { redirectFunction } = this.props;
+    const { redirect, url, state } = this.props;
 
-    if (!redirectFunction) return null;
+    if (!redirect || !url) return null;
 
     return (
-      <ul {...this.attributes} className={toString([...this.classNames])}>
-        {this.navigation.map((item, index) => {
-          const linkClassNames = ['btn', 'btn-link'];
-          if (item.className) linkClassNames.push(item.className);
-
-          const linkAttributes = { ...item };
-          delete linkAttributes.title;
-
-          return (
-            <li key={index} className='breadcrumb-item'>
-              <ButtonLink
-                {...linkAttributes}
-                type='button'
-                className={toString([...linkClassNames])}
-                onClick={() => redirectFunction(item.url, item.state)}>
-                {item.title}
-              </ButtonLink>
-            </li>
-          )
-        })}
-      </ul>
+      <li className='breadcrumb-item'>
+        <ButtonLink
+          {...this.attributes}
+          type='button'
+          className={toString([...this.classNames])}
+          onClick={() => redirect(url, state)}>
+          {this.childrens}
+        </ButtonLink>
+      </li>
     )
   }
 }

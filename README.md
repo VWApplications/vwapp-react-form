@@ -555,11 +555,17 @@ Componentes relacionados a criação de breadcrumbs.
 #### Exemplo:
 
 ```jsx
-<BreadCrumb navigation={[
-  {title: "Home", id: 'home', url: "/", state: null},
-  {title: "Perfil", url: "/profile", state: null},
-  {title: "Calculo 01", url: `/profile/calculo-1/detail`, state: { teste: 0 }}
-]} redirectFunction={(url, state) => dispatch(push(url, state))} />
+<BreadCrumb id="my-bread">
+  <BreadCrumbItem url="/" id="my-bread-item" redirect={(url, state) => this.__redirectTo(url, state)}>
+    Home
+  </BreadCrumbItem>
+  <BreadCrumbItem url="/profile" redirect={(url, state) => this.__redirectTo(url, state)}>
+    Perfil
+  </BreadCrumbItem>
+  <BreadCrumbItem url="/profile/calculo-1/detail" state={{ id: 1 }} redirect={(url, state) => this.__redirectTo(url, state)}>
+    Calculo 01
+  </BreadCrumbItem>
+</BreadCrumb>
 ```
 
 ```html

@@ -4,7 +4,7 @@ import {
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
   ProgressBarSlice, toString, Spinner, Pagination,
-  BreadCrumb, List, ListItem
+  BreadCrumb, BreadCrumbItem, List, ListItem
 } from 'vwapp-react-components';
 
 class App extends React.Component {
@@ -102,11 +102,17 @@ class App extends React.Component {
             />
           </Col>
           <Col>
-            <BreadCrumb navigation={[
-              {title: "Home", url: "/", state: null, id: 'home'},
-              {title: "Perfil", url: "/profile", state: null},
-              {title: "Calculo 01", url: `/profile/calculo-1/detail`, state: { teste: 0 }}
-            ]} redirectFunction={(url, state) => this.__redirectTo(url, state)} />
+            <BreadCrumb id="my-bread">
+              <BreadCrumbItem url="/" id="my-bread-item" redirect={(url, state) => this.__redirectTo(url, state)}>
+                Home
+              </BreadCrumbItem>
+              <BreadCrumbItem url="/profile" redirect={(url, state) => this.__redirectTo(url, state)}>
+                Perfil
+              </BreadCrumbItem>
+              <BreadCrumbItem url="/profile/calculo-1/detail" state={{ id: 1 }} redirect={(url, state) => this.__redirectTo(url, state)}>
+                Calculo 01
+              </BreadCrumbItem>
+            </BreadCrumb>
           </Col>
         </Row>
         <Row className={toString(["pt-3"])}>
