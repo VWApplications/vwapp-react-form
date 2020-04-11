@@ -1,10 +1,10 @@
 {
-  "name": "vwapp-react-bootstrap-4",
+  "name": "vwapp-react-components",
   "version": "1.0.0",
   "description": "Componentes bootstrap usando react.",
   "author": "VictorDeon",
   "license": "MIT",
-  "repository": "VictorDeon/vwapp-react-bootstrap-4",
+  "repository": "VictorDeon/vwapp-react-components",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

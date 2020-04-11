@@ -1,13 +1,13 @@
-# vwapp-react-bootstrap-4
+# vwapp-react-components
 
-Componentes customizados usando o bootstrap4 de forma mais legivel no react.
+Componentes customizados usando o bootstrap4 de forma mais legivel em react.
 
-[![NPM](https://img.shields.io/npm/v/vwapp-react-bootstrap-4.svg)](https://www.npmjs.com/package/vwapp-react-bootstrap-4) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/vwapp-react-components.svg)](https://www.npmjs.com/package/vwapp-react-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Instalação.
 
 ```bash
-npm install --save vwapp-react-bootstrap-4
+npm install --save vwapp-react-components
 ```
 
 ## Uso
@@ -15,7 +15,7 @@ npm install --save vwapp-react-bootstrap-4
 ```jsx
 import React, { Component } from 'react'
 
-import { Container } from 'vwapp-react-bootstrap-4'
+import { Container } from 'vwapp-react-components'
 
 class Example extends Component {
   render() {
@@ -378,7 +378,7 @@ Por padrão os botões são alinhados horizontalmente.
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
 
 ```jsx
-import styles, { COLORS } from 'vwapp-react-bootstrap-4';
+import styles, { COLORS } from 'vwapp-react-components';
 
 const { backgroundDark, textWhite } = COLORS;
 

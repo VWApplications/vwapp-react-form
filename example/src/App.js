@@ -3,7 +3,7 @@ import style, {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup
-} from 'vwapp-react-bootstrap-4';
+} from 'vwapp-react-components';
 
 const App = () => {
   const { backgroundDark, backgroundLight, textWhite } = COLORS;

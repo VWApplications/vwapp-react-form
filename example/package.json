@@ -1,13 +1,13 @@
 {
-  "name": "vwapp-react-bootstrap-4-example",
-  "homepage": "https://VictorDeon.github.io/vwapp-react-bootstrap-4",
+  "name": "vwapp-react-components-example",
+  "homepage": "https://VictorDeon.github.io/vwapp-react-components",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
-    "vwapp-react-bootstrap-4": "file:.."
+    "vwapp-react-components": "file:.."
   },
   "scripts": {
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
