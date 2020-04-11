@@ -1,17 +1,17 @@
 import React from 'react'
-import style, {
+import {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
-  ProgressBarSlice
+  ProgressBarSlice, toString
 } from 'vwapp-react-components';
 
 const App = () => {
   const { backgroundDark, backgroundLight, textWhite } = COLORS;
 
   return (
-    <Container fluid className={style([backgroundLight, textWhite])}>
-      <Row className={style([backgroundDark])}>
+    <Container fluid className={toString([backgroundLight, textWhite])}>
+      <Row className={toString([backgroundDark])}>
         <Col screens={["xs", "sm", "lg"]} sizes={["12", "4", "2"]}>
           <Title size="md" subtitle="react">Ola mundo!</Title>
         </Col>
@@ -59,7 +59,7 @@ const App = () => {
         </ButtonGroup>
         </Col>
       </Row>
-      <Row className={style(["pt-3"])}>
+      <Row className={toString(["pt-3"])}>
         <Col screens={["xs"]} sizes={["12"]}>
           <Table hover bordered headerDark attrTBody={{id: "my-tbody"}} headers={["Nome", "Telefone"]}>
             <TableLine>

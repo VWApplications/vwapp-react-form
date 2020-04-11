@@ -1,25 +1,29 @@
 import React from 'react';
-import style from '../constants';
+import { toString } from '../constants';
 
-export const Row = props => (
-  <div
-    {...props}
-    className={style(['row', props.className ? props.className : ''])}>
-    {props.children}
-  </div>
-);
+export const Row = props => {
+  const classNames = ['row', props.className || ''];
+
+  return (
+    <div {...props} className={toString([...classNames])}>
+      {props.children}
+    </div>
+  );
+}
 
 export const Col = props => {
   const attributes = { ...props };
   delete attributes.screens;
   delete attributes.sizes;
 
+  const classNames = ['col', props.className || ''];
+
   if (!props.screens || !props.sizes) {
-    return <div {...attributes} className={style(['col', props.className || ''])}>{props.children}</div>;
+    return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
   }
 
   if (props.screens.length !== props.sizes.length) {
-    return <div {...attributes} className={style(['col', props.className || ''])}>{props.children}</div>;
+    return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
   }
 
   let className = '';
@@ -37,5 +41,5 @@ export const Col = props => {
     firstScreen = props.screens[i + 1];
   }
 
-  return <div {...attributes} className={style([className, props.className || ''])}>{props.children}</div>;
+  return <div {...attributes} className={toString([className, props.className || ''])}>{props.children}</div>;
 }

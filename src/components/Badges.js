@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../constants';
+import { toString } from '../constants';
 
 export class Badge extends React.Component {
   constructor(props) {
@@ -7,13 +7,14 @@ export class Badge extends React.Component {
     this.attributes = { ...props };
     this.childrens = props.children;
     this.className = props.className;
-    this.type = props.type;
+
+    this.type = props.type ? `badge-${props.type}` : '';
     this.rounded = props.rounded ? 'badge-pill' : '';
 
-    this.styles = ['badge'];
-    if (this.type) this.styles.push(`badge-${this.type}`);
-    if (this.rounded) this.styles.push(this.rounded);
-    if (this.className) this.styles.push(this.className);
+    this.classNames = ['badge'];
+    if (this.type) this.classNames.push(this.type);
+    if (this.rounded) this.classNames.push(this.rounded);
+    if (this.className) this.classNames.push(this.className);
 
     delete this.attributes.type;
     delete this.attributes.rounded;
@@ -21,7 +22,7 @@ export class Badge extends React.Component {
 
   render() {
     return (
-      <span {...this.attributes} className={style([...this.styles])}>
+      <span {...this.attributes} className={toString([...this.classNames])}>
         {this.childrens}
       </span>
     )

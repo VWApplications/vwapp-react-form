@@ -40,19 +40,19 @@ export const TYPOGRAPHY = {
   listUnstyled: 'list-unstyled'
 }
 
-export default (styles = []) => {
-  let className = '';
-  styles.map((style, index) => {
+export const toString = (list = []) => {
+  let string = '';
+  list.map((item, index) => {
     if (index === 0) {
-      className += `${style}`;
+      string += `${item}`;
     } else {
-      if (style) {
-        className += ` ${style}`;
+      if (item) {
+        string += ` ${item}`;
       } else {
-        className += `${style}`;
+        string += `${item}`;
       }
     }
   });
 
-  return className;
+  return string;
 }

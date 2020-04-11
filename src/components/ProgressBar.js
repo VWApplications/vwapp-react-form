@@ -1,6 +1,6 @@
 import React from 'react';
-import style from '../constants';
 import styled from 'styled-components';
+import { toString } from '../constants';
 
 export const ProgressBar = props => {
   const classNames = ['progress'];
@@ -9,7 +9,7 @@ export const ProgressBar = props => {
   return (
     <Div
       {...props}
-      className={style([...classNames])}>
+      className={toString([...classNames])}>
       {props.children}
     </Div>
   )
@@ -36,7 +36,7 @@ export class ProgressBarSlice extends React.Component {
     return (
       <span
         {...this.attributes}
-        className={style([...this.classNames])}
+        className={toString([...this.classNames])}
         style={{ width: `${this.progress}%` }}>
         {this.childrens}
       </span>

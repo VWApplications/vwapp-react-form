@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../constants';
+import { toString } from '../constants';
 
 export class Alert extends React.Component {
   constructor(props) {
@@ -7,15 +7,16 @@ export class Alert extends React.Component {
     this.attributes = { ...props };
     this.childrens = props.children;
     this.className = props.className;
-    this.type = props.type;
+
+    this.type = props.type ? `alert-${props.type}` : '';
     this.dismissible = props.dismissible ? 'alert-dismissible fade show' : '';
 
-    this.styles = [];
+    this.classNames = ['alert', this.type];
     this.closeButton = null;
-    if (this.className) this.styles.push(this.className);
+    if (this.className) this.classNames.push(this.className);
     if (this.dismissible) {
       this.closeButton = <button type='button' className='close' data-dismiss='alert'>&times;</button>;
-      this.styles.push(this.dismissible);
+      this.classNames.push(this.dismissible);
     }
 
     delete this.attributes.type;
@@ -24,7 +25,7 @@ export class Alert extends React.Component {
 
   render() {
     return (
-      <div {...this.attributes} className={style(['alert', `alert-${this.type}`, ...this.styles])}>
+      <div {...this.attributes} className={toString([...this.classNames])}>
         {this.closeButton}
         {this.childrens}
       </div>

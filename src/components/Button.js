@@ -1,15 +1,16 @@
 import React from 'react';
-import style from '../constants';
+import { toString } from '../constants';
 
 export const ButtonGroup = props => {
   const type = props.vertical ? 'btn-group-vertical' : 'btn-group';
   const size = props.size ? `btn-group-${props.size}` : '';
-  const styles = [];
-  if (props.className) styles.push(props.className);
-  if (size) styles.push(size);
+
+  const classNames = [type];
+  if (props.className) classNames.push(props.className);
+  if (size) classNames.push(size);
 
   return (
-    <div className={style([type, ...styles])}>
+    <div className={toString([...classNames])}>
       {props.children}
     </div>
   );
@@ -18,7 +19,7 @@ export const ButtonGroup = props => {
 export class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props };
+    this.attributes = { ...props };
     this.childrens = props.children;
     this.className = props.className;
 
@@ -28,55 +29,56 @@ export class Button extends React.Component {
     this.size = props.size ? `btn-${props.size}` : '';
     this.dropdown = props.dropdown;
 
-    this.styles = [];
-    if (this.className) this.styles.push(this.className);
-    if (this.disabled) this.styles.push(this.disabled);
-    if (this.size) this.styles.push(this.size);
+    this.classNames = ['btn'];
+    if (this.className) this.classNames.push(this.className);
+    if (this.disabled) this.classNames.push(this.disabled);
+    if (this.size) this.classNames.push(this.size);
     if (this.type) {
       if (this.outline) {
-        this.styles.push(`btn-outline-${this.type}`);
+        this.classNames.push(`btn-outline-${this.type}`);
       } else {
-        this.styles.push(`btn-${this.type}`);
+        this.classNames.push(`btn-${this.type}`);
       }
     }
 
-    delete this.state.type;
-    delete this.state.disabled;
-    delete this.state.size;
-    delete this.state.outline;
-    delete this.state.dropdown;
+    delete this.attributes.type;
+    delete this.attributes.disabled;
+    delete this.attributes.size;
+    delete this.attributes.outline;
+    delete this.attributes.dropdown;
   }
 
   render() {
     let btn = (
-      <button {...this.state} className={style(['btn', ...this.styles])}>
+      <button {...this.attributes} className={toString([...this.classNames])}>
         {this.childrens}
       </button>
     );
 
     if (this.dropdown) {
-      const styles = [];
-      if (this.dropdown.className) styles.push(this.dropdown.className);
-      const attributes = { ...this.dropdown };
-      delete attributes.items;
+      const menuClassNames = ['dropdown-menu'];
+      if (this.dropdown.className) menuClassNames.push(this.dropdown.className);
+
+      const menuAttributes = { ...this.dropdown };
+      delete menuAttributes.items;
 
       btn = (
         <div className='btn-group'>
           <button
-            {...this.state}
-            className={style(['btn', ...this.styles, 'dropdown-toggle dropdown-toggle-split'])}
+            {...this.attributes}
+            className={toString([...this.classNames, 'dropdown-toggle', 'dropdown-toggle-split'])}
             data-toggle='dropdown'
           />
-          <div {...this.attributes} className={style(['dropdown-menu', ...styles])}>
+          <div {...menuAttributes} className={toString([...menuClassNames])}>
             {this.dropdown.items.map((item, index) => {
-              const styles = [];
-              if (item.className) styles.push(item.className);
+              const classNames = ['btn', 'btn-link', 'dropdown-item'];
+              if (item.className) classNames.push(item.className);
 
               const attributes = { ...item };
               delete attributes.title;
 
               return (
-                <button key={index} {...attributes} className={style(['btn', 'btn-link', 'dropdown-item', ...styles])}>
+                <button key={index} {...attributes} className={toString([...classNames])}>
                   {item.title}
                 </button>
               )

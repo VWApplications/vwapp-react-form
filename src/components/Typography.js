@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../constants';
+import { toString } from '../constants';
 
 export class Title extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export class Title extends React.Component {
 }
 
 export const BlockQuote = props => (
-  <blockquote {...props} className={style(['blockquote-footer', props.className || ''])}>
+  <blockquote {...props} className={toString(['blockquote-footer', props.className || ''])}>
     {props.children}
   </blockquote>
 );

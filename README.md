@@ -366,13 +366,13 @@ Por padrão os botões são alinhados horizontalmente.
 
 ```html
 <div class="btn-group">
-  <button type="button" class="btn btn-dark" onClick="console.log('Sony')">Sony</button>
+  <button type="button" class="btn btn-dark">Sony</button>
   <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
   <div class="dropdown-menu">
-    <button class="btn btn-link dropdown-item" onClick="console.log('Tablet')" id="my-item">Tablet</button>
-    <button class="btn btn-link dropdown-item" onClick="console.log('Smartphone')">Smartphone</button>
+    <button class="btn btn-link dropdown-item" id="my-item">Tablet</button>
+    <button class="btn btn-link dropdown-item">Smartphone</button>
   </div>
 </div>
 ```
