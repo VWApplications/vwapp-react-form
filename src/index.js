@@ -14,4 +14,5 @@ export { Alert } from './bootstrap/Alert';
 export { Badge } from './bootstrap/Badges';
 export { Spinner } from './bootstrap/Spinners';
 export { BreadCrumb } from './bootstrap/BreadCrumb';
+export { List, ListItem } from './bootstrap/List';
 export { Pagination } from './components/Pagination';

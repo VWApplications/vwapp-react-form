@@ -576,6 +576,57 @@ Componentes relacionados a criação de breadcrumbs.
 </ul>
 ```
 
+### 13. List
+
+Componentes relacionados a criação de listas.
+
+#### Componentes
+
+* List
+* ListItem
+
+#### Propriedades especificas (List):
+
+* **clean**: Remove as bordas da lista. (Booleano - default false).
+
+* **horizontal**: Reorganiza a lista na horizontal. (Booleano - default false).
+
+* **link**: Transforma a lista de itens em uma lista de links. (Booleano - default false).
+
+#### Propriedades especificas (ListItem):
+
+* **actived**: Estiliza o item ativo. (Booleano - default false - tipo item).
+
+* **disabled**: Desabilita o link. (Booleano - default false - tipo link).
+
+* **handleClick**: Ao clicar no link realizar alguma ação. (Função - tipo link obrigatório.)
+
+#### Exemplo:
+
+```jsx
+<List link clean>
+  <ListItem handleClick={() => console.log('Link 01')}>Link 01</ListItem>
+  <ListItem handleClick={() => console.log('Link 02')}>Link 02</ListItem>
+</List>
+
+<List>
+  <ListItem actived>Item 01</ListItem>
+  <ListItem>Item 02</ListItem>
+</List>
+```
+
+```html
+<div class="list-group list-group-flush">
+  <a href="#" class="list-group-item list-group-item-action active">Link 01</a>
+  <a href="#" class="list-group-item list-group-item-action">Link 02</a>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item active">Item 01</li>
+  <li class="list-group-item">Item 02</li>
+</ul>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.

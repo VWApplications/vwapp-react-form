@@ -4,13 +4,13 @@ import {
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
   ProgressBarSlice, toString, Spinner, Pagination,
-  BreadCrumb
+  BreadCrumb, List, ListItem
 } from 'vwapp-react-components';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePage: 1 };
+    this.state = { activePage: 1, listItemActived: {} };
   }
 
   __redirectTo = (url, state) => {
@@ -107,6 +107,20 @@ class App extends React.Component {
               {title: "Perfil", url: "/profile", state: null},
               {title: "Calculo 01", url: `/profile/calculo-1/detail`, state: { teste: 0 }}
             ]} redirectFunction={(url, state) => this.__redirectTo(url, state)} />
+          </Col>
+        </Row>
+        <Row className={toString(["pt-3"])}>
+          <Col>
+            <List link>
+              <ListItem handleClick={() => console.log('Link 01')}>Link 01</ListItem>
+              <ListItem handleClick={() => console.log('Link 02')}>Link 02</ListItem>
+            </List>
+          </Col>
+          <Col>
+            <List clean>
+              <ListItem actived>Item 01</ListItem>
+              <ListItem>Item 02</ListItem>
+            </List>
           </Col>
         </Row>
       </Container>
