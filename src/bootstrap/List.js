@@ -5,6 +5,9 @@ var link = false;
 
 export const List = props => {
   const attributes = { ...props };
+  delete attributes.clean;
+  delete attributes.horizontal;
+  delete attributes.link;
 
   const clean = props.clean ? 'list-group-flush' : '';
   const horizontal = props.horizontal ? 'list-group-horizontal' : '';
@@ -14,10 +17,6 @@ export const List = props => {
   if (clean) classNames.push(clean);
   if (horizontal) classNames.push(horizontal);
   if (props.className) classNames.push(props.className);
-
-  delete attributes.clean;
-  delete attributes.horizontal;
-  delete attributes.link;
 
   if (link) {
     return (
@@ -33,8 +32,8 @@ export const List = props => {
 export class ListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
     this.childrens = props.children;
+    this.attributes = { ...props };
 
     if (link) {
       this.classNames = ['btn', 'btn-link', 'list-group-item', 'list-group-item-action', 'text-dark'];
@@ -45,10 +44,9 @@ export class ListItem extends React.Component {
     }
 
     const disabled = props.disabled ? 'disabled' : '';
-    const className = props.className;
 
     if (disabled) this.className.push(disabled);
-    if (className) this.classNames.push(className);
+    if (props.className) this.classNames.push(props.className);
 
     delete this.attributes.actived;
     delete this.attributes.disabled;

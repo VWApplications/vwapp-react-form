@@ -69,6 +69,13 @@ class App extends React.Component {
             <Button type="dark" onClick={() => console.log("Tablet")}>
               Tablet
             </Button>
+            <Dropdown title="Ordernar" type="dark" group>
+              <DropHeader>Ordenação</DropHeader>
+              <DropLink onClick={() => console.log('Ordenando por nome!')}>Por nome</DropLink>
+              <DropLink onClick={() => console.log('Ordenando por data!')}>Por data de criação</DropLink>
+              <DropDivider />
+              <DropText>Desenvolvimento</DropText>
+            </Dropdown>
           </ButtonGroup>
           </Col>
         </Row>

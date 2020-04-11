@@ -4,19 +4,19 @@ import { toString } from '../constants';
 export class Alert extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
+    this.classNames = ['alert'];
     this.childrens = props.children;
-    this.className = props.className;
-
-    this.type = props.type ? `alert-${props.type}` : '';
-    this.dismissible = props.dismissible ? 'alert-dismissible fade show' : '';
-
-    this.classNames = ['alert', this.type];
     this.closeButton = null;
-    if (this.className) this.classNames.push(this.className);
-    if (this.dismissible) {
+    this.attributes = { ...props };
+
+    const type = props.type ? `alert-${props.type}` : '';
+    const dismissible = props.dismissible ? 'alert-dismissible fade show' : '';
+
+    if (props.className) this.classNames.push(props.className);
+    if (type) this.classNames.push(type);
+    if (dismissible) {
       this.closeButton = <button type='button' className='close' data-dismiss='alert'>&times;</button>;
-      this.classNames.push(this.dismissible);
+      this.classNames.push(dismissible);
     }
 
     delete this.attributes.type;

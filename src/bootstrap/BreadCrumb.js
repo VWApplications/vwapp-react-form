@@ -4,9 +4,9 @@ import { toString } from '../constants';
 
 export const BreadCrumb = props => {
   const classNames = ['breadcrumb'];
-  if (props.className) classNames.push(props.className);
-
   const attributes = { ...props };
+
+  if (props.className) classNames.push(props.className);
 
   return (
     <ul {...attributes} className={toString([...classNames])}>
@@ -18,11 +18,12 @@ export const BreadCrumb = props => {
 export class BreadCrumbItem extends Component {
   constructor(props) {
     super(props);
-    this.childrens = props.children;
     this.classNames = ['btn', 'btn-link'];
-    if (props.className) this.classNames.push(this.className);
-
+    this.childrens = props.children;
     this.attributes = { ...props };
+
+    if (props.className) this.classNames.push(props.className);
+
     delete this.attributes.url;
     delete this.attributes.state;
     delete this.attributes.redirectFunction;

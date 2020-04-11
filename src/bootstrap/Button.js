@@ -19,24 +19,23 @@ export const ButtonGroup = props => {
 export class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
-    this.childrens = props.children;
-    this.className = props.className;
-
-    this.type = props.type;
-    this.outline = props.outline;
-    this.disabled = props.disabled ? 'disabled' : '';
-    this.size = props.size ? `btn-${props.size}` : '';
-
     this.classNames = ['btn'];
-    if (this.className) this.classNames.push(this.className);
-    if (this.disabled) this.classNames.push(this.disabled);
-    if (this.size) this.classNames.push(this.size);
-    if (this.type) {
-      if (this.outline) {
-        this.classNames.push(`btn-outline-${this.type}`);
+    this.childrens = props.children;
+    this.attributes = { ...props };
+
+    const type = props.type;
+    const outline = props.outline;
+    const disabled = props.disabled ? 'disabled' : '';
+    const size = props.size ? `btn-${props.size}` : '';
+
+    if (props.className) this.classNames.push(props.className);
+    if (disabled) this.classNames.push(disabled);
+    if (size) this.classNames.push(size);
+    if (type) {
+      if (outline) {
+        this.classNames.push(`btn-outline-${type}`);
       } else {
-        this.classNames.push(`btn-${this.type}`);
+        this.classNames.push(`btn-${type}`);
       }
     }
 

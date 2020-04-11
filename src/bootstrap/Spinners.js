@@ -5,13 +5,12 @@ export class Spinner extends React.Component {
   constructor(props) {
     super(props);
     this.attributes = { ...props };
-    this.className = props.className;
 
-    this.grow = props.grow ? 'spinner-grow spinner-grow-sm' : 'spinner-border spinner-border-sm';
-    this.type = props.type ? `text-${props.type}` : '';
+    const grow = props.grow ? 'spinner-grow spinner-grow-sm' : 'spinner-border spinner-border-sm';
+    const type = props.type ? `text-${props.type}` : '';
 
-    this.classNames = [this.grow, this.type];
-    if (this.className) this.classNames.push(this.className);
+    this.classNames = [grow, type];
+    if (props.className) this.classNames.push(props.className);
 
     delete this.attributes.grow;
     delete this.attributes.type;

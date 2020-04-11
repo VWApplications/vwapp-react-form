@@ -17,37 +17,36 @@ export const TableCol = props => {
 export class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
-    this.className = props.className || '';
+    this.classNames = ['table'];
     this.childrens = props.children;
-
-    this.headers = props.headers;
-    this.striped = props.striped ? 'table-striped' : '';
-    this.bordered = props.bordered ? 'table-bordered' : '';
-    this.borderless = props.borderless ? 'table-borderless' : '';
-    this.hover = props.hover ? 'table-hover' : '';
-    this.dark = props.dark ? 'table-dark' : '';
-    this.headerDark = props.headerDark ? 'thead-dark' : '';
-    this.small = props.small ? 'table-sm' : '';
     this.attrTHeader = props.attrTHeader;
     this.attrHeaderLine = props.attrHeaderLine;
     this.attrHeaderItens = props.attrHeaderItens;
     this.attrTBody = props.attrTBody;
+    this.headers = props.headers;
+    this.attributes = { ...props };
 
-    if (this.headerDark) {
+    const striped = props.striped ? 'table-striped' : '';
+    const bordered = props.bordered ? 'table-bordered' : '';
+    const borderless = props.borderless ? 'table-borderless' : '';
+    const hover = props.hover ? 'table-hover' : '';
+    const dark = props.dark ? 'table-dark' : '';
+    const headerDark = props.headerDark ? 'thead-dark' : '';
+    const small = props.small ? 'table-sm' : '';
+
+    if (headerDark) {
       if (!this.attrTHeader) { this.attrTHeader = {} };
 
-      this.attrTHeader.className = toString([this.headerDark, this.attrTHeader.className || '']);
+      this.attrTHeader.className = toString([headerDark, this.attrTHeader.className || '']);
     }
 
-    this.classNames = ['table'];
-    if (this.striped) this.classNames.push(this.striped);
-    if (this.bordered) this.classNames.push(this.bordered);
-    if (this.borderless) this.classNames.push(this.borderless);
-    if (this.hover) this.classNames.push(this.hover);
-    if (this.dark) this.classNames.push(this.dark);
-    if (this.small) this.classNames.push(this.small);
-    if (this.className) this.classNames.push(this.className);
+    if (striped) this.classNames.push(striped);
+    if (bordered) this.classNames.push(bordered);
+    if (borderless) this.classNames.push(borderless);
+    if (hover) this.classNames.push(hover);
+    if (dark) this.classNames.push(dark);
+    if (small) this.classNames.push(small);
+    if (props.className) this.classNames.push(props.className);
 
     delete this.attributes.headers;
     delete this.attributes.striped;

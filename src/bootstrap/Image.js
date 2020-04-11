@@ -4,21 +4,20 @@ import { toString } from '../constants';
 export class Image extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
-    this.className = props.className || '';
-    this.childrens = props.children;
-
-    this.rounded = props.rounded ? 'rounded' : '';
-    this.circle = props.circle ? 'rounded-circle' : '';
-    this.thumbnail = props.thumbnail ? 'img-thumbnail' : '';
-    this.center = props.center ? 'mx-auto d-block' : '';
-
     this.classNames = ['img-fluid'];
-    if (this.rounded) this.classNames.push(this.rounded);
-    if (this.circle) this.classNames.push(this.circle);
-    if (this.thumbnail) this.classNames.push(this.thumbnail);
-    if (this.center) this.classNames.push(this.center);
-    if (this.className) this.classNames.push(this.className);
+    this.childrens = props.children;
+    this.attributes = { ...props };
+
+    const rounded = props.rounded ? 'rounded' : '';
+    const circle = props.circle ? 'rounded-circle' : '';
+    const thumbnail = props.thumbnail ? 'img-thumbnail' : '';
+    const center = props.center ? 'mx-auto d-block' : '';
+
+    if (rounded) this.classNames.push(rounded);
+    if (circle) this.classNames.push(circle);
+    if (thumbnail) this.classNames.push(thumbnail);
+    if (center) this.classNames.push(center);
+    if (props.className) this.classNames.push(props.className);
 
     delete this.attributes.rounded;
     delete this.attributes.circle;

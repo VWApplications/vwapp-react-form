@@ -18,15 +18,15 @@ export const ProgressBar = props => {
 export class ProgressBarSlice extends React.Component {
   constructor(props) {
     super(props);
-    this.attributes = { ...props };
-    this.childrens = props.children;
-    this.className = props.className;
-    this.type = props.type ? `bg-${props.type}` : '';
-    this.progress = props.progress;
-
     this.classNames = ['progress-bar', 'progress-bar-striped', 'progress-bar-animated'];
-    if (this.type) this.classNames.push(this.type);
-    if (this.className) this.classNames.push(this.className);
+    this.childrens = props.children;
+    this.progress = props.progress;
+    this.attributes = { ...props };
+
+    const type = props.type ? `bg-${props.type}` : '';
+
+    if (type) this.classNames.push(type);
+    if (props.className) this.classNames.push(props.className);
 
     delete this.attributes.type;
     delete this.attributes.progress;

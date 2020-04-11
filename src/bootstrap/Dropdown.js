@@ -8,13 +8,8 @@ export class Dropdown extends React.Component {
     this.childrens = props.children;
     this.attrMenu = props.attrMenu;
     this.title = props.title;
+    this.group = props.group ? 'btn-group' : 'dropdown';
     this.attributes = { ...props };
-    delete this.attributes.type;
-    delete this.attributes.disabled;
-    delete this.attributes.size;
-    delete this.attributes.outline;
-    delete this.attributes.attrMenu;
-    delete this.attributes.title;
 
     const type = props.type;
     const outline = props.outline;
@@ -31,11 +26,19 @@ export class Dropdown extends React.Component {
         this.classNames.push(`btn-${type}`);
       }
     }
+
+    delete this.attributes.type;
+    delete this.attributes.disabled;
+    delete this.attributes.size;
+    delete this.attributes.outline;
+    delete this.attributes.attrMenu;
+    delete this.attributes.title;
+    delete this.attributes.group;
   }
 
   render() {
     return (
-      <div className='dropdown'>
+      <div className={this.group}>
         <button {...this.attributes} className={toString([...this.classNames])} data-toggle='dropdown'>
           {this.title}
         </button>

@@ -5,8 +5,6 @@ export class Pagination extends React.Component {
   constructor(props) {
     super(props);
     this.attributes = { ...props };
-    this.className = props.className;
-
     this.itemPerPage = props.itemPerPage || 20;
     this.pageRange = props.pageRange || 5;
     this.firstPageText = props.firstPageText || 'Primeiro';
@@ -15,7 +13,7 @@ export class Pagination extends React.Component {
     this.nextPageText = props.nextPageText || '>>';
 
     this.classNames = [];
-    if (this.className) this.classNames.push(this.className);
+    if (props.className) this.classNames.push(props.className);
   }
 
   render() {
