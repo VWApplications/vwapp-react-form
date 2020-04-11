@@ -1,23 +1,17 @@
 import React from 'react';
 import style from '../constants';
+import styled from 'styled-components';
 
 export const ProgressBar = props => {
-  const styles = {
-    boxShadow: '1px 1px 5px inset grey',
-    border: '1px solid #bfbfd6',
-    margin: '3px'
-  }
-
   const classNames = ['progress'];
   if (props.className) classNames.push(props.className);
 
   return (
-    <div
+    <Div
       {...props}
-      className={style([...classNames])}
-      style={styles}>
+      className={style([...classNames])}>
       {props.children}
-    </div>
+    </Div>
   )
 }
 
@@ -49,3 +43,9 @@ export class ProgressBarSlice extends React.Component {
     )
   }
 }
+
+const Div = styled.div`
+  box-shadow: 1px 1px 5px inset grey;
+  border: 1px solid #bfbfd6;
+  margin: 3px;
+`
