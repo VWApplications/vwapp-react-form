@@ -3,7 +3,7 @@ import {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
   Alert, Button, ButtonGroup, Badge, ProgressBar,
-  ProgressBarSlice, toString
+  ProgressBarSlice, toString, Spinner
 } from 'vwapp-react-components';
 
 const App = () => {
@@ -44,7 +44,9 @@ const App = () => {
         </Col>
         <Col>
         <ButtonGroup>
-          <Button type="dark" onClick={() => console.log("Sony")}>Sony</Button>
+          <Button type="dark" onClick={() => console.log("Sony")}>
+            <Spinner type="success" /> Carregando...
+          </Button>
           <Button
             type="dark"
             dropdown={{

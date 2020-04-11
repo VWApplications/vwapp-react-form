@@ -458,6 +458,39 @@ Componentes relacionados a criação de barras de progresso.
 </div>
 ```
 
+### 10. Spinners
+
+Componentes relacionados a criação de spinners.
+
+#### Componentes
+
+* Spinner
+
+#### Propriedades especificas:
+
+* **grow**: Spinner em formato de circulo preenchido. (Booleano - default false).
+
+* **type**: Tipo de Spinner. (String - default primary).
+
+  - **primary**: Spinner padrão (azul).
+  - **success**: Spinner de sucesso (verde).
+  - **info**: Spinner de informação (azul claro).
+  - **warning**: Spinner de aviso (amarelo).
+  - **danger**: Spinner de perigo (vermelho).
+  - **secondary**: Spinner secundário (cinza).
+  - **dark**: Spinner negro (negro).
+  - **light**: Spinner branco (branco).
+
+#### Exemplo:
+
+```jsx
+<Spinner grow type="info" />
+```
+
+```html
+<div class="spinner-grow text-info"></div>
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
