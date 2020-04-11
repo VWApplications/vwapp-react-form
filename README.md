@@ -371,10 +371,43 @@ Por padrão os botões são alinhados horizontalmente.
     <span class="caret"></span>
   </button>
   <div class="dropdown-menu">
-    <button class="btn btn-link dropdown-item" onClick="console.log('Tablet')">Tablet</button>
+    <button class="btn btn-link dropdown-item" onClick="console.log('Tablet')" id="my-item">Tablet</button>
     <button class="btn btn-link dropdown-item" onClick="console.log('Smartphone')">Smartphone</button>
   </div>
 </div>
+```
+
+### 8. Badge
+
+Componentes relacionados a criação de badges.
+
+#### Componentes
+
+* Badge
+
+#### Propriedades especificas:
+
+* **rounded**: Faz o badge ficar mais arredondado. (Booleano - default false).
+
+* **type**: Tipo de Badge. (String - default primary).
+
+  - **success**: Badge de sucesso (verde).
+  - **info**: Badge de informação (azul claro).
+  - **warning**: Badge de aviso (amarelo).
+  - **danger**: Badge de perigo (vermelho).
+  - **primary**: Badge padrão (azul).
+  - **secondary**: Badge secundário (cinza).
+  - **dark**: Badge negro (negro).
+  - **light**: Badge branco (branco).
+
+#### Exemplo:
+
+```jsx
+<Badge type="success" rounded>Você venceu!</Badge>
+```
+
+```html
+<span class="badge badge-success badge-pill">Você venceu!</span>
 ```
 
 ## Constantes de classe para estilos

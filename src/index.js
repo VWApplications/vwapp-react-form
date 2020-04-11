@@ -11,4 +11,5 @@ export { Table, TableLine, TableCol } from './components/Table';
 export { ButtonGroup, Button } from './components/Button';
 export { Image } from './components/Image';
 export { Alert } from './components/Alert';
+export { Badge } from './components/Badges';
 export default style;

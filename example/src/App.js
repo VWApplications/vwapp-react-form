@@ -2,7 +2,7 @@ import React from 'react'
 import style, {
   Container, Row, Col, Title, Image, Json,
   COLORS, Table, TableCol, TableLine, BlockQuote,
-  Alert, Button, ButtonGroup
+  Alert, Button, ButtonGroup, Badge
 } from 'vwapp-react-components';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
       <Row>
         <Col>
           <Alert type="success" dismissible>
-            <b>Parabéns</b> Você venceu!
+            <b>Parabéns</b> Você venceu! <Badge type="dark" rounded>4</Badge> vezes seguidas.
           </Alert>
         </Col>
         <Col>
