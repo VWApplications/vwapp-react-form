@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Form } from 'react-bootstrap';
 
-export const InputField = field => {
+export const TextAreaField = field => {
   const { error, touched } = field.meta;
 
   return (
@@ -9,7 +9,7 @@ export const InputField = field => {
       {field.label && <Form.Label>{field.label}</Form.Label>}
       <Form.Control
         {...field.input}
-        as='input'
+        as='textarea'
         type='text'
         placeholder={field.placeholder}
         disabled={(field.disabled || field.readOnly) || false}

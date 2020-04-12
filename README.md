@@ -83,6 +83,99 @@ Componentes relacionados a criação de paginações.
 </ul>
 ```
 
+### 2. FormFields
+
+Componentes relacionados a criação de formulários. Usado em conjunto com libs como [react-final-form](https://github.com/final-form/react-final-form), [redux-form](https://github.com/redux-form/redux-form) e [formik](https://github.com/jaredpalmer/formik).
+
+O mais aconselhado é o **react-final-form**.
+
+#### Componentes
+
+* InputField
+* CheckField
+* TextAreaField
+* SelectField
+
+#### Propriedades especificas (Geral):
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+#### Propriedades especificas (InputField)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+* **readOnly**: Fazer o campo ser um texto só de leitura.
+
+#### Propriedades especificas (TextAreaField)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+* **readOnly**: Fazer o campo ser um texto só de leitura.
+
+#### Propriedades especificas (SelectField)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional - defalt "Selecione uma opção")
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+* **options**: Lista de opções. (Lista de Objetos (title, value) - Obrigatório)
+
+* **type**: É obrigatório colocar o type como "select" nesse input. (String - Obrigatório - valor "select")
+
+* **multiple**: Transforma o select em escolhas multiplas.
+
+#### Propriedades especificas (CheckField)
+
+* **inline**: Coloca o conjunto de campos com esse atributo na horizontal. (Booleano - Opcional)
+
+* **type**: Tipo do input. (String - Obrigatória)
+
+  - **checkbox**: Input do tipo checkbox, retorna true ou false.
+  - **radio**: Input do tipo radio, retorna o valor inserido no atributo **value** do radio.
+  - **switch** Input do tipo switch, retorna true ou false.
+
+#### Exemplo:
+
+```jsx
+<Field name="first_name" type="text" placeholder="Primeiro Nome" label="Primeiro Nome" component={InputField} />
+<Field name="check" type="checkbox" label="Teste Checkbox" id="check" component={CheckField} />
+<Field inline name="choice" type="radio" label="Teste Radio 01" value="teste01" id="radio1" component={CheckField} />
+<Field inline name="choice" type="radio" label="Teste Radio 02" value="teste02" id="radio2" component={CheckField} />
+<Field name="switch" type="switch" label="Teste Switch" id="switch" component={CheckField} />
+<Field name="description" placeholder="Descrição" component={TextAreaField} />
+<Field
+  multiple
+  name="my-select"
+  type="select"
+  label="Selecione as melhores opções"
+  options={[
+    {title: "1", value: 1},
+    {title: "2", value: 2},
+    {title: "3", value: 3},
+    {title: "4", value: 4},
+  ]}
+  component={SelectField}
+/>
+```
+
+```html
+
+```
+
 ## Constantes de classe para estilos
 
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
