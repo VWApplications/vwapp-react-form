@@ -26,6 +26,10 @@ class App extends React.Component {
       errors.range = "Passou de 70";
     }
 
+    if (values.file && values.file.width > 300) {
+      errors.file = "Arquivo com tamanho muito grande!";
+    }
+
     return errors;
   }
 
@@ -162,10 +166,10 @@ class App extends React.Component {
                     component={RangeField}
                   />
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="formFiel">
+                <Form.Group as={Col} md="4" controlId="formFile">
                   <Field
                     name="file"
-                    label="Arquivo"
+                    type='file'
                     placeholder="Clique aqui para inserir o arquivo."
                     component={FileField}
                   />

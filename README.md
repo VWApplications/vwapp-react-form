@@ -170,6 +170,10 @@ O mais aconselhado é o **react-final-form**.
   - **radio**: Input do tipo radio, retorna o valor inserido no atributo **value** do radio.
   - **switch** Input do tipo switch, retorna true ou false.
 
+#### Propriedades especificas (FileField)
+
+* **type**: Tipo do input. (String - Obrigatória - valor "file")
+
 #### Exemplo:
 
 ```jsx
@@ -295,10 +299,10 @@ O mais aconselhado é o **react-final-form**.
         component={RangeField}
       />
     </Form.Group>
-    <Form.Group as={Col} md="4" controlId="formFiel">
+    <Form.Group as={Col} md="4" controlId="formFile">
       <Field
         name="file"
-        label="Arquivo"
+        type='file'
         placeholder="Clique aqui para inserir o arquivo."
         component={FileField}
       />
@@ -318,6 +322,22 @@ O mais aconselhado é o **react-final-form**.
   <input name="first_name" placeholder="Primeiro Nome" type="text" id="first_name" class="form-control" value="">
   <div class="valid-feedback"></div>
   <div class="invalid-feedback">Nome é obrigatório.</div>
+</div>
+<!-- Input Group -->
+<div class="form-group">
+  <label class="form-label">Último Nome</label>
+  <div class="mb-3 input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <input name="last_name" placeholder="Último Nome" type="text" id="last_name" class="form-control" value="" />
+    <div class="input-group-append">
+      <div class="dropdown">
+        <button aria-haspopup="true" aria-expanded="false" id="input-group-dropdown-1" type="button" class="dropdown-toggle btn btn-outline-secondary">Dropdown</button>
+      </div>
+    </div>
+    <div class="invalid-feedback"></div>
+  </div>
 </div>
 <!-- Checkbox -->
 <div class="form-group">
@@ -344,29 +364,6 @@ O mais aconselhado é o **react-final-form**.
     <label title="" for="switch" class="custom-control-label">Teste Switch</label>
   </div>
 </div>
-<!-- TextArea -->
-<div class="form-group">
-  <textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- Range -->
-<div class="form-group">
-  <label class="form-label">Range</label>
-  <input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- File -->
-<div class="form-group">
-  <label class="form-label">Arquivo</label>
-  <div class="custom custom-file">
-    <input name="file" id="file" type="file" class="custom-file-input" value="">
-    <label for="file" class="custom-file-label">Clique aqui para inserir o arquivo.</label>
-  </div>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
 <!-- Multiselect -->
 <div class="form-group">
   <label class="form-label">Selecione as melhores opções</label>
@@ -391,21 +388,30 @@ O mais aconselhado é o **react-final-form**.
   <div class="valid-feedback"></div>
   <div class="invalid-feedback"></div>
 </div>
-<!-- Input Group -->
+<!-- TextArea -->
 <div class="form-group">
-  <label class="form-label">Último Nome</label>
-  <div class="mb-3 input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">$</span>
-    </div>
-    <input name="last_name" placeholder="Último Nome" type="text" id="last_name" class="form-control" value="" />
-    <div class="input-group-append">
-      <div class="dropdown">
-        <button aria-haspopup="true" aria-expanded="false" id="input-group-dropdown-1" type="button" class="dropdown-toggle btn btn-outline-secondary">Dropdown</button>
-      </div>
-    </div>
-    <div class="invalid-feedback"></div>
+  <textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
+<!-- Range -->
+<div class="form-group">
+  <label class="form-label">Range</label>
+  <input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
+<!-- File -->
+<div class="form-group">
+  <div class="sc-AxjAm hoLkDl">
+    <img src="blob:http://localhost:3000/3e69cb14-de3d-4220-96ab-07b3daca4aa3" alt="Visualização" class="preview-image img-fluid img-thumbnail">
   </div>
+  <div class="custom custom-file">
+    <input type="file" accept="image/jpeg, image/png" class="custom-file-input">
+    <label class="custom-file-label">user.png</label>
+  </div>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
 </div>
 ```
 
