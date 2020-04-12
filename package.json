@@ -4,7 +4,6 @@
   "description": "Componentes bootstrap usando react.",
   "keywords": [
     "bootstrap",
-    "bootstrap4",
     "components",
     "styles",
     "react"
@@ -36,18 +35,12 @@
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.13.1",
-    "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.1",
     "styled-components": "^5.1.0",
     "react-js-pagination": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.13.1",
-    "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.1",
     "styled-components": "^5.1.0",
     "react-js-pagination": "^3.0.3"
   },
