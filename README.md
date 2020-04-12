@@ -96,6 +96,7 @@ O mais aconselhado é o **react-final-form**.
 * TextAreaField
 * SelectField
 * RangeField
+* FileField
 
 #### Propriedades especificas (Geral):
 
@@ -141,7 +142,7 @@ O mais aconselhado é o **react-final-form**.
 
 * **multiple**: Transforma o select em escolhas multiplas. (Booleano - default false)
 
-#### Propriedades especificas (SelectField)
+#### Propriedades especificas (RangeField)
 
 * **max**: Valor máximo que o range pode alcançar. (Inteiro - default 100)
 
@@ -170,9 +171,21 @@ O mais aconselhado é o **react-final-form**.
 <Field name="file" label="Arquivo" placeholder="Clique aqui para inserir o arquivo." component={FileField} />
 <Field
   multiple
-  name="my-select"
+  name="multiselect"
   type="select"
   label="Selecione as melhores opções"
+  options={[
+    {title: "1", value: 1},
+    {title: "2", value: 2},
+    {title: "3", value: 3},
+    {title: "4", value: 4},
+  ]}
+  component={SelectField}
+/>
+<Field
+  name="select"
+  type="select"
+  placeholder="Selecione a melhor opção"
   options={[
     {title: "1", value: 1},
     {title: "2", value: 2},
@@ -184,7 +197,67 @@ O mais aconselhado é o **react-final-form**.
 ```
 
 ```html
-
+<!-- Input -->
+<label class="form-label">Primeiro Nome</label>
+<input name="first_name" placeholder="Primeiro Nome" type="text" id="first_name" class="form-control" value="">
+<div class="valid-feedback"></div>
+<div class="invalid-feedback">Nome é obrigatório.</div>
+<!-- Checkbox -->
+<div class="custom-control custom-checkbox">
+  <input name="check" type="checkbox" id="check" class="custom-control-input" value="" />
+  <label title="" for="check" class="custom-control-label">Teste Checkbox</label>
+</div>
+<!-- Radio -->
+<div class="custom-control custom-radio">
+  <input name="choice" type="radio" id="radio1" class="custom-control-input" value="teste01">
+  <label title="" for="radio1" class="custom-control-label">Teste Radio 01</label>
+</div>
+<div class="custom-control custom-radio">
+  <input name="choice" type="radio" id="radio2" class="custom-control-input" value="teste02">
+  <label title="" for="radio2" class="custom-control-label">Teste Radio 02</label>
+</div>
+<!-- Switch -->
+<div class="custom-control custom-switch">
+  <input name="switch" type="checkbox" id="switch" class="custom-control-input" value="">
+  <label title="" for="switch" class="custom-control-label">Teste Switch</label>
+</div>
+<!-- TextArea -->
+<textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
+<div class="valid-feedback"></div>
+<div class="invalid-feedback"></div>
+<!-- Range -->
+<label class="form-label">Range</label>
+<input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
+<div class="valid-feedback"></div>
+<div class="invalid-feedback"></div>
+<!-- File -->
+<label class="form-label">Arquivo</label>
+<div class="custom custom-file">
+  <input name="file" id="file" type="file" class="custom-file-input" value="">
+  <label for="file" class="custom-file-label">Clique aqui para inserir o arquivo.</label>
+</div>
+<div class="valid-feedback"></div>
+<div class="invalid-feedback"></div>
+<!-- Multiselect -->
+<label class="form-label">Selecione as melhores opções</label>
+<select multiple="" name="multiselect" type="select" id="select" class="custom-select">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+<div class="valid-feedback"></div>
+<div class="invalid-feedback"></div>
+<!-- Select -->
+<select name="select" type="select" id="select" class="custom-select is-valid">
+  <option value="">Selecione uma opção</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+<div class="valid-feedback"></div>
+<div class="invalid-feedback"></div>
 ```
 
 ## Constantes de classe para estilos
