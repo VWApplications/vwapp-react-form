@@ -1,5 +1,6 @@
 import React from 'react'
 import { Pagination } from 'vwapp-react-components';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,12 +15,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <Pagination
-        totalItens={120}
-        itemPerPage={20}
-        activePage={this.state.activePage}
-        handlePagination={this.__handlePagination}
-      />
+      <Container>
+        <Row>
+          <Col>
+            <Pagination
+              totalItens={120}
+              itemPerPage={20}
+              activePage={this.state.activePage}
+              handlePagination={this.__handlePagination}
+            />
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

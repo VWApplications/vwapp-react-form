@@ -88,11 +88,11 @@ Componentes relacionados a criação de paginações.
 Contante default **style**, com ela você consegue inserir as classes usando uma lista.
 
 ```jsx
-import styles, { COLORS } from 'vwapp-react-components';
+import { COLORS, toString } from 'vwapp-react-components';
 
 const { backgroundDark, textWhite } = COLORS;
 
-<Container fluid className={style([backgroundDark, textWhite])}>
+<Container fluid className={toString([backgroundDark, textWhite])}>
   // ...
 </Container>
 ```

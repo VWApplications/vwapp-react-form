@@ -33,16 +33,20 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.0.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0",
-    "react-js-pagination": "^3.0.3"
+    "react-js-pagination": "^3.0.3",
+    "styled-components": "^5.1.0"
   },
   "peerDependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.0.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0",
-    "react-js-pagination": "^3.0.3"
+    "react-js-pagination": "^3.0.3",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
