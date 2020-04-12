@@ -1,33 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export class Alert extends React.Component {
+export class Alert extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['alert'];
-    this.childrens = props.children;
+    this.classList = ['alert'];
     this.closeButton = null;
     this.attributes = { ...props };
 
-    const type = props.type ? `alert-${props.type}` : '';
-    const dismissible = props.dismissible ? 'alert-dismissible fade show' : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-    if (props.className) this.classNames.push(props.className);
-    if (type) this.classNames.push(type);
-    if (dismissible) {
+  __setAttributes = () => {
+    const { type, dismissible } = this.props;
+
+    this.type = type ? `alert-${type}` : '';
+    this.dismissible = dismissible ? 'alert-dismissible fade show' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.type) this.classList.push(this.type);
+    if (this.dismissible) {
       this.closeButton = <button type='button' className='close' data-dismiss='alert'>&times;</button>;
-      this.classNames.push(dismissible);
+      this.classList.push(this.dismissible);
     }
 
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.type;
     delete this.attributes.dismissible;
   }
 
   render() {
+    const { children } = this.props;
+
     return (
-      <div {...this.attributes} className={toString([...this.classNames])}>
+      <div {...this.attributes} className={toString([...this.classList])}>
         {this.closeButton}
-        {this.childrens}
+        {children}
       </div>
     )
   }

@@ -1,46 +1,145 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export const CardGroup = props => {
-  const attributes = { ...props };
-  delete attributes.spaces;
+export class CardGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = [];
+    this.attributes = { ...props };
 
-  const spaces = props.spaces ? 'card-deck' : 'card-group';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-  const classNames = [spaces];
-  if (props.className) classNames.push(props.className);
+  __setAttributes = () => {
+    const { spaces } = this.props;
 
-  return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.spaces = spaces ? 'card-deck' : 'card-group';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    this.classList.push(this.spaces);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
+    delete this.attributes.spaces;
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
 }
 
-export const Card = props => {
-  const attributes = { ...props };
-  const classNames = ['card', 'text-dark'];
-  if (props.className) classNames.push(props.className);
+export class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['card', 'text-dark'];
+    this.attributes = { ...props };
 
-  return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.__populateClassList();
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
 }
 
-export const CardHeader = props => {
-  const attributes = { ...props };
-  const classNames = ['card-header'];
-  if (props.className) classNames.push(props.className);
+export class CardHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['card-header'];
+    this.attributes = { ...props };
 
-  return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.__populateClassList();
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
 }
 
-export const CardBody = props => {
-  const attributes = { ...props };
-  const classNames = ['card-body'];
-  if (props.className) classNames.push(props.className);
+export class CardBody extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['card-body'];
+    this.attributes = { ...props };
 
-  return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.__populateClassList();
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
 }
 
-export const CardFooter = props => {
-  const attributes = { ...props };
-  const classNames = ['card-footer'];
-  if (props.className) classNames.push(props.className);
+export class CardFooter extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['card-footer'];
+    this.attributes = { ...props };
 
-  return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.__populateClassList();
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
 }

@@ -1,44 +1,79 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export const ButtonGroup = props => {
-  const type = props.vertical ? 'btn-group-vertical' : 'btn-group';
-  const size = props.size ? `btn-group-${props.size}` : '';
-
-  const classNames = [type];
-  if (props.className) classNames.push(props.className);
-  if (size) classNames.push(size);
-
-  return (
-    <div className={toString([...classNames])}>
-      {props.children}
-    </div>
-  );
-}
-
-export class Button extends React.Component {
+export class ButtonGroup extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['btn'];
-    this.childrens = props.children;
+    this.classList = [];
     this.attributes = { ...props };
 
-    const type = props.type;
-    const outline = props.outline;
-    const disabled = props.disabled ? 'disabled' : '';
-    const size = props.size ? `btn-${props.size}` : '';
+    this.__setAttributes();
+    this.__populateClassList();
+  }
 
-    if (props.className) this.classNames.push(props.className);
-    if (disabled) this.classNames.push(disabled);
-    if (size) this.classNames.push(size);
-    if (type) {
-      if (outline) {
-        this.classNames.push(`btn-outline-${type}`);
+  __setAttributes = () => {
+    const { vertical, size } = this.props;
+
+    this.type = vertical ? 'btn-group-vertical' : 'btn-group';
+    this.size = size ? `btn-group-${size}` : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    this.classList.push(this.type);
+    if (this.size) this.classList.push(this.size);
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div className={toString([...this.classList])}>
+        {children}
+      </div>
+    );
+  }
+}
+
+export class Button extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['btn'];
+    this.attributes = { ...props };
+
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
+
+  __setAttributes = () => {
+    const { type, outline, disabled, size } = this.props;
+
+    this.type = type;
+    this.outline = outline;
+    this.disabled = disabled ? 'disabled' : '';
+    this.size = size ? `btn-${size}` : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.disabled) this.classList.push(this.disabled);
+    if (this.size) this.classList.push(this.size);
+    if (this.type) {
+      if (this.outline) {
+        this.classList.push(`btn-outline-${this.type}`);
       } else {
-        this.classNames.push(`btn-${type}`);
+        this.classList.push(`btn-${this.type}`);
       }
     }
 
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.type;
     delete this.attributes.disabled;
     delete this.attributes.size;
@@ -46,9 +81,11 @@ export class Button extends React.Component {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
-      <button {...this.attributes} className={toString([...this.classNames])}>
-        {this.childrens}
+      <button {...this.attributes} className={toString([...this.classList])}>
+        {children}
       </button>
     );
   }

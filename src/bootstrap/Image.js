@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export class Image extends React.Component {
+export class Image extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['img-fluid'];
-    this.childrens = props.children;
+    this.classList = ['img-fluid'];
     this.attributes = { ...props };
 
-    const rounded = props.rounded ? 'rounded' : '';
-    const circle = props.circle ? 'rounded-circle' : '';
-    const thumbnail = props.thumbnail ? 'img-thumbnail' : '';
-    const center = props.center ? 'mx-auto d-block' : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-    if (rounded) this.classNames.push(rounded);
-    if (circle) this.classNames.push(circle);
-    if (thumbnail) this.classNames.push(thumbnail);
-    if (center) this.classNames.push(center);
-    if (props.className) this.classNames.push(props.className);
+  __setAttributes = () => {
+    const { rounded, circle, thumbnail, center } = this.props;
 
+    this.rounded = rounded ? 'rounded' : '';
+    this.circle = circle ? 'rounded-circle' : '';
+    this.thumbnail = thumbnail ? 'img-thumbnail' : '';
+    this.center = center ? 'mx-auto d-block' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.rounded) this.classList.push(this.rounded);
+    if (this.circle) this.classList.push(this.circle);
+    if (this.thumbnail) this.classList.push(this.thumbnail);
+    if (this.center) this.classList.push(this.center);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.rounded;
     delete this.attributes.circle;
     delete this.attributes.thumbnail;
@@ -26,10 +39,12 @@ export class Image extends React.Component {
   }
 
   render() {
-    if (this.childrens) {
-      return <img {...this.attributes} className={toString([...this.classNames])}>{this.childrens}</img>;
+    const { children } = this.props;
+
+    if (children) {
+      return <img {...this.attributes} className={toString([...this.classList])}>{children}</img>;
     } else {
-      return <img {...this.attributes} className={toString([...this.classNames])} />;
+      return <img {...this.attributes} className={toString([...this.classList])} />;
     }
   }
 }

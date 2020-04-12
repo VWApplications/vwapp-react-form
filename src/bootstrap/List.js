@@ -1,60 +1,97 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
 var link = false;
 
-export const List = props => {
-  const attributes = { ...props };
-  delete attributes.clean;
-  delete attributes.horizontal;
-  delete attributes.link;
-
-  const clean = props.clean ? 'list-group-flush' : '';
-  const horizontal = props.horizontal ? 'list-group-horizontal' : '';
-  link = props.link;
-
-  const classNames = ['list-group'];
-  if (clean) classNames.push(clean);
-  if (horizontal) classNames.push(horizontal);
-  if (props.className) classNames.push(props.className);
-
-  if (link) {
-    return (
-      <div {...attributes} className={toString([...classNames])}>
-        {props.children}
-      </div>
-    )
-  }
-
-  return <ul {...attributes} className={toString([...classNames])}>{props.children}</ul>
-}
-
-export class ListItem extends React.Component {
+export class List extends Component {
   constructor(props) {
     super(props);
-    this.childrens = props.children;
+    this.classList = ['list-group'];
+    this.attributes = { ...props };
+    link = props.link;
+
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
+
+  __setAttributes = () => {
+    const { clean, horizontal } = this.props;
+
+    this.clean = clean ? 'list-group-flush' : '';
+    this.horizontal = horizontal ? 'list-group-horizontal' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.clean) this.classList.push(this.clean);
+    if (this.horizontal) this.classList.push(this.horizontal);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
+    delete this.attributes.clean;
+    delete this.attributes.horizontal;
+    delete this.attributes.link;
+  }
+
+  render() {
+    const { children } = this.props;
+
+    if (link) {
+      return (
+        <div {...this.attributes} className={toString([...this.classList])}>
+          {children}
+        </div>
+      )
+    }
+
+    return <ul {...this.attributes} className={toString([...this.classList])}>{children}</ul>
+  }
+}
+
+export class ListItem extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['list-group-item', 'text-dark'];
     this.attributes = { ...props };
 
     if (link) {
-      this.classNames = ['btn', 'btn-link', 'list-group-item', 'list-group-item-action', 'text-dark'];
-    } else {
-      const actived = props.actived ? 'active' : '';
-      this.classNames = ['list-group-item', 'text-dark'];
-      if (actived) this.classNames.push(actived);
+      this.classList = ['btn', 'btn-link', 'list-group-item', 'list-group-item-action', 'text-dark'];
     }
 
-    const disabled = props.disabled ? 'disabled' : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-    if (disabled) this.className.push(disabled);
-    if (props.className) this.classNames.push(props.className);
+  __setAttributes = () => {
+    const { disabled, actived } = this.props;
 
+    this.actived = actived ? 'active' : '';
+    this.disabled = disabled ? 'disabled' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (!link) {
+      if (this.actived) this.classList.push(this.actived);
+    }
+
+    if (this.disabled) this.classList.push(this.disabled);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.actived;
     delete this.attributes.disabled;
     delete this.attributes.handleClick;
   }
 
   render() {
-    const { handleClick } = this.props;
+    const { handleClick, children } = this.props;
 
     if (link) {
       if (!handleClick) return null;
@@ -62,13 +99,13 @@ export class ListItem extends React.Component {
       return (
         <button
           {...this.attributes}
-          className={toString([...this.classNames])}
+          className={toString([...this.classList])}
           onClick={handleClick}>
-          {this.childrens}
+          {children}
         </button>
       )
     }
 
-    return <li {...this.attributes} className={toString([...this.classNames])}>{this.childrens}</li>;
+    return <li {...this.attributes} className={toString([...this.classList])}>{children}</li>;
   }
 }

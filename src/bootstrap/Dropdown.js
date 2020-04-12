@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export class Dropdown extends React.Component {
+export class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['btn', 'dropdown-toggle'];
-    this.childrens = props.children;
-    this.attrMenu = props.attrMenu;
-    this.title = props.title;
+    this.classList = ['btn', 'dropdown-toggle'];
     this.group = props.group ? 'btn-group' : 'dropdown';
     this.attributes = { ...props };
 
-    const type = props.type;
-    const outline = props.outline;
-    const disabled = props.disabled ? 'disabled' : '';
-    const size = props.size ? `btn-${props.size}` : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-    if (props.className) this.classNames.push(props.className);
-    if (disabled) this.classNames.push(disabled);
-    if (size) this.classNames.push(size);
-    if (type) {
-      if (outline) {
-        this.classNames.push(`btn-outline-${type}`);
+  __setAttributes = () => {
+    const { type, outline, disabled, size } = this.props;
+
+    this.type = type;
+    this.outline = outline;
+    this.disabled = disabled ? 'disabled' : '';
+    this.size = size ? `btn-${size}` : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.disabled) this.classList.push(this.disabled);
+    if (this.size) this.classList.push(this.size);
+    if (this.type) {
+      if (this.outline) {
+        this.classList.push(`btn-outline-${this.type}`);
       } else {
-        this.classNames.push(`btn-${type}`);
+        this.classList.push(`btn-${this.type}`);
       }
     }
 
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.type;
     delete this.attributes.disabled;
     delete this.attributes.size;
@@ -37,13 +49,15 @@ export class Dropdown extends React.Component {
   }
 
   render() {
+    const { children, title, attrMenu } = this.props;
+
     return (
       <div className={this.group}>
-        <button {...this.attributes} className={toString([...this.classNames])} data-toggle='dropdown'>
-          {this.title}
+        <button {...this.attributes} className={toString([...this.classList])} data-toggle='dropdown'>
+          {title}
         </button>
-        <div {...this.attrMenu} className={toString(['dropdown-menu', this.attrMenu ? this.attrMenu.className : ''])}>
-          {this.childrens}
+        <div {...attrMenu} className={toString(['dropdown-menu', attrMenu ? attrMenu.className : ''])}>
+          {children}
         </div>
       </div>
     );
@@ -56,30 +70,44 @@ export const DropHeader = props => <div {...props} className={toString(['dropdow
 
 export const DropText = props => <span {...props} className={toString(['dropdown-item-text', props.className || ''])}>{props.children}</span>;
 
-export class DropLink extends React.Component {
+export class DropLink extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['btn', 'btn-link', 'dropdown-item'];
-    this.childrens = props.children;
-    this.onClick = props.onClick;
+    this.classList = ['btn', 'btn-link', 'dropdown-item'];
     this.attributes = { ...props };
+
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
+
+  __setAttributes = () => {
+    const { disabled, actived } = this.props;
+
+    this.disabled = disabled ? 'disabled' : '';
+    this.actived = actived ? 'active' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.disabled) this.classList.push(this.disabled);
+    if (this.actived) this.classList.push(this.actived);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.disabled;
     delete this.attributes.actived;
     delete this.attributes.onClick;
-
-    const className = props.className;
-    const disabled = props.disabled ? 'disabled' : '';
-    const actived = props.actived ? 'active' : '';
-
-    if (className) this.classNames.push(className);
-    if (disabled) this.classNames.push(disabled);
-    if (actived) this.classNames.push(actived);
   }
 
   render() {
+    const { children, onClick } = this.props;
+
     return (
-      <button {...this.attributes} className={toString([...this.classNames])} onClick={this.onClick}>
-        {this.childrens}
+      <button {...this.attributes} className={toString([...this.classList])} onClick={onClick}>
+        {children}
       </button>
     );
   }

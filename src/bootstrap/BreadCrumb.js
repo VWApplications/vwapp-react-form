@@ -1,29 +1,51 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { BreadCrumbLink } from '../styles';
 import { toString } from '../constants';
 
-export const BreadCrumb = props => {
-  const classNames = ['breadcrumb'];
-  const attributes = { ...props };
+export class BreadCrumb extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['breadcrumb'];
+    this.attributes = { ...props };
 
-  if (props.className) classNames.push(props.className);
+    this.__populateClassList();
+  }
 
-  return (
-    <ul {...attributes} className={toString([...classNames])}>
-      {props.children}
-    </ul>
-  );
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <ul {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </ul>
+    );
+  }
 }
 
 export class BreadCrumbItem extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['btn', 'btn-link'];
+    this.classList = ['btn', 'btn-link'];
     this.childrens = props.children;
     this.attributes = { ...props };
 
-    if (props.className) this.classNames.push(props.className);
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.url;
     delete this.attributes.state;
     delete this.attributes.redirectFunction;
@@ -36,23 +58,14 @@ export class BreadCrumbItem extends Component {
 
     return (
       <li className='breadcrumb-item'>
-        <ButtonLink
+        <BreadCrumbLink
           {...this.attributes}
           type='button'
-          className={toString([...this.classNames])}
+          className={toString([...this.classList])}
           onClick={() => redirect(url, state)}>
           {this.childrens}
-        </ButtonLink>
+        </BreadCrumbLink>
       </li>
     )
   }
 }
-
-const ButtonLink = styled.button`
-  padding-left: 0;
-  padding-right: 0;
-
-  :hover, :focus {
-    text-decoration: none;
-  }
-`;

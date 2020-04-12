@@ -1,53 +1,74 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
 export const TableLine = props => <tr {...props}>{props.children}</tr>;
 
-export const TableCol = props => {
-  const attributes = { ...props };
-  delete attributes.bold;
-
-  if (props.bold) {
-    return <th {...attributes}>{props.children}</th>;
-  }
-
-  return <td {...attributes}>{props.children}</td>;
-}
-
-export class Table extends React.Component {
+export class TableCol extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['table'];
-    this.childrens = props.children;
-    this.attrTHeader = props.attrTHeader;
-    this.attrHeaderLine = props.attrHeaderLine;
-    this.attrHeaderItens = props.attrHeaderItens;
-    this.attrTBody = props.attrTBody;
-    this.headers = props.headers;
     this.attributes = { ...props };
 
-    const striped = props.striped ? 'table-striped' : '';
-    const bordered = props.bordered ? 'table-bordered' : '';
-    const borderless = props.borderless ? 'table-borderless' : '';
-    const hover = props.hover ? 'table-hover' : '';
-    const dark = props.dark ? 'table-dark' : '';
-    const headerDark = props.headerDark ? 'thead-dark' : '';
-    const small = props.small ? 'table-sm' : '';
+    this.__deleteAttributes();
+  }
 
-    if (headerDark) {
-      if (!this.attrTHeader) { this.attrTHeader = {} };
+  __deleteAttributes = () => {
+    delete this.attributes.bold;
+  }
 
-      this.attrTHeader.className = toString([headerDark, this.attrTHeader.className || '']);
+  render() {
+    const { bold, children } = this.props;
+
+    if (bold) {
+      return <th {...this.attributes}>{children}</th>;
     }
 
-    if (striped) this.classNames.push(striped);
-    if (bordered) this.classNames.push(bordered);
-    if (borderless) this.classNames.push(borderless);
-    if (hover) this.classNames.push(hover);
-    if (dark) this.classNames.push(dark);
-    if (small) this.classNames.push(small);
-    if (props.className) this.classNames.push(props.className);
+    return <td {...this.attributes}>{children}</td>;
+  }
+}
 
+export class Table extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['table'];
+    this.attrTHeader = props.attrTHeader;
+    this.attributes = { ...props };
+
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
+
+  __setAttributes = () => {
+    const { striped, bordered, borderless, hover, dark, headerDark, small } = this.props;
+
+    this.striped = striped ? 'table-striped' : '';
+    this.bordered = bordered ? 'table-bordered' : '';
+    this.borderless = borderless ? 'table-borderless' : '';
+    this.hover = hover ? 'table-hover' : '';
+    this.dark = dark ? 'table-dark' : '';
+    this.headerDark = headerDark ? 'thead-dark' : '';
+    this.small = small ? 'table-sm' : '';
+
+    if (this.headerDark) {
+      if (!this.attrTHeader) { this.attrTHeader = {} };
+
+      this.attrTHeader.className = toString([this.headerDark, this.attrTHeader.className || '']);
+    }
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.striped) this.classList.push(this.striped);
+    if (this.bordered) this.classList.push(this.bordered);
+    if (this.borderless) this.classList.push(this.borderless);
+    if (this.hover) this.classList.push(this.hover);
+    if (this.dark) this.classList.push(this.dark);
+    if (this.small) this.classList.push(this.small);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.headers;
     delete this.attributes.striped;
     delete this.attributes.bordered;
@@ -63,18 +84,20 @@ export class Table extends React.Component {
   }
 
   render() {
+    const { attrHeaderLine, headers, attrHeaderItens, attrTBody, children } = this.props;
+
     return (
       <div className='table-responsive'>
-        <table {...this.attributes} className={toString([...this.classNames])}>
+        <table {...this.attributes} className={toString([...this.classList])}>
           <thead {...this.attrTHeader}>
-            <tr {...this.attrHeaderLine}>
-              {this.headers.map((header, index) => (
-                <th key={index} {...this.attrHeaderItens}>{header}</th>
+            <tr {...attrHeaderLine}>
+              {headers.map((header, index) => (
+                <th key={index} {...attrHeaderItens}>{header}</th>
               ))}
             </tr>
           </thead>
-          <tbody {...this.attrTBody}>
-            {this.childrens}
+          <tbody {...attrTBody}>
+            {children}
           </tbody>
         </table>
       </div>

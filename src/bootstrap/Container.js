@@ -1,19 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { toString } from '../constants';
 
-export const Container = props => {
-  const attributes = { ...props };
+export class Container extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = [];
+    this.attributes = { ...props };
 
-  const screen = props.screen ? `-${props.screen}` : '';
-  const fluid = props.fluid && !props.screen ? '-fluid' : '';
-  const className = props.className ? ` ${props.className}` : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-  delete attributes.screen;
-  delete attributes.fluid;
-  delete attributes.className;
+  __setAttributes = () => {
+    const { screen, fluid } = this.props;
 
-  return (
-    <main {...attributes} className={`container${screen}${fluid}${className}`}>
-      {props.children}
-    </main>
-  );
+    this.screen = screen ? `-${screen}` : '';
+    this.fluid = fluid && !screen ? '-fluid' : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    this.classList.push(`container${this.screen}${this.fluid}`);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
+    delete this.attributes.screen;
+    delete this.attributes.fluid;
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <main {...this.attributes} className={toString([...this.classList])}>
+        {children}
+      </main>
+    );
+  }
 }

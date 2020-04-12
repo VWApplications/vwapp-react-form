@@ -1,51 +1,52 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import { Progress } from '../styles';
 import { toString } from '../constants';
 
-export const ProgressBar = props => {
-  const classNames = ['progress'];
-  if (props.className) classNames.push(props.className);
+export const ProgressBar = props => (
+  <Progress {...props} className={toString(['progress', props.className || ''])}>
+    {props.children}
+  </Progress>
+)
 
-  return (
-    <Div
-      {...props}
-      className={toString([...classNames])}>
-      {props.children}
-    </Div>
-  )
-}
-
-export class ProgressBarSlice extends React.Component {
+export class ProgressBarSlice extends Component {
   constructor(props) {
     super(props);
-    this.classNames = ['progress-bar', 'progress-bar-striped', 'progress-bar-animated'];
-    this.childrens = props.children;
-    this.progress = props.progress;
+    this.classList = ['progress-bar', 'progress-bar-striped', 'progress-bar-animated'];
     this.attributes = { ...props };
 
-    const type = props.type ? `bg-${props.type}` : '';
+    this.__setAttributes();
+    this.__populateClassList();
+    this.__deleteAttributes();
+  }
 
-    if (type) this.classNames.push(type);
-    if (props.className) this.classNames.push(props.className);
+  __setAttributes = () => {
+    const { type } = this.props;
 
+    this.type = type ? `bg-${type}` : '';
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (this.type) this.classList.push(this.type);
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
     delete this.attributes.type;
     delete this.attributes.progress;
   }
 
   render() {
+    const { progress, children } = this.props;
+
     return (
       <span
         {...this.attributes}
-        className={toString([...this.classNames])}
-        style={{ width: `${this.progress}%` }}>
-        {this.childrens}
+        className={toString([...this.classList])}
+        style={{ width: `${progress}%` }}>
+        {children}
       </span>
     )
   }
 }
-
-const Div = styled.div`
-  box-shadow: 1px 1px 5px inset grey;
-  border: 1px solid #bfbfd6;
-  margin: 3px;
-`

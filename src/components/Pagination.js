@@ -11,9 +11,6 @@ export class Pagination extends React.Component {
     this.lastPageText = props.lastPageText || 'Último';
     this.prevPageText = props.prevPageText || '<<';
     this.nextPageText = props.nextPageText || '>>';
-
-    this.classNames = [];
-    if (props.className) this.classNames.push(props.className);
   }
 
   render() {

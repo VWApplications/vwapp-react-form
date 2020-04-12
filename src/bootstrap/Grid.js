@@ -1,45 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { toString } from '../constants';
 
-export const Row = props => {
-  const classNames = ['row', props.className || ''];
+export const Row = props => (
+  <div {...props} className={toString(['row', props.className || ''])}>
+    {props.children}
+  </div>
+)
 
-  return (
-    <div {...props} className={toString([...classNames])}>
-      {props.children}
-    </div>
-  );
-}
+export class Col extends Component {
+  constructor(props) {
+    super(props);
+    this.classList = ['col'];
+    this.attributes = { ...props };
 
-export const Col = props => {
-  const attributes = { ...props };
-  delete attributes.screens;
-  delete attributes.sizes;
-
-  const classNames = ['col', props.className || ''];
-
-  if (!props.screens || !props.sizes) {
-    return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
+    this.__populateClassList();
+    this.__deleteAttributes();
   }
 
-  if (props.screens.length !== props.sizes.length) {
-    return <div {...attributes} className={toString([...classNames])}>{props.children}</div>;
-  }
+  __configureGrid = () => {
+    const { screens, sizes } = this.props;
+    this.classList = [];
 
-  let className = '';
-  let firstScreen = props.screens[0];
-  for (let i = 0; i < props.screens.length; i++) {
-    if (props.screens[i] === firstScreen) {
-      if (i !== 0) { className += ' '; }
-      if (props.screens[i] === 'xs') {
-        className += `col-${props.sizes[i]}`;
-      } else {
-        className += `col-${props.screens[i]}-${props.sizes[i]}`;
+    this.className = '';
+    let firstScreen = screens[0];
+    for (let i = 0; i < screens.length; i++) {
+      if (screens[i] === firstScreen) {
+        if (i !== 0) { this.className += ' '; }
+        if (screens[i] === 'xs') {
+          this.className += `col-${sizes[i]}`;
+        } else {
+          this.className += `col-${screens[i]}-${sizes[i]}`;
+        }
       }
+
+      firstScreen = screens[i + 1];
+    }
+  }
+
+  __populateClassList = () => {
+    const { className } = this.props;
+
+    if (className) this.classList.push(className);
+  }
+
+  __deleteAttributes = () => {
+    delete this.attributes.screens;
+    delete this.attributes.sizes;
+  }
+
+  render() {
+    const { children, screens, sizes } = this.props;
+
+    if (!screens || !sizes) {
+      return <div {...this.attributes} className={toString([...this.classList])}>{children}</div>;
     }
 
-    firstScreen = props.screens[i + 1];
-  }
+    if (screens.length !== sizes.length) {
+      return <div {...this.attributes} className={toString([...this.classList])}>{children}</div>;
+    }
 
-  return <div {...attributes} className={toString([className, props.className || ''])}>{props.children}</div>;
+    this.__configureGrid();
+    return <div {...this.attributes} className={toString([this.className, ...this.classList])}>{children}</div>;
+  }
 }
