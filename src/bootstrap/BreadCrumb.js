@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import { BreadCrumbLink } from '../styles';
 import { toString } from '../constants';
 
@@ -9,6 +9,7 @@ export class BreadCrumb extends Component {
     this.attributes = { ...props };
 
     this.__populateClassList();
+    this.__deleteAttributes();
   }
 
   __populateClassList = () => {
@@ -17,8 +18,20 @@ export class BreadCrumb extends Component {
     if (className) this.classList.push(className);
   }
 
+  __deleteAttributes = () => {
+    delete this.attributes.redirect;
+  }
+
+  __passAttrToChildren = () => {
+    const { children, redirect } = this.props;
+
+    return Children.map(children, (child, index) => {
+      return cloneElement(child, { index, redirect });
+    });
+  }
+
   render() {
-    const { children } = this.props;
+    const children = this.__passAttrToChildren();
 
     return (
       <ul {...this.attributes} className={toString([...this.classList])}>
@@ -32,7 +45,6 @@ export class BreadCrumbItem extends Component {
   constructor(props) {
     super(props);
     this.classList = ['btn', 'btn-link'];
-    this.childrens = props.children;
     this.attributes = { ...props };
 
     this.__populateClassList();
@@ -48,11 +60,11 @@ export class BreadCrumbItem extends Component {
   __deleteAttributes = () => {
     delete this.attributes.url;
     delete this.attributes.state;
-    delete this.attributes.redirectFunction;
+    delete this.attributes.redirect;
   }
 
   render() {
-    const { redirect, url, state } = this.props;
+    const { redirect, url, state, children } = this.props;
 
     if (!redirect || !url) return null;
 
@@ -63,7 +75,7 @@ export class BreadCrumbItem extends Component {
           type='button'
           className={toString([...this.classList])}
           onClick={() => redirect(url, state)}>
-          {this.childrens}
+          {children}
         </BreadCrumbLink>
       </li>
     )

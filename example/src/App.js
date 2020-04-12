@@ -103,16 +103,10 @@ class App extends React.Component {
             />
           </Col>
           <Col>
-            <BreadCrumb id="my-bread">
-              <BreadCrumbItem url="/" id="my-bread-item" redirect={(url, state) => this.__redirectTo(url, state)}>
-                Home
-              </BreadCrumbItem>
-              <BreadCrumbItem url="/profile" redirect={(url, state) => this.__redirectTo(url, state)}>
-                Perfil
-              </BreadCrumbItem>
-              <BreadCrumbItem url="/profile/calculo-1/detail" state={{ id: 1 }} redirect={(url, state) => this.__redirectTo(url, state)}>
-                Calculo 01
-              </BreadCrumbItem>
+            <BreadCrumb id="my-bread" redirect={(url, state) => this.__redirectTo(url, state)}>
+              <BreadCrumbItem url="/" id="my-bread-item">Home</BreadCrumbItem>
+              <BreadCrumbItem url="/profile">Perfil</BreadCrumbItem>
+              <BreadCrumbItem url="/profile/calculo-1/detail" state={{ id: 1 }}>Calculo 01</BreadCrumbItem>
             </BreadCrumb>
           </Col>
         </Row>

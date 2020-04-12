@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import { toString } from '../constants';
-
-var link = false;
 
 export class List extends Component {
   constructor(props) {
     super(props);
     this.classList = ['list-group'];
     this.attributes = { ...props };
-    link = props.link;
 
     this.__setAttributes();
     this.__populateClassList();
@@ -36,8 +33,18 @@ export class List extends Component {
     delete this.attributes.link;
   }
 
+  __passAttrToChildren = () => {
+    const { children, link } = this.props;
+
+    return Children.map(children, (child, index) => {
+      return cloneElement(child, { index, link });
+    });
+  }
+
   render() {
-    const { children } = this.props;
+    const { link } = this.props;
+
+    const children = this.__passAttrToChildren();
 
     if (link) {
       return (
@@ -57,7 +64,7 @@ export class ListItem extends Component {
     this.classList = ['list-group-item', 'text-dark'];
     this.attributes = { ...props };
 
-    if (link) {
+    if (props.link) {
       this.classList = ['btn', 'btn-link', 'list-group-item', 'list-group-item-action', 'text-dark'];
     }
 
@@ -74,7 +81,7 @@ export class ListItem extends Component {
   }
 
   __populateClassList = () => {
-    const { className } = this.props;
+    const { className, link } = this.props;
 
     if (!link) {
       if (this.actived) this.classList.push(this.actived);
@@ -88,10 +95,11 @@ export class ListItem extends Component {
     delete this.attributes.actived;
     delete this.attributes.disabled;
     delete this.attributes.handleClick;
+    delete this.attributes.link;
   }
 
   render() {
-    const { handleClick, children } = this.props;
+    const { handleClick, children, link } = this.props;
 
     if (link) {
       if (!handleClick) return null;
