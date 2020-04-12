@@ -1,7 +1,8 @@
 import React from 'react'
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
-  InputField, CheckField, TextAreaField, SelectField, RangeField
+  InputField, CheckField, TextAreaField, SelectField, RangeField,
+  FileField
 } from 'vwapp-react-components';
 import { Container, Col, Form, Button, Card } from 'react-bootstrap';
 
@@ -128,12 +129,20 @@ class App extends React.Component {
               </Form.Row>
 
               <Form.Row>
-                <Form.Group as={Col} md="12" controlId="formRange">
+                <Form.Group as={Col} md="8" controlId="formRange">
                   <Field
                     name="range"
                     label="Range"
                     max={80}
                     component={RangeField}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="4" controlId="formFiel">
+                  <Field
+                    name="file"
+                    label="Arquivo"
+                    placeholder="Clique aqui para inserir o arquivo."
+                    component={FileField}
                   />
                 </Form.Group>
               </Form.Row>

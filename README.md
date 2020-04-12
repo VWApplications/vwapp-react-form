@@ -167,6 +167,7 @@ O mais aconselhado é o **react-final-form**.
 <Field name="switch" type="switch" label="Teste Switch" id="switch" component={CheckField} />
 <Field name="description" placeholder="Descrição" rows={5} component={TextAreaField} />
 <Field name="range" label="Range" max={50} component={RangeField} />
+<Field name="file" label="Arquivo" placeholder="Clique aqui para inserir o arquivo." component={FileField} />
 <Field
   multiple
   name="my-select"
