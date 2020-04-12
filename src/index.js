@@ -5,3 +5,4 @@ export { InputField } from './forms/InputField';
 export { CheckField } from './forms/CheckField';
 export { TextAreaField } from './forms/TextAreaField';
 export { SelectField } from './forms/SelectField';
+export { RangeField } from './forms/RangeField';

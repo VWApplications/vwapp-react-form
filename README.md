@@ -95,6 +95,7 @@ O mais aconselhado é o **react-final-form**.
 * CheckField
 * TextAreaField
 * SelectField
+* RangeField
 
 #### Propriedades especificas (Geral):
 
@@ -116,7 +117,7 @@ O mais aconselhado é o **react-final-form**.
 
 * **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
-* **readOnly**: Fazer o campo ser um texto só de leitura.
+* **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
 
 #### Propriedades especificas (TextAreaField)
 
@@ -124,7 +125,9 @@ O mais aconselhado é o **react-final-form**.
 
 * **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
-* **readOnly**: Fazer o campo ser um texto só de leitura.
+* **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
+
+* **rows**: Tamanho da caixa do campos. (Inteiro - Opcional)
 
 #### Propriedades especificas (SelectField)
 
@@ -136,7 +139,13 @@ O mais aconselhado é o **react-final-form**.
 
 * **type**: É obrigatório colocar o type como "select" nesse input. (String - Obrigatório - valor "select")
 
-* **multiple**: Transforma o select em escolhas multiplas.
+* **multiple**: Transforma o select em escolhas multiplas. (Booleano - default false)
+
+#### Propriedades especificas (SelectField)
+
+* **max**: Valor máximo que o range pode alcançar. (Inteiro - default 100)
+
+* **min**: Valor mínimo que o range pode alcançar. (Inteiro - default 0)
 
 #### Propriedades especificas (CheckField)
 
@@ -156,7 +165,8 @@ O mais aconselhado é o **react-final-form**.
 <Field inline name="choice" type="radio" label="Teste Radio 01" value="teste01" id="radio1" component={CheckField} />
 <Field inline name="choice" type="radio" label="Teste Radio 02" value="teste02" id="radio2" component={CheckField} />
 <Field name="switch" type="switch" label="Teste Switch" id="switch" component={CheckField} />
-<Field name="description" placeholder="Descrição" component={TextAreaField} />
+<Field name="description" placeholder="Descrição" rows={5} component={TextAreaField} />
+<Field name="range" label="Range" max={50} component={RangeField} />
 <Field
   multiple
   name="my-select"

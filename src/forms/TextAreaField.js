@@ -6,7 +6,7 @@ export const TextAreaField = field => {
 
   return (
     <Fragment>
-      {field.label && <Form.Label>{field.label}</Form.Label>}
+      {field.label && <Form.Label {...field.attrLabel}>{field.label}</Form.Label>}
       <Form.Control
         {...field.input}
         as='textarea'
@@ -15,6 +15,7 @@ export const TextAreaField = field => {
         disabled={(field.disabled || field.readOnly) || false}
         className={field.className}
         size={field.size}
+        rows={field.rows}
         plaintext={field.readOnly || false}
         readOnly={field.readOnly || false}
         id={field.input.name}

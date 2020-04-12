@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form as FinalForm, Field } from 'react-final-form';
-import { InputField, CheckField, TextAreaField, SelectField } from 'vwapp-react-components';
+import {
+  InputField, CheckField, TextAreaField, SelectField, RangeField
+} from 'vwapp-react-components';
 import { Container, Col, Form, Button, Card } from 'react-bootstrap';
 
 class App extends React.Component {
@@ -17,6 +19,10 @@ class App extends React.Component {
 
     if (!values.select) {
       errors.select = "Selecione uma opcão.";
+    }
+
+    if (values.range > 70) {
+      errors.range = "Passou de 70";
     }
 
     return errors;
@@ -115,7 +121,19 @@ class App extends React.Component {
                   <Field
                     name="description"
                     placeholder="Descrição"
+                    rows={5}
                     component={TextAreaField}
+                  />
+                </Form.Group>
+              </Form.Row>
+
+              <Form.Row>
+                <Form.Group as={Col} md="12" controlId="formRange">
+                  <Field
+                    name="range"
+                    label="Range"
+                    max={80}
+                    component={RangeField}
                   />
                 </Form.Group>
               </Form.Row>
