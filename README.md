@@ -15,14 +15,17 @@ npm install --save vwapp-react-components
 ```jsx
 import React, { Component } from 'react'
 
-import { Container } from 'vwapp-react-components'
+import { Pagination } from 'vwapp-react-components'
 
 class Example extends Component {
   render() {
     return (
-      <Container fluid className="bg-dark">
-        <p>Container fluid</p>
-      </Container>
+      <Pagination
+        totalItens={60}
+        itemPerPage={20}
+        activePage={this.state.activePage}
+        handlePagination={this.__handlePagination}
+      />
     )
   }
 }
@@ -97,6 +100,7 @@ O mais aconselhado é o **react-final-form**.
 * SelectField
 * RangeField
 * FileField
+* InputGroupField
 
 #### Propriedades especificas (Geral):
 
@@ -119,6 +123,14 @@ O mais aconselhado é o **react-final-form**.
 * **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
 * **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
+
+#### Propriedades especificas (InputGroupField)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **left**: Insere componentes do lado esquerdo do input. Por exemplo: ```InputGroup.Text```. (Component - Opcional)
+
+* **right**: Insere componentes do lado direiro do input. Por exemplo: ```Button```. (Component - Opcional)
 
 #### Propriedades especificas (TextAreaField)
 
@@ -161,103 +173,240 @@ O mais aconselhado é o **react-final-form**.
 #### Exemplo:
 
 ```jsx
-<Field name="first_name" type="text" placeholder="Primeiro Nome" label="Primeiro Nome" component={InputField} />
-<Field name="check" type="checkbox" label="Teste Checkbox" id="check" component={CheckField} />
-<Field inline name="choice" type="radio" label="Teste Radio 01" value="teste01" id="radio1" component={CheckField} />
-<Field inline name="choice" type="radio" label="Teste Radio 02" value="teste02" id="radio2" component={CheckField} />
-<Field name="switch" type="switch" label="Teste Switch" id="switch" component={CheckField} />
-<Field name="description" placeholder="Descrição" rows={5} component={TextAreaField} />
-<Field name="range" label="Range" max={50} component={RangeField} />
-<Field name="file" label="Arquivo" placeholder="Clique aqui para inserir o arquivo." component={FileField} />
-<Field
-  multiple
-  name="multiselect"
-  type="select"
-  label="Selecione as melhores opções"
-  options={[
-    {title: "1", value: 1},
-    {title: "2", value: 2},
-    {title: "3", value: 3},
-    {title: "4", value: 4},
-  ]}
-  component={SelectField}
-/>
-<Field
-  name="select"
-  type="select"
-  placeholder="Selecione a melhor opção"
-  options={[
-    {title: "1", value: 1},
-    {title: "2", value: 2},
-    {title: "3", value: 3},
-    {title: "4", value: 4},
-  ]}
-  component={SelectField}
-/>
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="6" controlId="formFirstName">
+      <Field
+        name="first_name"
+        placeholder="Primeiro Nome"
+        label="Primeiro Nome"
+        component={InputField}
+      />
+    </Form.Group>
+
+    <Form.Group as={Col} md="6" controlId="formLastName">
+      <Field
+        name="last_name"
+        placeholder="Último Nome"
+        label="Último Nome"
+        left={<InputGroup.Text>$</InputGroup.Text>}
+        right={
+          <DropdownButton
+            variant="outline-secondary"
+            title="Dropdown"
+            id="input-group-dropdown-1">
+            <Dropdown.Item onClick={() => console.log("Action 1")}>Action 1</Dropdown.Item>
+            <Dropdown.Item onClick={() => console.log("Action 2")}>Action 2</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => console.log("Action 3")}>Action 3</Dropdown.Item>
+          </DropdownButton>
+        }
+        component={InputGroupField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Form.Row>
+    <Form.Group as={Col} md="3" controlId="formCheckbox">
+      <Field
+        name="check"
+        type="checkbox"
+        label="Teste Checkbox"
+        id="check"
+        component={CheckField}
+      />
+    </Form.Group>
+
+    <Form.Group as={Col} md="3" controlId="formRadioButton">
+      <Field
+        name="choice"
+        type="radio"
+        label="Teste Radio 01"
+        value="teste01"
+        id="radio1"
+        component={CheckField}
+      />
+      <Field
+        name="choice"
+        type="radio"
+        label="Teste Radio 02"
+        value="teste02"
+        id="radio2"
+        component={CheckField}
+      />
+    </Form.Group>
+
+    <Form.Group as={Col} md="3" controlId="formSwitch">
+      <Field
+        name="switch"
+        type="switch"
+        label="Teste Switch"
+        id="switch"
+        component={CheckField}
+      />
+    </Form.Group>
+
+    <Form.Group as={Col} md="3" controlId="formSelect">
+      <Field
+        multiple
+        name="multiselect"
+        type="select"
+        label="Selecione as melhores opções"
+        options={[
+          {title: "1", value: 1},
+          {title: "2", value: 2},
+          {title: "3", value: 3},
+          {title: "4", value: 4},
+        ]}
+        component={SelectField}
+      />
+      <Field
+        name="select"
+        type="select"
+        placeholder="Selecione a melhor opção"
+        options={[
+          {title: "1", value: 1},
+          {title: "2", value: 2},
+          {title: "3", value: 3},
+          {title: "4", value: 4},
+        ]}
+        component={SelectField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Form.Row>
+    <Form.Group as={Col} md="12" controlId="formDescription">
+      <Field
+        name="description"
+        placeholder="Descrição"
+        rows={5}
+        component={TextAreaField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Form.Row>
+    <Form.Group as={Col} md="8" controlId="formRange">
+      <Field
+        name="range"
+        label="Range"
+        max={80}
+        component={RangeField}
+      />
+    </Form.Group>
+    <Form.Group as={Col} md="4" controlId="formFiel">
+      <Field
+        name="file"
+        label="Arquivo"
+        placeholder="Clique aqui para inserir o arquivo."
+        component={FileField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+
+  <Card body className="mt-3"><pre>{JSON.stringify(values, 0, 2)}</pre></Card>
+</Form>
 ```
 
 ```html
 <!-- Input -->
-<label class="form-label">Primeiro Nome</label>
-<input name="first_name" placeholder="Primeiro Nome" type="text" id="first_name" class="form-control" value="">
-<div class="valid-feedback"></div>
-<div class="invalid-feedback">Nome é obrigatório.</div>
+<div class="form-group col-md-12">
+  <label class="form-label">Primeiro Nome</label>
+  <input name="first_name" placeholder="Primeiro Nome" type="text" id="first_name" class="form-control" value="">
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback">Nome é obrigatório.</div>
+</div>
 <!-- Checkbox -->
-<div class="custom-control custom-checkbox">
-  <input name="check" type="checkbox" id="check" class="custom-control-input" value="" />
-  <label title="" for="check" class="custom-control-label">Teste Checkbox</label>
+<div class="form-group">
+  <div class="custom-control custom-checkbox">
+    <input name="check" type="checkbox" id="check" class="custom-control-input" value="" />
+    <label title="" for="check" class="custom-control-label">Teste Checkbox</label>
+  </div>
 </div>
 <!-- Radio -->
-<div class="custom-control custom-radio">
-  <input name="choice" type="radio" id="radio1" class="custom-control-input" value="teste01">
-  <label title="" for="radio1" class="custom-control-label">Teste Radio 01</label>
-</div>
-<div class="custom-control custom-radio">
-  <input name="choice" type="radio" id="radio2" class="custom-control-input" value="teste02">
-  <label title="" for="radio2" class="custom-control-label">Teste Radio 02</label>
+<div class="form-group">
+  <div class="custom-control custom-radio">
+    <input name="choice" type="radio" id="radio1" class="custom-control-input" value="teste01">
+    <label title="" for="radio1" class="custom-control-label">Teste Radio 01</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input name="choice" type="radio" id="radio2" class="custom-control-input" value="teste02">
+    <label title="" for="radio2" class="custom-control-label">Teste Radio 02</label>
+  </div>
 </div>
 <!-- Switch -->
-<div class="custom-control custom-switch">
-  <input name="switch" type="checkbox" id="switch" class="custom-control-input" value="">
-  <label title="" for="switch" class="custom-control-label">Teste Switch</label>
+<div class="form-group">
+  <div class="custom-control custom-switch">
+    <input name="switch" type="checkbox" id="switch" class="custom-control-input" value="">
+    <label title="" for="switch" class="custom-control-label">Teste Switch</label>
+  </div>
 </div>
 <!-- TextArea -->
-<textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
-<div class="valid-feedback"></div>
-<div class="invalid-feedback"></div>
-<!-- Range -->
-<label class="form-label">Range</label>
-<input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
-<div class="valid-feedback"></div>
-<div class="invalid-feedback"></div>
-<!-- File -->
-<label class="form-label">Arquivo</label>
-<div class="custom custom-file">
-  <input name="file" id="file" type="file" class="custom-file-input" value="">
-  <label for="file" class="custom-file-label">Clique aqui para inserir o arquivo.</label>
+<div class="form-group">
+  <textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
 </div>
-<div class="valid-feedback"></div>
-<div class="invalid-feedback"></div>
+<!-- Range -->
+<div class="form-group">
+  <label class="form-label">Range</label>
+  <input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
+<!-- File -->
+<div class="form-group">
+  <label class="form-label">Arquivo</label>
+  <div class="custom custom-file">
+    <input name="file" id="file" type="file" class="custom-file-input" value="">
+    <label for="file" class="custom-file-label">Clique aqui para inserir o arquivo.</label>
+  </div>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
 <!-- Multiselect -->
-<label class="form-label">Selecione as melhores opções</label>
-<select multiple="" name="multiselect" type="select" id="select" class="custom-select">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-</select>
-<div class="valid-feedback"></div>
-<div class="invalid-feedback"></div>
+<div class="form-group">
+  <label class="form-label">Selecione as melhores opções</label>
+  <select multiple="" name="multiselect" type="select" id="select" class="custom-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
 <!-- Select -->
-<select name="select" type="select" id="select" class="custom-select is-valid">
-  <option value="">Selecione uma opção</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-</select>
-<div class="valid-feedback"></div>
-<div class="invalid-feedback"></div>
+<div class="form-group">
+  <select name="select" type="select" id="select" class="custom-select is-valid">
+    <option value="">Selecione uma opção</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <div class="valid-feedback"></div>
+  <div class="invalid-feedback"></div>
+</div>
+<!-- Input Group -->
+<div class="form-group">
+  <label class="form-label">Último Nome</label>
+  <div class="mb-3 input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <input name="last_name" placeholder="Último Nome" type="text" id="last_name" class="form-control" value="" />
+    <div class="input-group-append">
+      <div class="dropdown">
+        <button aria-haspopup="true" aria-expanded="false" id="input-group-dropdown-1" type="button" class="dropdown-toggle btn btn-outline-secondary">Dropdown</button>
+      </div>
+    </div>
+    <div class="invalid-feedback"></div>
+  </div>
+</div>
 ```
 
 ## Constantes de classe para estilos

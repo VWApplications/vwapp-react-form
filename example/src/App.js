@@ -2,9 +2,9 @@ import React from 'react'
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
-  FileField
+  FileField, InputGroupField, Line
 } from 'vwapp-react-components';
-import { Container, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Col, Form, Button, Card, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class App extends React.Component {
   __onSubmit = data => {
@@ -36,7 +36,7 @@ class App extends React.Component {
         <hr />
         <FinalForm
           onSubmit={this.__onSubmit}
-          initialValues={{select: []}}
+          initialValues={{multiselect: []}}
           validate={this.__validate}
           render={({ handleSubmit, submitting, pristine, values }) => (
             <Form noValidate onSubmit={handleSubmit}>
@@ -55,7 +55,19 @@ class App extends React.Component {
                     name="last_name"
                     placeholder="Último Nome"
                     label="Último Nome"
-                    component={InputField}
+                    left={<InputGroup.Text>$</InputGroup.Text>}
+                    right={
+                      <DropdownButton
+                        variant="outline-secondary"
+                        title="Dropdown"
+                        id="input-group-dropdown-1">
+                        <Dropdown.Item onClick={() => console.log("Action 1")}>Action 1</Dropdown.Item>
+                        <Dropdown.Item onClick={() => console.log("Action 2")}>Action 2</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item onClick={() => console.log("Action 3")}>Action 3</Dropdown.Item>
+                      </DropdownButton>
+                    }
+                    component={InputGroupField}
                   />
                 </Form.Group>
               </Form.Row>
@@ -103,9 +115,22 @@ class App extends React.Component {
                 <Form.Group as={Col} md="3" controlId="formSelect">
                   <Field
                     multiple
-                    name="select"
+                    name="multiselect"
                     type="select"
                     label="Selecione as melhores opções"
+                    options={[
+                      {title: "1", value: 1},
+                      {title: "2", value: 2},
+                      {title: "3", value: 3},
+                      {title: "4", value: 4},
+                    ]}
+                    component={SelectField}
+                  />
+                  <Line />
+                  <Field
+                    name="select"
+                    type="select"
+                    placeholder="Selecione a melhor opção"
                     options={[
                       {title: "1", value: 1},
                       {title: "2", value: 2},
