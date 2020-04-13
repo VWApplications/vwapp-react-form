@@ -1,5 +1,5 @@
 {
-  "name": "vwapp-react-components",
+  "name": "vwapp-react-form",
   "version": "2.1.0",
   "description": "Componentes bootstrap usando react.",
   "keywords": [
@@ -10,9 +10,9 @@
   ],
   "author": "Victor Deon <vwapplication@gmail.com>",
   "license": "MIT",
-  "repository": "VictorDeon/vwapp-react-components",
+  "repository": "VictorDeon/vwapp-react-form",
   "bugs": {
-    "url": "https://github.com/VictorDeon/vwapp-react-components/issues"
+    "url": "https://github.com/VictorDeon/vwapp-react-form/issues"
   },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",

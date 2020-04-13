@@ -4,7 +4,7 @@ import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
   ImageField, InputGroupField, DateTimePicker, Json, Fieldset,
   ColorField, DataListField, FileField
-} from 'vwapp-react-components';
+} from 'vwapp-react-form';
 import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class App extends React.Component {

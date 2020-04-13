@@ -1,6 +1,6 @@
 {
-  "name": "vwapp-react-components-example",
-  "homepage": "https://VictorDeon.github.io/vwapp-react-components",
+  "name": "vwapp-react-form-example",
+  "homepage": "https://VictorDeon.github.io/vwapp-react-form",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -9,7 +9,7 @@
     "react-dom": "file:../node_modules/react-dom",
     "react-final-form": "^6.4.0",
     "react-scripts": "file:../node_modules/react-scripts",
-    "vwapp-react-components": "file:.."
+    "vwapp-react-form": "file:.."
   },
   "scripts": {
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
