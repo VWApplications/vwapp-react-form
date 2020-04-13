@@ -74,18 +74,6 @@ Componentes relacionados a criação de paginações.
 />
 ```
 
-```html
-<ul class="pagination">
-  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Go to first page">Primeiro</a></li>
-  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Go to previous page">&lt;&lt;</a></li>
-  <li class="page-item active"><a class="page-link text-white" href="#" aria-label="Go to page number 1">1</a></li>
-  <li class="page-item"><a class="page-link" href="#" aria-label="Go to page number 2">2</a></li>
-  <li class="page-item"><a class="page-link" href="#" aria-label="Go to page number 3">3</a></li>
-  <li class="page-item"><a class="page-link" href="#" aria-label="Go to next page">&gt;&gt;</a></li>
-  <li class="page-item"><a class="page-link" href="#" aria-label="Go to last page">Último</a></li>
-</ul>
-```
-
 ### 2. FormFields
 
 Componentes relacionados a criação de formulários. Usado em conjunto com libs como [react-final-form](https://github.com/final-form/react-final-form), [redux-form](https://github.com/redux-form/redux-form) e [formik](https://github.com/jaredpalmer/formik).
@@ -96,9 +84,12 @@ O mais aconselhado é o **react-final-form**.
 
 * InputField
 * CheckField
+* ColorField
+* DateListField
 * TextAreaField
 * SelectField
 * RangeField
+* ImageField
 * FileField
 * InputGroupField
 * DateTimeField
@@ -117,6 +108,8 @@ O mais aconselhado é o **react-final-form**.
 
 * **className**: Conjunto de classes dos campos. (String - Opcional)
 
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
 #### Propriedades especificas (InputField)
 
 * **placeholder**: Leve descrição do campo. (String - Opcional)
@@ -124,6 +117,12 @@ O mais aconselhado é o **react-final-form**.
 * **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
 * **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
+
+#### Propriedades especificas (DataListField)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
 #### Propriedades especificas (InputGroupField)
 
@@ -175,7 +174,15 @@ O mais aconselhado é o **react-final-form**.
 
 * **type**: Tipo do input. (String - Obrigatória - valor "file")
 
-#### Propriedades especificas (FileField)
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+#### Propriedades especificas (ImageField)
+
+* **type**: Tipo do input. (String - Obrigatória - valor "file")
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+#### Propriedades especificas (DateTimeField)
 
 * **maxDate**: Data limite de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
 
@@ -194,6 +201,7 @@ O mais aconselhado é o **react-final-form**.
   <Form.Row>
     <Form.Group as={Col} md="6" controlId="formFirstName">
       <Field
+        column
         name="first_name"
         placeholder="Primeiro Nome"
         label="Primeiro Nome"
@@ -203,6 +211,7 @@ O mais aconselhado é o **react-final-form**.
 
     <Form.Group as={Col} md="6" controlId="formLastName">
       <Field
+        column
         name="last_name"
         placeholder="Último Nome"
         label="Último Nome"
@@ -223,74 +232,125 @@ O mais aconselhado é o **react-final-form**.
     </Form.Group>
   </Form.Row>
 
-  <Form.Row>
-    <Form.Group as={Col} md="3" controlId="formCheckbox">
-      <Field
-        name="check"
-        type="checkbox"
-        label="Teste Checkbox"
-        id="check"
-        component={CheckField}
-      />
-    </Form.Group>
+  <Fieldset title="Formulário de escolhas">
+    <Form.Row className="d-flex flex-row">
+      <Form.Group as={Col} md="4" controlId="formCheckbox" className="d-flex flex-column justify-content-between">
+        <Field
+          name="check"
+          type="checkbox"
+          label="Teste Checkbox"
+          id="check"
+          component={CheckField}
+        />
+        <Field
+          name="switch"
+          type="switch"
+          label="Teste Switch"
+          id="switch"
+          component={CheckField}
+        />
+        <Field
+          column
+          name="color"
+          label="Teste Color"
+          component={ColorField}
+        />
+      </Form.Group>
 
-    <Form.Group as={Col} md="3" controlId="formRadioButton">
-      <Field
-        name="choice"
-        type="radio"
-        label="Teste Radio 01"
-        value="teste01"
-        id="radio1"
-        component={CheckField}
-      />
-      <Field
-        name="choice"
-        type="radio"
-        label="Teste Radio 02"
-        value="teste02"
-        id="radio2"
-        component={CheckField}
-      />
-    </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formRadioButton" className="d-flex flex-column justify-content-between">
+        <Field
+          name="choice"
+          type="radio"
+          label="Teste Radio 01"
+          value="teste01"
+          id="radio1"
+          component={CheckField}
+        />
+        <Field
+          name="choice"
+          type="radio"
+          label="Teste Radio 02"
+          value="teste02"
+          id="radio2"
+          component={CheckField}
+        />
+        <Field
+          column
+          name="browsers"
+          label="Data List"
+          placeholder="Insira um navegador."
+          options={[
+            {title: "Internet Explore", value: "Internet Explore"},
+            {title: "Firefox", value: "Firefox"},
+            {title: "Chrome", value: "Chrome"},
+            {title: "Safari", value: "Safari"},
+          ]}
+          component={DataListField}
+        />
+      </Form.Group>
 
-    <Form.Group as={Col} md="3" controlId="formSwitch">
-      <Field
-        name="switch"
-        type="switch"
-        label="Teste Switch"
-        id="switch"
-        component={CheckField}
-      />
-    </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formSelect">
+        <Field
+          column
+          multiple
+          name="multiselect"
+          type="select"
+          label="Selecione as melhores opções"
+          options={[
+            {title: "1", value: 1},
+            {title: "2", value: 2},
+            {title: "3", value: 3},
+            {title: "4", value: 4},
+          ]}
+          component={SelectField}
+        />
+        <Line />
+        <Field
+          name="select"
+          type="select"
+          placeholder="Selecione a melhor opção"
+          options={[
+            {title: "1", value: 1},
+            {title: "2", value: 2},
+            {title: "3", value: 3},
+            {title: "4", value: 4},
+          ]}
+          component={SelectField}
+        />
+      </Form.Group>
+    </Form.Row>
+  </Fieldset>
 
-    <Form.Group as={Col} md="3" controlId="formSelect">
-      <Field
-        multiple
-        name="multiselect"
-        type="select"
-        label="Selecione as melhores opções"
-        options={[
-          {title: "1", value: 1},
-          {title: "2", value: 2},
-          {title: "3", value: 3},
-          {title: "4", value: 4},
-        ]}
-        component={SelectField}
-      />
-      <Field
-        name="select"
-        type="select"
-        placeholder="Selecione a melhor opção"
-        options={[
-          {title: "1", value: 1},
-          {title: "2", value: 2},
-          {title: "3", value: 3},
-          {title: "4", value: 4},
-        ]}
-        component={SelectField}
-      />
-    </Form.Group>
-  </Form.Row>
+  <Fieldset title="Formulário de datas">
+    <Form.Row className="d-flex flew-row justify-content-center">
+      <Form.Group as={Col} md="4" controlId="formDateTime" className="d-flex flew-row justify-content-center">
+        <Field
+          name="datetime"
+          label="Date e Hora:"
+          type="datetime"
+          minDate={new Date()}
+          component={DateTimePicker}
+        />
+      </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formDate" className="d-flex flew-row justify-content-center">
+        <Field
+          name="date"
+          label="Data:"
+          type="date"
+          minDate={new Date()}
+          component={DateTimePicker}
+        />
+      </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formTime" className="d-flex flew-row justify-content-center">
+        <Field
+          name="time"
+          label="Hora:"
+          type="time"
+          component={DateTimePicker}
+        />
+      </Form.Group>
+    </Form.Row>
+  </Fieldset>
 
   <Form.Row>
     <Form.Group as={Col} md="12" controlId="formDescription">
@@ -303,62 +363,161 @@ O mais aconselhado é o **react-final-form**.
     </Form.Group>
   </Form.Row>
 
-  <Form.Row>
-    <Form.Group as={Col} md="8" controlId="formRange">
+  <Form.Row className="d-flex flex-row">
+    <Form.Group as={Col} md="8" controlId="formRange" className="d-flex flex-column justify-content-between">
       <Field
+        column
         name="range"
         label="Range"
         max={80}
         component={RangeField}
       />
+      <Field
+        name="file"
+        label="Arquivo:"
+        type='file'
+        placeholder="Clique para inserir o arquivo."
+        component={FileField}
+      />
+      <Json values={values} />
     </Form.Group>
     <Form.Group as={Col} md="4" controlId="formFile">
       <Field
-        name="file"
+        name="image"
         type='file'
-        placeholder="Clique aqui para inserir o arquivo."
-        component={FileField}
-      />
-    </Form.Group>
-  </Form.Row>
-  <Form.Row>
-    <Form.Group as={Col} md="4" controlId="formDateTime">
-      <Field
-        name="datetime"
-        label="DateTimePicker"
-        type="datetime"
-        minDate={new Date()}
-        component={DateTimePicker}
-      />
-    </Form.Group>
-    <Form.Group as={Col} md="4" controlId="formDate">
-      <Field
-        name="date"
-        label="DatePicker"
-        type="date"
-        minDate={new Date()}
-        component={DateTimePicker}
-      />
-    </Form.Group>
-    <Form.Group as={Col} md="4" controlId="formTime">
-      <Field
-        name="time"
-        label="TimePicker"
-        type="time"
-        component={DateTimePicker}
+        label="Imagem"
+        placeholder="Clique aqui para inserir a imagem."
+        component={ImageField}
       />
     </Form.Group>
   </Form.Row>
 
   <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
-
-  <Card body className="mt-3"><pre>{JSON.stringify(values, 0, 2)}</pre></Card>
 </Form>
 ```
 
 ## Constantes de classe para estilos
 
-...
+#### 1. Flexbox
+
+```jsx
+export const Flexbox = {
+  container: {
+    total: 'd-flex',
+    partial: 'd-inline-flex'
+  },
+  direction: {
+    row: {
+      this: 'flex-row',
+      reverse: 'flex-row-reverse',
+      align: {
+        vertical: {
+          block: {
+            up: 'align-content-start',
+            down: 'align-content-end',
+            center: 'align-content-center',
+            spaceAround: 'align-content-around',
+            fill: 'align-content-stretch'
+          },
+          line: {
+            up: 'align-items-start',
+            down: 'align-items-end',
+            center: 'align-items-center',
+            baseline: 'align-items-baseline',
+            fill: 'align-items-stretch'
+          }
+        },
+        horizontal: {
+          line: {
+            start: 'justify-content-start',
+            end: 'justify-content-end',
+            center: 'justify-content-center',
+            spaceBetween: 'justify-content-between',
+            spaceAround: 'justify-content-around'
+          },
+          drag: {
+            left: 'ml-auto',
+            right: 'mr-auto'
+          }
+        },
+        wrap: {
+          this: 'flex-wrap',
+          none: 'flex-nowrap',
+          reverse: 'flex-wrap-reverse'
+        }
+      }
+    },
+    column: {
+      this: 'flex-column',
+      reverse: 'flex-column-reverse',
+      align: {
+        horizontal: {
+          block: {
+            up: 'align-content-start',
+            down: 'align-content-end',
+            center: 'align-content-center',
+            spaceAround: 'align-content-around',
+            fill: 'align-content-stretch'
+          },
+          line: {
+            up: 'align-items-start',
+            down: 'align-items-end',
+            center: 'align-items-center',
+            baseline: 'align-items-baseline',
+            fill: 'align-items-stretch'
+          },
+          drag: {
+            left: 'ml-auto',
+            right: 'mr-auto'
+          }
+        },
+        vertical: {
+          line: {
+            start: 'justify-content-start',
+            end: 'justify-content-end',
+            center: 'justify-content-center',
+            spaceBetween: 'justify-content-between',
+            spaceAround: 'justify-content-around'
+          }
+        },
+        wrap: {
+          this: 'flex-wrap',
+          none: 'flex-nowrap',
+          reverse: 'flex-wrap-reverse'
+        }
+      }
+    }
+  },
+  item: {
+    fill: 'flex-fill',
+    grow: 'flex-grow-1',
+    shrink: 'flex-shrink-1',
+    align: {
+      start: 'align-self-start',
+      end: 'align-self-end',
+      center: 'align-self-center',
+      baseline: 'align-self-baseline',
+      fill: 'align-self-stretch'
+    },
+    order: {
+      first: 'order-1',
+      second: 'order-2',
+      third: 'order-3',
+      fourth: 'order-4',
+      fifth: 'order-5',
+      sixth: 'order-6',
+      seventh: 'order-7',
+      eighth: 'order-8',
+      ninth: 'order-9',
+      tenth: 'order-10',
+      eleventh: 'order-11',
+      twelfth: 'order-12'
+    }
+  }
+}
+````
+
+
 
 ## Contribuir
 

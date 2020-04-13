@@ -125,6 +125,7 @@ class App extends React.Component {
                       column
                       name="browsers"
                       label="Data List"
+                      placeholder="Insira um navegador."
                       options={[
                         {title: "Internet Explore", value: "Internet Explore"},
                         {title: "Firefox", value: "Firefox"},

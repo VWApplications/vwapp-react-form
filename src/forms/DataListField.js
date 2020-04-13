@@ -22,6 +22,7 @@ export const DataListField = field => {
           as='input'
           disabled={field.disabled || false}
           className={toString(['form-control', field.className || ''])}
+          placeholder={field.placeholder}
           list={field.input.name}
           size={field.size}
           id={field.id}
