@@ -2,8 +2,8 @@ import React from 'react';
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
-  ImageField, InputGroupField, DateTimePicker, Line, Json, Fieldset,
-  ColorField, BreakLine, DataListField, FileField
+  ImageField, InputGroupField, DateTimePicker, Json, Fieldset,
+  ColorField, DataListField, FileField
 } from 'vwapp-react-components';
 import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
@@ -151,7 +151,7 @@ class App extends React.Component {
                       ]}
                       component={SelectField}
                     />
-                    <Line />
+                    <hr />
                     <Field
                       name="select"
                       type="select"
@@ -243,7 +243,7 @@ class App extends React.Component {
             </Form>
           )}
         />
-        <BreakLine />
+        <br />
       </Container>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Form, Image } from 'react-bootstrap';
 import { ImgContainer, ImageLabel } from '../styles';
-import user from '../assets/img/user.png';
+import user from '../assets/user.png';
 
 export class ImageField extends Component {
   componentDidMount() {
