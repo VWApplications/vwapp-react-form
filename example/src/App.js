@@ -37,7 +37,7 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <h1>React Final Form + VWApp React Components</h1>
+        <h1 className="text-center">React Final Form + VWApp React Components</h1>
         <hr />
         <FinalForm
           onSubmit={this.__onSubmit}
@@ -80,8 +80,8 @@ class App extends React.Component {
               </Form.Row>
 
               <Fieldset title="Formulário de escolhas">
-                <Form.Row>
-                  <Form.Group as={Col} md="4" controlId="formCheckbox">
+                <Form.Row className="d-flex flex-row">
+                  <Form.Group as={Col} md="4" controlId="formCheckbox" className="d-flex flex-column justify-content-between">
                     <Field
                       name="check"
                       type="checkbox"
@@ -104,7 +104,7 @@ class App extends React.Component {
                     />
                   </Form.Group>
 
-                  <Form.Group as={Col} md="4" controlId="formRadioButton">
+                  <Form.Group as={Col} md="4" controlId="formRadioButton" className="d-flex flex-column justify-content-between">
                     <Field
                       name="choice"
                       type="radio"
@@ -168,8 +168,8 @@ class App extends React.Component {
               </Fieldset>
 
               <Fieldset title="Formulário de datas">
-                <Form.Row>
-                  <Form.Group as={Col} md="4" controlId="formDateTime">
+                <Form.Row className="d-flex flew-row justify-content-center">
+                  <Form.Group as={Col} md="4" controlId="formDateTime" className="d-flex flew-row justify-content-center">
                     <Field
                       name="datetime"
                       label="Date e Hora:"
@@ -178,7 +178,7 @@ class App extends React.Component {
                       component={DateTimePicker}
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md="4" controlId="formDate">
+                  <Form.Group as={Col} md="4" controlId="formDate" className="d-flex flew-row justify-content-center">
                     <Field
                       name="date"
                       label="Data:"
@@ -187,7 +187,7 @@ class App extends React.Component {
                       component={DateTimePicker}
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md="4" controlId="formTime">
+                  <Form.Group as={Col} md="4" controlId="formTime" className="d-flex flew-row justify-content-center">
                     <Field
                       name="time"
                       label="Hora:"
@@ -209,8 +209,8 @@ class App extends React.Component {
                 </Form.Group>
               </Form.Row>
 
-              <Form.Row>
-                <Form.Group as={Col} md="8" controlId="formRange">
+              <Form.Row className="d-flex flex-row">
+                <Form.Group as={Col} md="8" controlId="formRange" className="d-flex flex-column justify-content-between">
                   <Field
                     column
                     name="range"

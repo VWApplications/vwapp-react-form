@@ -4,49 +4,85 @@ export const Flexbox = {
     partial: 'd-inline-flex'
   },
   direction: {
-    horizontal: {
+    row: {
       this: 'flex-row',
-      reverse: 'flex-row-reverse'
+      reverse: 'flex-row-reverse',
+      align: {
+        vertical: {
+          block: {
+            up: 'align-content-start',
+            down: 'align-content-end',
+            center: 'align-content-center',
+            spaceAround: 'align-content-around',
+            fill: 'align-content-stretch'
+          },
+          line: {
+            up: 'align-items-start',
+            down: 'align-items-end',
+            center: 'align-items-center',
+            baseline: 'align-items-baseline',
+            fill: 'align-items-stretch'
+          }
+        },
+        horizontal: {
+          line: {
+            start: 'justify-content-start',
+            end: 'justify-content-end',
+            center: 'justify-content-center',
+            spaceBetween: 'justify-content-between',
+            spaceAround: 'justify-content-around'
+          },
+          drag: {
+            left: 'ml-auto',
+            right: 'mr-auto'
+          }
+        },
+        wrap: {
+          this: 'flex-wrap',
+          none: 'flex-nowrap',
+          reverse: 'flex-wrap-reverse'
+        }
+      }
     },
-    vertical: {
+    column: {
       this: 'flex-column',
-      reverse: 'flex-column-reverse'
-    }
-  },
-  align: {
-    vertical: {
-      block: {
-        up: 'align-content-start',
-        down: 'align-content-end',
-        center: 'align-content-center',
-        spaceAround: 'align-content-around',
-        fill: 'align-content-stretch'
-      },
-      line: {
-        up: 'align-items-start',
-        down: 'align-items-end',
-        center: 'align-items-center',
-        baseline: 'align-items-baseline',
-        fill: 'align-items-stretch'
+      reverse: 'flex-column-reverse',
+      align: {
+        horizontal: {
+          block: {
+            up: 'align-content-start',
+            down: 'align-content-end',
+            center: 'align-content-center',
+            spaceAround: 'align-content-around',
+            fill: 'align-content-stretch'
+          },
+          line: {
+            up: 'align-items-start',
+            down: 'align-items-end',
+            center: 'align-items-center',
+            baseline: 'align-items-baseline',
+            fill: 'align-items-stretch'
+          },
+          drag: {
+            left: 'ml-auto',
+            right: 'mr-auto'
+          }
+        },
+        vertical: {
+          line: {
+            start: 'justify-content-start',
+            end: 'justify-content-end',
+            center: 'justify-content-center',
+            spaceBetween: 'justify-content-between',
+            spaceAround: 'justify-content-around'
+          }
+        },
+        wrap: {
+          this: 'flex-wrap',
+          none: 'flex-nowrap',
+          reverse: 'flex-wrap-reverse'
+        }
       }
-    },
-    horizontal: {
-      line: {
-        start: 'justify-content-start',
-        end: 'justify-content-end',
-        center: 'justify-content-center',
-        spaceBetween: 'justify-content-between',
-        spaceAround: 'justify-content-around'
-      },
-      drag: {
-        left: 'ml-auto',
-        right: 'mr-auto'
-      }
-    },
-    wrap: {
-      this: 'flex-wrap',
-      none: 'flex-nowrap',
-      reverse: 'flex-wrap-reverse'
     }
   },
   item: {

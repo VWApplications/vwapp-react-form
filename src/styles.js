@@ -12,7 +12,7 @@ export const CustomJson = styled.pre`
   background: rgba(0, 0, 0, 0.1);
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin: 10px 0;
+  margin: 0 10px 0;
 `;
 
 export const CustomFieldset = styled.fieldset`
