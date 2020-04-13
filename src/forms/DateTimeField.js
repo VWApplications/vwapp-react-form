@@ -13,7 +13,7 @@ export class DateTimePicker extends Component {
       case 'time':
         return (
           <Fragment>
-            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
+            {label && <Form.Label {...attrLabel}>{label}</Form.Label>}
             <TimePicker
               name={input.name}
               onChange={input.onChange}
@@ -31,7 +31,7 @@ export class DateTimePicker extends Component {
       case 'date':
         return (
           <Fragment>
-            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
+            {label && <Form.Label {...attrLabel}>{label}</Form.Label>}
             <DatePicker
               name={input.name}
               onChange={input.onChange}
@@ -51,7 +51,7 @@ export class DateTimePicker extends Component {
       default:
         return (
           <Fragment>
-            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
+            {label && <Form.Label {...attrLabel}>{label}</Form.Label>}
             <DateTimePickerField
               name={input.name}
               onChange={input.onChange}

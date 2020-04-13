@@ -7,7 +7,7 @@ export const ColorField = field => {
 
   return (
     <Fragment>
-      {field.label && <Form.Label {...field.attrLabel} block>{field.label}</Form.Label>}
+      {field.label && <Form.Label {...field.attrLabel}>{field.label}</Form.Label>}
       <Form.Control
         {...field.input}
         custom

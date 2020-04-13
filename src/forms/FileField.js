@@ -1,61 +1,27 @@
 import React, { Fragment, Component } from 'react';
-import { Form, Image } from 'react-bootstrap';
-import { ImgContainer, FileLabel } from '../styles';
-import user from '../assets/img/user.png';
+import { Form } from 'react-bootstrap';
+import { FileLabel } from '../styles';
 
 export class FileField extends Component {
-  componentDidMount() {
-    const { input } = this.props;
-
-    if (typeof input.value === 'string' && input.value) {
-      this.__handlePreview(input.value);
-    }
-  }
-
-  static defaultProps = {
-    previewLogoUrl: user,
-    mimeType: 'image/jpeg, image/png'
-  };
-
   __handleChange(event, input) {
     event.preventDefault();
-    const imageFile = event.target.files[0];
-    if (imageFile) {
-      const localImageUrl = URL.createObjectURL(imageFile);
-      const imageObject = new window.Image();
-      imageObject.onload = () => {
-        imageFile.width = imageObject.naturalWidth;
-        imageFile.height = imageObject.naturalHeight;
-        input.onChange(imageFile);
-        URL.revokeObjectURL(imageFile);
-      };
-      imageObject.src = localImageUrl;
-      this.__handlePreview(localImageUrl);
-    }
-  }
-
-  __handlePreview(imgURL) {
-    const previewImageDom = document.querySelector('.preview-image');
-    previewImageDom.src = imgURL;
+    const file = event.target.files[0];
+    input.onChange(file);
   }
 
   render() {
-    const { input, className, mimeType, previewLogoUrl, placeholder, disabled, label, attrLabel } = this.props;
+    const { input, className, placeholder, disabled, label, attrLabel } = this.props;
     const { error, invalid } = this.props.meta;
 
     return (
       <Fragment>
         {label && <FileLabel {...attrLabel}>{label}</FileLabel>}
-        <ImgContainer>
-          <Image thumbnail fluid src={previewLogoUrl} className='preview-image' alt='Visualização' />
-        </ImgContainer>
-
         <Fragment>
           <Form.File
             custom
+            name={input.name}
             type={input.type}
             label={input.value ? input.value.name : placeholder}
-            accept={mimeType}
             disabled={disabled || false}
             className={className}
             onChange={event => this.__handleChange(event, input)}
