@@ -1,13 +1,15 @@
-# vwapp-react-components
+# vwapp-react-form
 
-Componentes customizados usando o bootstrap4 de forma mais legivel em react.
+Componentes relacionados a criação de formulários. Usado em conjunto com libs como [react-final-form](https://github.com/final-form/react-final-form), [redux-form](https://github.com/redux-form/redux-form) e [formik](https://github.com/jaredpalmer/formik).
 
-[![NPM](https://img.shields.io/npm/v/vwapp-react-components.svg)](https://www.npmjs.com/package/vwapp-react-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+O mais aconselhado é o **react-final-form**.
+
+[![NPM](https://img.shields.io/npm/v/vwapp-react-form.svg)](https://www.npmjs.com/package/vwapp-react-form) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Instalação.
 
 ```bash
-npm install --save vwapp-react-components
+npm install --save vwapp-react-form
 ```
 
 ## Uso
@@ -15,17 +17,11 @@ npm install --save vwapp-react-components
 ```jsx
 import React, { Component } from 'react'
 
-import { Pagination } from 'vwapp-react-components'
+import { Pagination } from 'vwapp-react-form'
 
 class Example extends Component {
   render() {
     return (
-      <Pagination
-        totalItens={60}
-        itemPerPage={20}
-        activePage={this.state.activePage}
-        handlePagination={this.__handlePagination}
-      />
     )
   }
 }
@@ -33,68 +29,11 @@ class Example extends Component {
 
 ## Documentação
 
-Além das propriedades especificas de cada componente, também pode ser inserido outras propriedades como: id, className, ...
+### 1. InputField
 
-### 1. Pagination
-
-Componentes relacionados a criação de paginações.
-
-#### Componentes
-
-* Pagination
+Campo de pequenos textos.
 
 #### Propriedades especificas:
-
-* **totalItens**: Total de itens que será paginado. (Inteiro - obrigatório)
-
-* **activePage**: Página ativa pelo usuário na função handlePagination. (Inteiro - obrigatório)
-
-* **itemPerPage**: Quantidade de itens que aparecerá por páginas. (Inteiro - default 20)
-
-* **pageRange**: Quantidade de páginas que irá aparecer no componente de cada vez. (Inteiro - default 5)
-
-* **firstPageText**: Título ou Icone que ao clicar vai voltar para a primeira página. (String - default "Primeiro")
-
-* **lastPageText**: Título ou Icone que ao clicar vai redirecionar para a última página. (String - default "Último")
-
-* **prevPageText**: Título ou Icone que ao clicar vai voltar para a página anterior. (String - default "<<")
-
-* **nextPageText**: Título ou Icone que ao clicar vai avançar para a próxima página. (String - default ">>")
-
-* **handlePagination**: Função que irá tratar a paginação. (Função - Obrigatório).
-
-#### Exemplo:
-
-```jsx
-<Pagination
-  totalItens={60}
-  itemPerPage={20}
-  activePage={this.state.activePage}
-  handlePagination={this.__handlePagination}
-/>
-```
-
-### 2. FormFields
-
-Componentes relacionados a criação de formulários. Usado em conjunto com libs como [react-final-form](https://github.com/final-form/react-final-form), [redux-form](https://github.com/redux-form/redux-form) e [formik](https://github.com/jaredpalmer/formik).
-
-O mais aconselhado é o **react-final-form**.
-
-#### Componentes
-
-* InputField
-* CheckField
-* ColorField
-* DateListField
-* TextAreaField
-* SelectField
-* RangeField
-* ImageField
-* FileField
-* InputGroupField
-* DateTimeField
-
-#### Propriedades especificas (Geral):
 
 * **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
 
@@ -110,96 +49,18 @@ O mais aconselhado é o **react-final-form**.
 
 * **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
 
-#### Propriedades especificas (InputField)
-
 * **placeholder**: Leve descrição do campo. (String - Opcional)
 
 * **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
 
 * **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
-
-#### Propriedades especificas (DataListField)
-
-* **placeholder**: Leve descrição do campo. (String - Opcional)
-
-* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
-
-#### Propriedades especificas (InputGroupField)
-
-* **placeholder**: Leve descrição do campo. (String - Opcional)
-
-* **left**: Insere componentes do lado esquerdo do input. Por exemplo: ```InputGroup.Text```. (Component - Opcional)
-
-* **right**: Insere componentes do lado direiro do input. Por exemplo: ```Button```. (Component - Opcional)
-
-#### Propriedades especificas (TextAreaField)
-
-* **placeholder**: Leve descrição do campo. (String - Opcional)
-
-* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
-
-* **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
-
-* **rows**: Tamanho da caixa do campos. (Inteiro - Opcional)
-
-#### Propriedades especificas (SelectField)
-
-* **placeholder**: Leve descrição do campo. (String - Opcional - defalt "Selecione uma opção")
-
-* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
-
-* **options**: Lista de opções. (Lista de Objetos (title, value) - Obrigatório)
-
-* **type**: É obrigatório colocar o type como "select" nesse input. (String - Obrigatório - valor "select")
-
-* **multiple**: Transforma o select em escolhas multiplas. (Booleano - default false)
-
-#### Propriedades especificas (RangeField)
-
-* **max**: Valor máximo que o range pode alcançar. (Inteiro - default 100)
-
-* **min**: Valor mínimo que o range pode alcançar. (Inteiro - default 0)
-
-#### Propriedades especificas (CheckField)
-
-* **inline**: Coloca o conjunto de campos com esse atributo na horizontal. (Booleano - Opcional)
-
-* **type**: Tipo do input. (String - Obrigatória)
-
-  - **checkbox**: Input do tipo checkbox, retorna true ou false.
-  - **radio**: Input do tipo radio, retorna o valor inserido no atributo **value** do radio.
-  - **switch** Input do tipo switch, retorna true ou false.
-
-#### Propriedades especificas (FileField)
-
-* **type**: Tipo do input. (String - Obrigatória - valor "file")
-
-* **placeholder**: Leve descrição do campo. (String - Opcional)
-
-#### Propriedades especificas (ImageField)
-
-* **type**: Tipo do input. (String - Obrigatória - valor "file")
-
-* **placeholder**: Leve descrição do campo. (String - Opcional)
-
-#### Propriedades especificas (DateTimeField)
-
-* **maxDate**: Data limite de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
-
-* **minDate**: Data mínima de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
-
-* **type**: Tipo do input. (String - Padrão "datetime")
-
-  - **date**: Inserir somente a data.
-  - **time**: Inserir somente a hora.
-  - **datetime**: Inserir hora e data.
 
 #### Exemplo:
 
 ```jsx
 <Form noValidate onSubmit={handleSubmit}>
   <Form.Row>
-    <Form.Group as={Col} md="6" controlId="formFirstName">
+    <Form.Group as={Col} md="12" controlId="formFirstName">
       <Field
         column
         name="first_name"
@@ -208,7 +69,43 @@ O mais aconselhado é o **react-final-form**.
         component={InputField}
       />
     </Form.Group>
+  </Form.Row>
 
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 2. InputGroupField
+
+Campo de pequenos textos com componentes laterais.
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **left**: Insere componentes do lado esquerdo do input. Por exemplo: ```InputGroup.Text```. (Component - Opcional)
+
+* **right**: Insere componentes do lado direiro do input. Por exemplo: ```Button```. (Component - Opcional)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
     <Form.Group as={Col} md="6" controlId="formLastName">
       <Field
         column
@@ -232,9 +129,44 @@ O mais aconselhado é o **react-final-form**.
     </Form.Group>
   </Form.Row>
 
-  <Fieldset title="Formulário de escolhas">
-    <Form.Row className="d-flex flex-row">
-      <Form.Group as={Col} md="4" controlId="formCheckbox" className="d-flex flex-column justify-content-between">
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 3. CheckField
+
+Campos de checkbox, switch e radio
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **inline**: Coloca o conjunto de campos com esse atributo na horizontal. (Booleano - Opcional)
+
+* **type**: Tipo do input. (String - Obrigatória)
+
+  - **checkbox**: Input do tipo checkbox, retorna true ou false.
+  - **radio**: Input do tipo radio, retorna o valor inserido no atributo **value** do radio.
+  - **switch** Input do tipo switch, retorna true ou false.
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formCheckbox">
         <Field
           name="check"
           type="checkbox"
@@ -249,15 +181,9 @@ O mais aconselhado é o **react-final-form**.
           id="switch"
           component={CheckField}
         />
-        <Field
-          column
-          name="color"
-          label="Teste Color"
-          component={ColorField}
-        />
       </Form.Group>
 
-      <Form.Group as={Col} md="4" controlId="formRadioButton" className="d-flex flex-column justify-content-between">
+      <Form.Group as={Col} md="4" controlId="formRadioButton">
         <Field
           name="choice"
           type="radio"
@@ -274,22 +200,49 @@ O mais aconselhado é o **react-final-form**.
           id="radio2"
           component={CheckField}
         />
-        <Field
-          column
-          name="browsers"
-          label="Data List"
-          placeholder="Insira um navegador."
-          options={[
-            {title: "Internet Explore", value: "Internet Explore"},
-            {title: "Firefox", value: "Firefox"},
-            {title: "Chrome", value: "Chrome"},
-            {title: "Safari", value: "Safari"},
-          ]}
-          component={DataListField}
-        />
       </Form.Group>
+  </Form.Row>
 
-      <Form.Group as={Col} md="4" controlId="formSelect">
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 4. SelectField
+
+Campo de seleção e seleção multipla
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional - defalt "Selecione uma opção")
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+* **options**: Lista de opções. (Lista de Objetos (title, value) - Obrigatório)
+
+* **type**: É obrigatório colocar o type como "select" nesse input. (String - Obrigatório - valor "select")
+
+* **multiple**: Transforma o select em escolhas multiplas. (Booleano - default false)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formSelect">
         <Field
           column
           multiple
@@ -318,40 +271,44 @@ O mais aconselhado é o **react-final-form**.
           component={SelectField}
         />
       </Form.Group>
-    </Form.Row>
-  </Fieldset>
+  </Form.Row>
 
-  <Fieldset title="Formulário de datas">
-    <Form.Row className="d-flex flew-row justify-content-center">
-      <Form.Group as={Col} md="4" controlId="formDateTime" className="d-flex flew-row justify-content-center">
-        <Field
-          name="datetime"
-          label="Date e Hora:"
-          type="datetime"
-          minDate={new Date()}
-          component={DateTimePicker}
-        />
-      </Form.Group>
-      <Form.Group as={Col} md="4" controlId="formDate" className="d-flex flew-row justify-content-center">
-        <Field
-          name="date"
-          label="Data:"
-          type="date"
-          minDate={new Date()}
-          component={DateTimePicker}
-        />
-      </Form.Group>
-      <Form.Group as={Col} md="4" controlId="formTime" className="d-flex flew-row justify-content-center">
-        <Field
-          name="time"
-          label="Hora:"
-          type="time"
-          component={DateTimePicker}
-        />
-      </Form.Group>
-    </Form.Row>
-  </Fieldset>
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
 
+### 5. TextAreaField
+
+Campo de grandes textos.
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+* **readOnly**: Fazer o campo ser um texto só de leitura. (Booleano - default false)
+
+* **rows**: Tamanho da caixa do campos. (Inteiro - Opcional)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
   <Form.Row>
     <Form.Group as={Col} md="12" controlId="formDescription">
       <Field
@@ -363,25 +320,108 @@ O mais aconselhado é o **react-final-form**.
     </Form.Group>
   </Form.Row>
 
-  <Form.Row className="d-flex flex-row">
-    <Form.Group as={Col} md="8" controlId="formRange" className="d-flex flex-column justify-content-between">
-      <Field
-        column
-        name="range"
-        label="Range"
-        max={80}
-        component={RangeField}
-      />
-      <Field
-        name="file"
-        label="Arquivo:"
-        type='file'
-        placeholder="Clique para inserir o arquivo."
-        component={FileField}
-      />
-      <Json values={values} />
-    </Form.Group>
-    <Form.Group as={Col} md="4" controlId="formFile">
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 6. DateTimeField
+
+Campo de data e hora.
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **maxDate**: Data limite de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
+
+* **minDate**: Data mínima de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
+
+* **type**: Tipo do input. (String - Padrão "datetime")
+
+  - **date**: Inserir somente a data.
+  - **time**: Inserir somente a hora.
+  - **datetime**: Inserir hora e data.
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formDateTime">
+        <Field
+          column
+          name="datetime"
+          label="Date e Hora:"
+          type="datetime"
+          minDate={new Date()}
+          component={DateTimePicker}
+        />
+      </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formDate">
+        <Field
+          name="date"
+          label="Data:"
+          type="date"
+          minDate={new Date()}
+          component={DateTimePicker}
+        />
+      </Form.Group>
+      <Form.Group as={Col} md="4" controlId="formTime">
+        <Field
+          name="time"
+          label="Hora:"
+          type="time"
+          component={DateTimePicker}
+        />
+      </Form.Group>
+  </Form.Row>
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 7. ImageField
+
+Campo de imagens
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **type**: Tipo do input. (String - Obrigatória - valor "file")
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formImage">
       <Field
         name="image"
         type='file'
@@ -396,128 +436,215 @@ O mais aconselhado é o **react-final-form**.
 </Form>
 ```
 
-## Constantes de classe para estilos
+### 8. FileField
 
-#### 1. Flexbox
+Campo de arquivos
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **type**: Tipo do input. (String - Obrigatória - valor "file")
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+#### Exemplo:
 
 ```jsx
-export const Flexbox = {
-  container: {
-    total: 'd-flex',
-    partial: 'd-inline-flex'
-  },
-  direction: {
-    row: {
-      this: 'flex-row',
-      reverse: 'flex-row-reverse',
-      align: {
-        vertical: {
-          block: {
-            up: 'align-content-start',
-            down: 'align-content-end',
-            center: 'align-content-center',
-            spaceAround: 'align-content-around',
-            fill: 'align-content-stretch'
-          },
-          line: {
-            up: 'align-items-start',
-            down: 'align-items-end',
-            center: 'align-items-center',
-            baseline: 'align-items-baseline',
-            fill: 'align-items-stretch'
-          }
-        },
-        horizontal: {
-          line: {
-            start: 'justify-content-start',
-            end: 'justify-content-end',
-            center: 'justify-content-center',
-            spaceBetween: 'justify-content-between',
-            spaceAround: 'justify-content-around'
-          },
-          drag: {
-            left: 'ml-auto',
-            right: 'mr-auto'
-          }
-        },
-        wrap: {
-          this: 'flex-wrap',
-          none: 'flex-nowrap',
-          reverse: 'flex-wrap-reverse'
-        }
-      }
-    },
-    column: {
-      this: 'flex-column',
-      reverse: 'flex-column-reverse',
-      align: {
-        horizontal: {
-          block: {
-            up: 'align-content-start',
-            down: 'align-content-end',
-            center: 'align-content-center',
-            spaceAround: 'align-content-around',
-            fill: 'align-content-stretch'
-          },
-          line: {
-            up: 'align-items-start',
-            down: 'align-items-end',
-            center: 'align-items-center',
-            baseline: 'align-items-baseline',
-            fill: 'align-items-stretch'
-          },
-          drag: {
-            left: 'ml-auto',
-            right: 'mr-auto'
-          }
-        },
-        vertical: {
-          line: {
-            start: 'justify-content-start',
-            end: 'justify-content-end',
-            center: 'justify-content-center',
-            spaceBetween: 'justify-content-between',
-            spaceAround: 'justify-content-around'
-          }
-        },
-        wrap: {
-          this: 'flex-wrap',
-          none: 'flex-nowrap',
-          reverse: 'flex-wrap-reverse'
-        }
-      }
-    }
-  },
-  item: {
-    fill: 'flex-fill',
-    grow: 'flex-grow-1',
-    shrink: 'flex-shrink-1',
-    align: {
-      start: 'align-self-start',
-      end: 'align-self-end',
-      center: 'align-self-center',
-      baseline: 'align-self-baseline',
-      fill: 'align-self-stretch'
-    },
-    order: {
-      first: 'order-1',
-      second: 'order-2',
-      third: 'order-3',
-      fourth: 'order-4',
-      fifth: 'order-5',
-      sixth: 'order-6',
-      seventh: 'order-7',
-      eighth: 'order-8',
-      ninth: 'order-9',
-      tenth: 'order-10',
-      eleventh: 'order-11',
-      twelfth: 'order-12'
-    }
-  }
-}
-````
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formFile">
+      <Field
+          name="file"
+          label="Arquivo:"
+          type='file'
+          placeholder="Clique para inserir o arquivo."
+          component={FileField}
+        />
+      </Form.Group>
+  </Form.Row>
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 9. RangeField
+
+Campo de range númerico
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **max**: Valor máximo que o range pode alcançar. (Inteiro - default 100)
+
+* **min**: Valor mínimo que o range pode alcançar. (Inteiro - default 0)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="8" controlId="formRange" className="d-flex flex-column justify-content-between">
+      <Field
+        column
+        name="range"
+        label="Range"
+        max={80}
+        component={RangeField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 10. ColorField
+
+Campo de cores.
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formCheckbox">
+      <Field
+        column
+        name="color"
+        label="Teste Color"
+        component={ColorField}
+      />
+    </Form.Group>
+  </Form.Row>
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
 
 
+### 11. DateListField
+
+Campo de inserção de texto com autocomplete.
+
+#### Propriedades especificas:
+
+* **name**: Nome do atributo que irá ser populado pelo usuário. É esse atributo que irá para a submissão do formulário, ele deve ser único. (String - Obrigatório)
+
+* **id**: Identificado do campo no formulário. (String - Para o CheckField é obrigatório, para os outros ele é o atributo name.)
+
+* **label**: Label que acompanhará o input. (String - Opcional)
+
+* **component**: Componente do input. É aqui que fica os componentes citados acima. (Component - Obrigatório.)
+
+* **disabled**: Desativa o component. (Booleano - Opcional)
+
+* **className**: Conjunto de classes dos campos. (String - Opcional)
+
+* **column**: Faz a label ficar em cima do campo. (Booleano - defaul false)
+
+* **placeholder**: Leve descrição do campo. (String - Opcional)
+
+* **size**: Tamanho do input: "sm", "md", "lg". (String - padrão "mg")
+
+#### Exemplo:
+
+```jsx
+<Form noValidate onSubmit={handleSubmit}>
+    <Form.Row className="d-flex flex-row">
+      <Form.Group as={Col} md="4" controlId="formRadioButton">
+        <Field
+          column
+          name="browsers"
+          label="Data List"
+          placeholder="Insira um navegador."
+          options={[
+            {title: "Internet Explore", value: "Internet Explore"},
+            {title: "Firefox", value: "Firefox"},
+            {title: "Chrome", value: "Chrome"},
+            {title: "Safari", value: "Safari"},
+          ]}
+          component={DataListField}
+        />
+      </Form.Group>
+    </Form.Row>
+
+  <Json values={values} />
+
+  <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+</Form>
+```
+
+### 12. Json
+
+Componente para printar na tela dicionários/Json.
+
+#### Propriedades especificas:
+
+* **values**: Dicionário Json para ser inserido na tela (Json - Obrigatório)
+
+#### Exemplo:
+
+```jsx
+<Json values={{...}} />
+```
+
+### 13. Fieldset
+
+Componente para encapsular Campos de formulários.
+
+#### Propriedades especificas:
+
+* **title**: Nome do formulário dos campos inseridos (String - Obrigatório)
+
+#### Exemplo:
+
+```jsx
+<Fieldset title="Formulário de pagamento">
+  <Form.Row>...</Form.Row>
+</Fieldset>
+```
 
 ## Contribuir
 
