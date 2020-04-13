@@ -101,6 +101,7 @@ O mais aconselhado é o **react-final-form**.
 * RangeField
 * FileField
 * InputGroupField
+* DateTimeField
 
 #### Propriedades especificas (Geral):
 
@@ -173,6 +174,18 @@ O mais aconselhado é o **react-final-form**.
 #### Propriedades especificas (FileField)
 
 * **type**: Tipo do input. (String - Obrigatória - valor "file")
+
+#### Propriedades especificas (FileField)
+
+* **maxDate**: Data limite de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
+
+* **minDate**: Data mínima de inserção. Só funciona nos tipos **date** e **datetime**. (Date, Opcional)
+
+* **type**: Tipo do input. (String - Padrão "datetime")
+
+  - **date**: Inserir somente a data.
+  - **time**: Inserir somente a hora.
+  - **datetime**: Inserir hora e data.
 
 #### Exemplo:
 
@@ -308,111 +321,39 @@ O mais aconselhado é o **react-final-form**.
       />
     </Form.Group>
   </Form.Row>
+  <Form.Row>
+    <Form.Group as={Col} md="4" controlId="formDateTime">
+      <Field
+        name="datetime"
+        label="DateTimePicker"
+        type="datetime"
+        minDate={new Date()}
+        component={DateTimePicker}
+      />
+    </Form.Group>
+    <Form.Group as={Col} md="4" controlId="formDate">
+      <Field
+        name="date"
+        label="DatePicker"
+        type="date"
+        minDate={new Date()}
+        component={DateTimePicker}
+      />
+    </Form.Group>
+    <Form.Group as={Col} md="4" controlId="formTime">
+      <Field
+        name="time"
+        label="TimePicker"
+        type="time"
+        component={DateTimePicker}
+      />
+    </Form.Group>
+  </Form.Row>
 
   <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
 
   <Card body className="mt-3"><pre>{JSON.stringify(values, 0, 2)}</pre></Card>
 </Form>
-```
-
-```html
-<!-- Input -->
-<div class="form-group col-md-12">
-  <label class="form-label">Primeiro Nome</label>
-  <input name="first_name" placeholder="Primeiro Nome" type="text" id="first_name" class="form-control" value="">
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback">Nome é obrigatório.</div>
-</div>
-<!-- Input Group -->
-<div class="form-group">
-  <label class="form-label">Último Nome</label>
-  <div class="mb-3 input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">$</span>
-    </div>
-    <input name="last_name" placeholder="Último Nome" type="text" id="last_name" class="form-control" value="" />
-    <div class="input-group-append">
-      <div class="dropdown">
-        <button aria-haspopup="true" aria-expanded="false" id="input-group-dropdown-1" type="button" class="dropdown-toggle btn btn-outline-secondary">Dropdown</button>
-      </div>
-    </div>
-    <div class="invalid-feedback"></div>
-  </div>
-</div>
-<!-- Checkbox -->
-<div class="form-group">
-  <div class="custom-control custom-checkbox">
-    <input name="check" type="checkbox" id="check" class="custom-control-input" value="" />
-    <label title="" for="check" class="custom-control-label">Teste Checkbox</label>
-  </div>
-</div>
-<!-- Radio -->
-<div class="form-group">
-  <div class="custom-control custom-radio">
-    <input name="choice" type="radio" id="radio1" class="custom-control-input" value="teste01">
-    <label title="" for="radio1" class="custom-control-label">Teste Radio 01</label>
-  </div>
-  <div class="custom-control custom-radio">
-    <input name="choice" type="radio" id="radio2" class="custom-control-input" value="teste02">
-    <label title="" for="radio2" class="custom-control-label">Teste Radio 02</label>
-  </div>
-</div>
-<!-- Switch -->
-<div class="form-group">
-  <div class="custom-control custom-switch">
-    <input name="switch" type="checkbox" id="switch" class="custom-control-input" value="">
-    <label title="" for="switch" class="custom-control-label">Teste Switch</label>
-  </div>
-</div>
-<!-- Multiselect -->
-<div class="form-group">
-  <label class="form-label">Selecione as melhores opções</label>
-  <select multiple="" name="multiselect" type="select" id="select" class="custom-select">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- Select -->
-<div class="form-group">
-  <select name="select" type="select" id="select" class="custom-select is-valid">
-    <option value="">Selecione uma opção</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- TextArea -->
-<div class="form-group">
-  <textarea name="description" placeholder="Descrição" rows="5" type="text" id="description" class="form-control"></textarea>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- Range -->
-<div class="form-group">
-  <label class="form-label">Range</label>
-  <input name="range" min="0" max="80" type="range" id="range" class="custom-range" value="">
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
-<!-- File -->
-<div class="form-group">
-  <div class="sc-AxjAm hoLkDl">
-    <img src="blob:http://localhost:3000/3e69cb14-de3d-4220-96ab-07b3daca4aa3" alt="Visualização" class="preview-image img-fluid img-thumbnail">
-  </div>
-  <div class="custom custom-file">
-    <input type="file" accept="image/jpeg, image/png" class="custom-file-input">
-    <label class="custom-file-label">user.png</label>
-  </div>
-  <div class="valid-feedback"></div>
-  <div class="invalid-feedback"></div>
-</div>
 ```
 
 ## Constantes de classe para estilos

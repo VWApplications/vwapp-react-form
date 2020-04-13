@@ -2,7 +2,7 @@ import React from 'react'
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
-  FileField, InputGroupField, Line
+  FileField, InputGroupField, Line, DateTimePicker
 } from 'vwapp-react-components';
 import { Container, Col, Form, Button, Card, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
@@ -172,6 +172,35 @@ class App extends React.Component {
                     type='file'
                     placeholder="Clique aqui para inserir o arquivo."
                     component={FileField}
+                  />
+                </Form.Group>
+              </Form.Row>
+
+              <Form.Row>
+                <Form.Group as={Col} md="4" controlId="formDateTime">
+                  <Field
+                    name="datetime"
+                    label="DateTimePicker"
+                    type="datetime"
+                    minDate={new Date()}
+                    component={DateTimePicker}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="4" controlId="formDate">
+                  <Field
+                    name="date"
+                    label="DatePicker"
+                    type="date"
+                    minDate={new Date()}
+                    component={DateTimePicker}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="4" controlId="formTime">
+                  <Field
+                    name="time"
+                    label="TimePicker"
+                    type="time"
+                    component={DateTimePicker}
                   />
                 </Form.Group>
               </Form.Row>
