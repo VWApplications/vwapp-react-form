@@ -358,54 +358,7 @@ O mais aconselhado é o **react-final-form**.
 
 ## Constantes de classe para estilos
 
-Contante default **style**, com ela você consegue inserir as classes usando uma lista.
-
-```jsx
-import { COLORS, toString } from 'vwapp-react-components';
-
-const { backgroundDark, textWhite } = COLORS;
-
-<Container fluid className={toString([backgroundDark, textWhite])}>
-  // ...
-</Container>
-```
-
-#### 1. COLORS
-
-* **textPrimary**: Cor do texto azul.
-* **textSuccess**: Cor do texto verde.
-* **textInfo**: Cor do texto azul claro.
-* **textWarning**: Cor do texto amarelo.
-* **textDanger**: Cor do texto vermelho.
-* **textSecundary**: Cor do texto cinza.
-* **textWhite**: Cor do texto branco.
-* **textDark**: Cor do texto escuro.
-* **backgroundPrimary**: Fundo azul.
-* **backgroundSuccess**: Fundo verde.
-* **backgroundInfo**: Fundo azul claro.
-* **backgroundWarning**: Fundo amarelo.
-* **backgroundDanger**: Fundo vermelho.
-* **backgroundSecundary**: Fundo cinza.
-* **backgroundDark**: Fundo escuro.
-* **backgroundLight**: Fundo claro.
-
-#### 2. TYPOGRAPHY
-
-* **bold**: Texto em negrito.
-* **italic**: Texto em italico.
-* **light**: Texto mais claro.
-* **small**: Texto pequeno.
-* **big**: Texto grande.
-* **alignLeft**: Texto a esquerda.
-* **alignRight**: Texto a direita.
-* **alignCenter**: Texto ao centro.
-* **justify**: Texto justificado.
-* **break**: Fazer o texto quebrar linha se chegar ao final da pagina.
-* **noDecoration**: Remove o underline em baixo do link, ```<a>```.
-* **lowercase**: Texto em caixa baixa.
-* **uppercase**: Texto em caixa alta.
-* **capitalize**: Primeira letra do texto maiuscula.
-* **listUnstyled**: Remove os pontos da lista.
+...
 
 ## Contribuir
 

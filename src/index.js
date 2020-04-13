@@ -18,8 +18,8 @@ export {
   Line, BreakLine, Json, Fieldset
 } from './components/Generics';
 export {
-  FLEX, COLORS, TYPOGRAPHY, BORDER, MEASURES, SPACING, SHADOW,
-  VISIBILITY, POSITION, DISPLAY
+  Flexbox, Colors, Typography, Border, Measures, Spacing, Shadow,
+  Visibility, Position, Display, Others
 } from './constants';
 export {
   toString, isEmpty, formatWithLeftZero, moveToTop
