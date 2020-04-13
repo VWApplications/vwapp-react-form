@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { Form, Image } from 'react-bootstrap';
-import { ImgContainer } from '../styles';
+import { ImgContainer, FileLabel } from '../styles';
 import user from '../assets/img/user.png';
 
 export class FileField extends Component {
@@ -40,11 +40,12 @@ export class FileField extends Component {
   }
 
   render() {
-    const { input, className, mimeType, previewLogoUrl, placeholder, disabled } = this.props;
+    const { input, className, mimeType, previewLogoUrl, placeholder, disabled, label, attrLabel } = this.props;
     const { error, invalid } = this.props.meta;
 
     return (
       <Fragment>
+        {label && <FileLabel {...attrLabel}>{label}</FileLabel>}
         <ImgContainer>
           <Image thumbnail fluid src={previewLogoUrl} className='preview-image' alt='Visualização' />
         </ImgContainer>

@@ -3,7 +3,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
   FileField, InputGroupField, DateTimePicker, Line, Json, Fieldset,
-  ColorField
+  ColorField, BreakLine
 } from 'vwapp-react-components';
 import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
@@ -207,6 +207,7 @@ class App extends React.Component {
                   <Field
                     name="file"
                     type='file'
+                    label="Arquivo"
                     placeholder="Clique aqui para inserir o arquivo."
                     component={FileField}
                   />
@@ -217,6 +218,7 @@ class App extends React.Component {
             </Form>
           )}
         />
+        <BreakLine />
       </Container>
     )
   }

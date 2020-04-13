@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'react-bootstrap';
 
 export const ImgContainer = styled.div`
   display: flex;
@@ -23,4 +24,9 @@ export const CustomFieldset = styled.fieldset`
         margin-bottom: 0;
     }
     display: ${props => props.show ? 'block' : 'none'};
+`;
+
+export const FileLabel = styled(Form.Label)`
+  width: 100%;
+  text-align: center;
 `;
