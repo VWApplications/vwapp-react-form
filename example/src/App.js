@@ -46,7 +46,7 @@ class App extends React.Component {
           render={({ handleSubmit, submitting, pristine, values }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md="6" controlId="formFirstName">
+                <Form.Group as={Col} md="6">
                   <Field
                     column
                     name="first_name"
@@ -56,7 +56,7 @@ class App extends React.Component {
                   />
                 </Form.Group>
 
-                <Form.Group as={Col} md="6" controlId="formLastName">
+                <Form.Group as={Col} md="6">
                   <Field
                     column
                     name="last_name"
@@ -81,7 +81,7 @@ class App extends React.Component {
 
               <Fieldset title="Formulário de escolhas">
                 <Form.Row className="d-flex flex-row">
-                  <Form.Group as={Col} md="4" controlId="formCheckbox" className="d-flex flex-column justify-content-between">
+                  <Form.Group as={Col} md="4" className="d-flex flex-column justify-content-between">
                     <Field
                       name="check"
                       type="checkbox"
@@ -104,7 +104,7 @@ class App extends React.Component {
                     />
                   </Form.Group>
 
-                  <Form.Group as={Col} md="4" controlId="formRadioButton" className="d-flex flex-column justify-content-between">
+                  <Form.Group as={Col} md="4" className="d-flex flex-column justify-content-between">
                     <Field
                       name="choice"
                       type="radio"
@@ -136,7 +136,7 @@ class App extends React.Component {
                     />
                   </Form.Group>
 
-                  <Form.Group as={Col} md="4" controlId="formSelect">
+                  <Form.Group as={Col} md="4">
                     <Field
                       column
                       multiple
@@ -170,7 +170,7 @@ class App extends React.Component {
 
               <Fieldset title="Formulário de datas">
                 <Form.Row className="d-flex flew-row justify-content-center">
-                  <Form.Group as={Col} md="4" controlId="formDateTime" className="d-flex flew-row justify-content-center">
+                  <Form.Group as={Col} md="4" className="d-flex flew-row justify-content-center">
                     <Field
                       name="datetime"
                       label="Date e Hora:"
@@ -179,7 +179,7 @@ class App extends React.Component {
                       component={DateTimePicker}
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md="4" controlId="formDate" className="d-flex flew-row justify-content-center">
+                  <Form.Group as={Col} md="4" className="d-flex flew-row justify-content-center">
                     <Field
                       name="date"
                       label="Data:"
@@ -188,7 +188,7 @@ class App extends React.Component {
                       component={DateTimePicker}
                     />
                   </Form.Group>
-                  <Form.Group as={Col} md="4" controlId="formTime" className="d-flex flew-row justify-content-center">
+                  <Form.Group as={Col} md="4" className="d-flex flew-row justify-content-center">
                     <Field
                       name="time"
                       label="Hora:"
@@ -200,7 +200,7 @@ class App extends React.Component {
               </Fieldset>
 
               <Form.Row>
-                <Form.Group as={Col} md="12" controlId="formDescription">
+                <Form.Group as={Col} md="12">
                   <Field
                     name="description"
                     placeholder="Descrição"
@@ -211,7 +211,7 @@ class App extends React.Component {
               </Form.Row>
 
               <Form.Row className="d-flex flex-row">
-                <Form.Group as={Col} md="8" controlId="formRange" className="d-flex flex-column justify-content-between">
+                <Form.Group as={Col} md="8" className="d-flex flex-column justify-content-between">
                   <Field
                     column
                     name="range"
@@ -228,7 +228,7 @@ class App extends React.Component {
                   />
                   <Json values={values} />
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="formFile">
+                <Form.Group as={Col} md="4">
                   <Field
                     name="image"
                     type='file'
