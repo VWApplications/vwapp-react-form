@@ -1,12 +1,15 @@
 {
   "name": "vwapp-react-form",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "description": "Componentes bootstrap usando react.",
   "keywords": [
     "bootstrap",
     "components",
+    "final-form",
+    "fields",
     "form",
-    "react"
+    "react",
+    "vwapp"
   ],
   "author": "Victor Deon <vwapplication@gmail.com>",
   "license": "MIT",

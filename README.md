@@ -15,16 +15,58 @@ npm install --save vwapp-react-form
 ## Uso
 
 ```jsx
-import React, { Component } from 'react'
-
-import { Pagination } from 'vwapp-react-form'
+import React from 'react';
+import { Form as FinalForm, Field } from 'react-final-form';
+import { InputField, Fieldset, Json } from 'vwapp-react-form';
+import { Form, Button } from 'react-bootstrap';
 
 class Example extends Component {
+  __onSubmit = data => {
+    console.log(data);
+  }
+
+  __validate = values => {
+    const errors = {};
+
+    if (!values.first_name)
+      errors.first_name = "Nome é obrigatório.";
+
+    return errors;
+  }
+
   render() {
     return (
+      <FinalForm
+        onSubmit={this.__onSubmit}
+        initialValues={{first_name: "Pedro"}}
+        validate={this.__validate}
+        render={({ handleSubmit, submitting, pristine, values }) => (
+          <Form noValidate onSubmit={handleSubmit}>
+            <Fieldset title="Formulário principal">
+              <Form.Row>
+                <Form.Group as={Col} md="12">
+                  <Field
+                    column
+                    name="first_name"
+                    placeholder="Primeiro Nome"
+                    label="Primeiro Nome"
+                    component={InputField}
+                  />
+                </Form.Group>
+              </Form.Row>
+            </Fieldset>
+
+            <Json values={values} />
+
+            <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
+          </Form>
+        )}
+      />
     )
   }
 }
+
+export default Example;
 ```
 
 ## Documentação
