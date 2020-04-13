@@ -6,14 +6,14 @@ import TimePicker from 'react-time-picker';
 
 export class DateTimePicker extends Component {
   render() {
-    const { label, input, className, id, maxDate, minDate, disabled } = this.props;
+    const { label, input, className, id, maxDate, minDate, disabled, attrLabel } = this.props;
     const { error, invalid } = this.props.meta;
 
     switch (input.type) {
       case 'time':
         return (
           <Fragment>
-            <Form.Label>{label}</Form.Label><br />
+            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
             <TimePicker
               name={input.name}
               onChange={input.onChange}
@@ -31,7 +31,7 @@ export class DateTimePicker extends Component {
       case 'date':
         return (
           <Fragment>
-            <Form.Label>{label}</Form.Label><br />
+            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
             <DatePicker
               name={input.name}
               onChange={input.onChange}
@@ -51,7 +51,7 @@ export class DateTimePicker extends Component {
       default:
         return (
           <Fragment>
-            <Form.Label>{label}</Form.Label><br />
+            {label && <Form.Label {...attrLabel} block>{label}</Form.Label>}
             <DateTimePickerField
               name={input.name}
               onChange={input.onChange}

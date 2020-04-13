@@ -3,7 +3,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
   FileField, InputGroupField, DateTimePicker, Line, Json, Fieldset,
-  ColorField, BreakLine
+  ColorField, BreakLine, DataListField
 } from 'vwapp-react-components';
 import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
@@ -117,6 +117,17 @@ class App extends React.Component {
                       value="teste02"
                       id="radio2"
                       component={CheckField}
+                    />
+                    <Field
+                      name="browsers"
+                      label="Data List"
+                      options={[
+                        {title: "Internet Explore", value: "Internet Explore"},
+                        {title: "Firefox", value: "Firefox"},
+                        {title: "Chrome", value: "Chrome"},
+                        {title: "Safari", value: "Safari"},
+                      ]}
+                      component={DataListField}
                     />
                   </Form.Group>
 

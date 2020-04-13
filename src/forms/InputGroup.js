@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { InputGroup, Form } from 'react-bootstrap';
+import { toString } from '../utils';
 
 export const InputGroupField = field => {
   const { error, touched } = field.meta;
@@ -14,11 +15,12 @@ export const InputGroupField = field => {
         <Fragment>
           <Form.Control
             {...field.input}
+            custom
             as='input'
             type='text'
             placeholder={field.placeholder}
             disabled={field.disabled || false}
-            className={field.className}
+            className={toString(['form-control', field.className || ''])}
             id={field.input.name}
             isInvalid={touched && error && !field.disabled}
             isValid={touched && !error && !field.disabled}
