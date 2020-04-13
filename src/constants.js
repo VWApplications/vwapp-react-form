@@ -28,13 +28,6 @@ export const Flexbox = {
         center: 'align-items-center',
         baseline: 'align-items-baseline',
         fill: 'align-items-stretch'
-      },
-      item: {
-        up: 'align-self-start',
-        down: 'align-self-end',
-        center: 'align-self-center',
-        baseline: 'align-self-baseline',
-        fill: 'align-self-stretch'
       }
     },
     horizontal: {
@@ -60,6 +53,13 @@ export const Flexbox = {
     fill: 'flex-fill',
     grow: 'flex-grow-1',
     shrink: 'flex-shrink-1',
+    align: {
+      start: 'align-self-start',
+      end: 'align-self-end',
+      center: 'align-self-center',
+      baseline: 'align-self-baseline',
+      fill: 'align-self-stretch'
+    },
     order: {
       first: 'order-1',
       second: 'order-2',
