@@ -26,7 +26,7 @@ export const CustomFieldset = styled.fieldset`
     display: ${props => props.show ? 'block' : 'none'};
 `;
 
-export const FileLabel = styled(Form.Label)`
+export const ImageLabel = styled(Form.Label)`
   width: 100%;
   text-align: center;
 `;

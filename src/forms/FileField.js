@@ -1,6 +1,6 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Form } from 'react-bootstrap';
-import { FileLabel } from '../styles';
+import { toString } from '../utils';
 
 export class FileField extends Component {
   __handleChange(event, input) {
@@ -10,13 +10,20 @@ export class FileField extends Component {
   }
 
   render() {
-    const { input, className, placeholder, disabled, label, attrLabel } = this.props;
+    const { input, className, placeholder, disabled, label, column } = this.props;
     const { error, invalid } = this.props.meta;
 
+    let classList = ['flex-row'];
+    let labelClassList = ['pr-2', 'align-self-end'];
+    if (column) {
+      labelClassList = ['pr-2'];
+      classList = ['flex-column'];
+    }
+
     return (
-      <Fragment>
-        {label && <FileLabel {...attrLabel}>{label}</FileLabel>}
-        <Fragment>
+      <div className={toString(['d-flex', ...classList])}>
+        {label && <Form.Label className={toString([...labelClassList])}>{label}</Form.Label>}
+        <div className='flex-column flex-grow-1'>
           <Form.File
             custom
             name={input.name}
@@ -29,10 +36,9 @@ export class FileField extends Component {
             isInvalid={invalid && error && !disabled}
             isValid={invalid && !error && !disabled}
           />
-          <Form.Control.Feedback type='valid' />
           <Form.Control.Feedback type='invalid'>{error}</Form.Control.Feedback>
-        </Fragment>
-      </Fragment>
+        </div>
+      </div>
     )
   }
 }

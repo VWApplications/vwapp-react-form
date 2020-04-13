@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { Form, Image } from 'react-bootstrap';
-import { ImgContainer, FileLabel } from '../styles';
+import { ImgContainer, ImageLabel } from '../styles';
 import user from '../assets/img/user.png';
 
 export class ImageField extends Component {
@@ -40,12 +40,12 @@ export class ImageField extends Component {
   }
 
   render() {
-    const { input, className, mimeType, previewLogoUrl, placeholder, disabled, label, attrLabel } = this.props;
+    const { input, className, mimeType, previewLogoUrl, placeholder, disabled, label } = this.props;
     const { error, invalid } = this.props.meta;
 
     return (
       <Fragment>
-        {label && <FileLabel {...attrLabel}>{label}</FileLabel>}
+        {label && <ImageLabel>{label}</ImageLabel>}
         <ImgContainer>
           <Image thumbnail fluid src={previewLogoUrl} className='preview-image' alt='Visualização' />
         </ImgContainer>
@@ -64,7 +64,6 @@ export class ImageField extends Component {
             isInvalid={invalid && error && !disabled}
             isValid={invalid && !error && !disabled}
           />
-          <Form.Control.Feedback type='valid' />
           <Form.Control.Feedback type='invalid'>{error}</Form.Control.Feedback>
         </Fragment>
       </Fragment>

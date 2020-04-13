@@ -48,6 +48,7 @@ class App extends React.Component {
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="formFirstName">
                   <Field
+                    column
                     name="first_name"
                     placeholder="Primeiro Nome"
                     label="Primeiro Nome"
@@ -57,6 +58,7 @@ class App extends React.Component {
 
                 <Form.Group as={Col} md="6" controlId="formLastName">
                   <Field
+                    column
                     name="last_name"
                     placeholder="Último Nome"
                     label="Último Nome"
@@ -95,6 +97,7 @@ class App extends React.Component {
                       component={CheckField}
                     />
                     <Field
+                      column
                       name="color"
                       label="Teste Color"
                       component={ColorField}
@@ -119,6 +122,7 @@ class App extends React.Component {
                       component={CheckField}
                     />
                     <Field
+                      column
                       name="browsers"
                       label="Data List"
                       options={[
@@ -133,6 +137,7 @@ class App extends React.Component {
 
                   <Form.Group as={Col} md="4" controlId="formSelect">
                     <Field
+                      column
                       multiple
                       name="multiselect"
                       type="select"
@@ -167,7 +172,7 @@ class App extends React.Component {
                   <Form.Group as={Col} md="4" controlId="formDateTime">
                     <Field
                       name="datetime"
-                      label="DateTimePicker"
+                      label="Date e Hora:"
                       type="datetime"
                       minDate={new Date()}
                       component={DateTimePicker}
@@ -176,7 +181,7 @@ class App extends React.Component {
                   <Form.Group as={Col} md="4" controlId="formDate">
                     <Field
                       name="date"
-                      label="DatePicker"
+                      label="Data:"
                       type="date"
                       minDate={new Date()}
                       component={DateTimePicker}
@@ -185,7 +190,7 @@ class App extends React.Component {
                   <Form.Group as={Col} md="4" controlId="formTime">
                     <Field
                       name="time"
-                      label="TimePicker"
+                      label="Hora:"
                       type="time"
                       component={DateTimePicker}
                     />
@@ -207,10 +212,18 @@ class App extends React.Component {
               <Form.Row>
                 <Form.Group as={Col} md="8" controlId="formRange">
                   <Field
+                    column
                     name="range"
                     label="Range"
                     max={80}
                     component={RangeField}
+                  />
+                  <Field
+                    name="file"
+                    label="Arquivo:"
+                    type='file'
+                    placeholder="Clique para inserir o arquivo."
+                    component={FileField}
                   />
                   <Json values={values} />
                 </Form.Group>
@@ -221,12 +234,6 @@ class App extends React.Component {
                     label="Imagem"
                     placeholder="Clique aqui para inserir a imagem."
                     component={ImageField}
-                  />
-                  <Field
-                    name="file"
-                    type='file'
-                    placeholder="Clique aqui para inserir o arquivo."
-                    component={FileField}
                   />
                 </Form.Group>
               </Form.Row>
