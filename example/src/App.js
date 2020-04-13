@@ -2,9 +2,10 @@ import React from 'react'
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
-  FileField, InputGroupField, Line, DateTimePicker
+  FileField, InputGroupField, DateTimePicker, Line, Json, Fieldset,
+  ColorField
 } from 'vwapp-react-components';
-import { Container, Col, Form, Button, Card, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class App extends React.Component {
   __onSubmit = data => {
@@ -76,75 +77,110 @@ class App extends React.Component {
                 </Form.Group>
               </Form.Row>
 
-              <Form.Row>
-                <Form.Group as={Col} md="3" controlId="formCheckbox">
-                  <Field
-                    name="check"
-                    type="checkbox"
-                    label="Teste Checkbox"
-                    id="check"
-                    component={CheckField}
-                  />
-                </Form.Group>
+              <Fieldset title="Formulário de escolhas">
+                <Form.Row>
+                  <Form.Group as={Col} md="4" controlId="formCheckbox">
+                    <Field
+                      name="check"
+                      type="checkbox"
+                      label="Teste Checkbox"
+                      id="check"
+                      component={CheckField}
+                    />
+                    <Field
+                      name="switch"
+                      type="switch"
+                      label="Teste Switch"
+                      id="switch"
+                      component={CheckField}
+                    />
+                    <Field
+                      name="color"
+                      label="Teste Color"
+                      component={ColorField}
+                    />
+                  </Form.Group>
 
-                <Form.Group as={Col} md="3" controlId="formRadioButton">
-                  <Field
-                    name="choice"
-                    type="radio"
-                    label="Teste Radio 01"
-                    value="teste01"
-                    id="radio1"
-                    component={CheckField}
-                  />
-                  <Field
-                    name="choice"
-                    type="radio"
-                    label="Teste Radio 02"
-                    value="teste02"
-                    id="radio2"
-                    component={CheckField}
-                  />
-                </Form.Group>
+                  <Form.Group as={Col} md="4" controlId="formRadioButton">
+                    <Field
+                      name="choice"
+                      type="radio"
+                      label="Teste Radio 01"
+                      value="teste01"
+                      id="radio1"
+                      component={CheckField}
+                    />
+                    <Field
+                      name="choice"
+                      type="radio"
+                      label="Teste Radio 02"
+                      value="teste02"
+                      id="radio2"
+                      component={CheckField}
+                    />
+                  </Form.Group>
 
-                <Form.Group as={Col} md="3" controlId="formSwitch">
-                  <Field
-                    name="switch"
-                    type="switch"
-                    label="Teste Switch"
-                    id="switch"
-                    component={CheckField}
-                  />
-                </Form.Group>
+                  <Form.Group as={Col} md="4" controlId="formSelect">
+                    <Field
+                      multiple
+                      name="multiselect"
+                      type="select"
+                      label="Selecione as melhores opções"
+                      options={[
+                        {title: "1", value: 1},
+                        {title: "2", value: 2},
+                        {title: "3", value: 3},
+                        {title: "4", value: 4},
+                      ]}
+                      component={SelectField}
+                    />
+                    <Line />
+                    <Field
+                      name="select"
+                      type="select"
+                      placeholder="Selecione a melhor opção"
+                      options={[
+                        {title: "1", value: 1},
+                        {title: "2", value: 2},
+                        {title: "3", value: 3},
+                        {title: "4", value: 4},
+                      ]}
+                      component={SelectField}
+                    />
+                  </Form.Group>
+                </Form.Row>
+              </Fieldset>
 
-                <Form.Group as={Col} md="3" controlId="formSelect">
-                  <Field
-                    multiple
-                    name="multiselect"
-                    type="select"
-                    label="Selecione as melhores opções"
-                    options={[
-                      {title: "1", value: 1},
-                      {title: "2", value: 2},
-                      {title: "3", value: 3},
-                      {title: "4", value: 4},
-                    ]}
-                    component={SelectField}
-                  />
-                  <Line />
-                  <Field
-                    name="select"
-                    type="select"
-                    placeholder="Selecione a melhor opção"
-                    options={[
-                      {title: "1", value: 1},
-                      {title: "2", value: 2},
-                      {title: "3", value: 3},
-                      {title: "4", value: 4},
-                    ]}
-                    component={SelectField}
-                  />
-                </Form.Group>
-              </Form.Row>
+              <Fieldset title="Formulário de datas">
+                <Form.Row>
+                  <Form.Group as={Col} md="4" controlId="formDateTime">
+                    <Field
+                      name="datetime"
+                      label="DateTimePicker"
+                      type="datetime"
+                      minDate={new Date()}
+                      component={DateTimePicker}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} md="4" controlId="formDate">
+                    <Field
+                      name="date"
+                      label="DatePicker"
+                      type="date"
+                      minDate={new Date()}
+                      component={DateTimePicker}
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} md="4" controlId="formTime">
+                    <Field
+                      name="time"
+                      label="TimePicker"
+                      type="time"
+                      component={DateTimePicker}
+                    />
+                  </Form.Group>
+                </Form.Row>
+              </Fieldset>
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="formDescription">
@@ -165,6 +201,7 @@ class App extends React.Component {
                     max={80}
                     component={RangeField}
                   />
+                  <Json values={values} />
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="formFile">
                   <Field
@@ -176,38 +213,7 @@ class App extends React.Component {
                 </Form.Group>
               </Form.Row>
 
-              <Form.Row>
-                <Form.Group as={Col} md="4" controlId="formDateTime">
-                  <Field
-                    name="datetime"
-                    label="DateTimePicker"
-                    type="datetime"
-                    minDate={new Date()}
-                    component={DateTimePicker}
-                  />
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="formDate">
-                  <Field
-                    name="date"
-                    label="DatePicker"
-                    type="date"
-                    minDate={new Date()}
-                    component={DateTimePicker}
-                  />
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="formTime">
-                  <Field
-                    name="time"
-                    label="TimePicker"
-                    type="time"
-                    component={DateTimePicker}
-                  />
-                </Form.Group>
-              </Form.Row>
-
               <Button variant="dark" type="submit" disabled={submitting || pristine}>Enviar</Button>
-
-              <Card body className="mt-3"><pre>{JSON.stringify(values, 0, 2)}</pre></Card>
             </Form>
           )}
         />

@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 export { COLORS, TYPOGRAPHY, toString } from './constants';
-export { Line, BreakLine } from './components/Generics';
+export { Line, BreakLine, Json, Fieldset } from './components/Generics';
 export { Pagination } from './components/Pagination';
 export { InputField } from './forms/InputField';
 export { CheckField } from './forms/CheckField';
@@ -10,3 +10,4 @@ export { RangeField } from './forms/RangeField';
 export { FileField } from './forms/FileField';
 export { InputGroupField } from './forms/InputGroup';
 export { DateTimePicker } from './forms/DateTimeField';
+export { ColorField } from './forms/ColorField';
