@@ -20,7 +20,7 @@ export const InputField = field => {
           {...field.input}
           custom
           as='input'
-          type='text'
+          type={field.input.type ? field.input.type : 'text'}
           placeholder={field.placeholder}
           disabled={(field.disabled || field.readOnly) || false}
           className={toString(['form-control', field.className || ''])}
