@@ -8,6 +8,10 @@ export function isEmpty(obj) {
   return true;
 }
 
+export function onlyNumbers(value) {
+  return value.replace(/[^\d]/g, '');
+};
+
 export function formatWithLeftZero(number) {
   return number < 10 ? `0${number}` : number;
 }
