@@ -17,9 +17,8 @@ export const CustomJson = styled.pre`
 
 export const CustomFieldset = styled.fieldset`
     padding: 0 20px;
-    margin: 10px;
+    margin: 10px 0 30px 0;
     border: 1px solid #ccc;
-    margin-bottom: 30px;
     > legend {
         margin-bottom: 0;
     }
