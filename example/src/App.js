@@ -41,7 +41,12 @@ class App extends React.Component {
         <hr />
         <FinalForm
           onSubmit={this.__onSubmit}
-          initialValues={{multiselect: []}}
+          initialValues={{
+            multiselect: [1, 3], check: true, switch: true, choice: "teste01",
+            first_name: "Victor", last_name: "Deon", color: "#00f900", range: "63",
+            description: "teste", datetime: new Date(), date: new Date(), time: "20:20",
+            select: "2", browsers: "Firefox"
+          }}
           validate={this.__validate}
           render={({ handleSubmit, submitting, pristine, values }) => (
             <Form noValidate onSubmit={handleSubmit}>

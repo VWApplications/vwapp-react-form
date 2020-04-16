@@ -14,7 +14,7 @@ export class FileField extends Component {
     const { error, invalid } = this.props.meta;
 
     let classList = ['flex-row'];
-    let labelClassList = ['pr-2', 'align-self-end'];
+    let labelClassList = ['pr-3', 'mt-2', 'align-self-start'];
     if (column) {
       labelClassList = ['pr-2'];
       classList = ['flex-column'];

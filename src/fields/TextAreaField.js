@@ -6,7 +6,7 @@ export const TextAreaField = field => {
   const { error, touched } = field.meta;
 
   let classList = ['flex-row'];
-  let labelClassList = ['pr-2', 'align-self-center'];
+  let labelClassList = ['pr-3', 'align-self-center'];
   if (field.column) {
     labelClassList = ['pr-2'];
     classList = ['flex-column'];

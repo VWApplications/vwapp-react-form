@@ -9,6 +9,7 @@ export const CheckField = field => {
       <Form.Check
         custom
         {...field.input}
+        checked={field.input.type === 'switch' ? field.input.value : field.input.checked}
         disabled={field.disabled || false}
         id={field.id}
         inline={field.inline || false}
