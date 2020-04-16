@@ -3,7 +3,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
   ImageField, InputGroupField, DateTimePicker, Json, Fieldset,
-  ColorField, DataListField, FileField
+  ColorField, DataListField, FileField, Utilities
 } from 'vwapp-react-form';
 import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 
@@ -17,6 +17,14 @@ class App extends React.Component {
 
     if (!values.first_name) {
       errors.first_name = "Nome é obrigatório.";
+    }
+
+    if (!values.cpf) {
+      errors.cpf = "CPF é obrigatório";
+    }
+
+    if (values.cpf && !Utilities.validate("cpf", values.cpf)) {
+      errors.cpf = "Formato de CPF inválido.";
     }
 
     if (!values.select) {
@@ -43,7 +51,7 @@ class App extends React.Component {
           onSubmit={this.__onSubmit}
           initialValues={{
             multiselect: [1, 3], check: true, switch: true, choice: "teste01",
-            first_name: "Victor", last_name: "Deon", color: "#00f900", range: "63",
+            first_name: "Victor", cpf: "", color: "#00f900", range: "63",
             description: "teste", datetime: new Date(), date: new Date(), time: "20:20",
             select: "2", browsers: "Firefox"
           }}
@@ -64,10 +72,12 @@ class App extends React.Component {
                 <Form.Group as={Col} md="6">
                   <Field
                     column
-                    name="last_name"
-                    placeholder="Último Nome"
-                    label="Último Nome"
-                    left={<InputGroup.Text>$</InputGroup.Text>}
+                    name="cpf"
+                    placeholder="CPF"
+                    label="CPF:"
+                    parse={value => Utilities.normalize("number", value)}
+                    format={value => Utilities.normalize("cpf", value)}
+                    left={<InputGroup.Text>CPF</InputGroup.Text>}
                     right={
                       <DropdownButton
                         variant="outline-secondary"

@@ -8,7 +8,7 @@ export const validateCpf = value => {
 
   const digits = value.replace(/[^\d]/g, '');
 
-  if (digits.length < 11 || digits.length > 12) {
+  if (digits.length !== 11) {
     return false;
   } else if (!isValidCpf(digits)) {
     return false;
