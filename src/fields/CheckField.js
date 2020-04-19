@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Form } from 'react-bootstrap';
+import React, { Fragment } from "react";
+import { Form } from "react-bootstrap";
 
 export const CheckField = field => {
   const { error } = field.meta;
@@ -9,7 +9,7 @@ export const CheckField = field => {
       <Form.Check
         custom
         {...field.input}
-        checked={field.input.type === 'switch' ? field.input.value : field.input.checked}
+        checked={field.input.type === "switch" ? field.input.value : field.input.checked}
         disabled={field.disabled || false}
         id={field.id}
         inline={field.inline || false}
@@ -18,5 +18,5 @@ export const CheckField = field => {
         isInvalid={error}
       />
     </Fragment>
-  )
-}
+  );
+};

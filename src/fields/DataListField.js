@@ -1,19 +1,19 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import { toString } from '../utils';
+import React from "react";
+import { Form } from "react-bootstrap";
+import { toString } from "../utils";
 
 export const DataListField = field => {
   const { error, touched } = field.meta;
 
-  let classList = ['flex-row'];
-  let labelClassList = ['pr-3', 'mt-2', 'align-self-start'];
+  let classList = ["flex-row"];
+  let labelClassList = ["pr-3", "mt-2", "align-self-start"];
   if (field.column) {
-    labelClassList = ['pr-2'];
-    classList = ['flex-column'];
+    labelClassList = ["pr-2"];
+    classList = ["flex-column"];
   }
 
   return (
-    <div className={toString(['d-flex', ...classList])}>
+    <div className={toString(["d-flex", ...classList])}>
       {field.label && <Form.Label className={toString([...labelClassList])}>{field.label}</Form.Label>}
       <div className='flex-column flex-grow-1'>
         <Form.Control
@@ -21,7 +21,7 @@ export const DataListField = field => {
           custom
           as='input'
           disabled={field.disabled || false}
-          className={toString(['form-control', field.className || ''])}
+          className={toString(["form-control", field.className || ""])}
           placeholder={field.placeholder}
           list={field.input.name}
           size={field.size}
@@ -37,5 +37,5 @@ export const DataListField = field => {
         </datalist>
       </div>
     </div>
-  )
-}
+  );
+};

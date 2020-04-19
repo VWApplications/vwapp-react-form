@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Form } from 'react-bootstrap';
+import styled from "styled-components";
+import { Form } from "react-bootstrap";
 
 export const ImgContainer = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const CustomFieldset = styled.fieldset`
     > legend {
         margin-bottom: 0;
     }
-    display: ${props => props.show ? 'block' : 'none'};
+    display: ${props => props.show ? "block" : "none"};
 `;
 
 export const ImageLabel = styled(Form.Label)`

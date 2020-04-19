@@ -8,6 +8,7 @@
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-final-form": "^6.4.0",
+    "vwapp-utilities": "^0.6.0",
     "react-scripts": "file:../node_modules/react-scripts",
     "vwapp-react-form": "file:.."
   },

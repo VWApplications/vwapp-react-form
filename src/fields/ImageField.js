@@ -1,20 +1,20 @@
-import React, { Fragment, Component } from 'react';
-import { Form, Image } from 'react-bootstrap';
-import { ImgContainer, ImageLabel } from '../styles';
-import user from '../assets/user.png';
+import React, { Fragment, Component } from "react";
+import { Form, Image } from "react-bootstrap";
+import { ImgContainer, ImageLabel } from "../styles";
+import user from "../assets/user.png";
 
 export class ImageField extends Component {
   componentDidMount() {
     const { input } = this.props;
 
-    if (typeof input.value === 'string' && input.value) {
+    if (typeof input.value === "string" && input.value) {
       this.__handlePreview(input.value);
     }
   }
 
   static defaultProps = {
     previewLogoUrl: user,
-    mimeType: 'image/jpeg, image/png'
+    mimeType: "image/jpeg, image/png"
   };
 
   __handleChange(event, input) {
@@ -35,7 +35,7 @@ export class ImageField extends Component {
   }
 
   __handlePreview(imgURL) {
-    const previewImageDom = document.querySelector('.preview-image');
+    const previewImageDom = document.querySelector(".preview-image");
     previewImageDom.src = imgURL;
   }
 
@@ -67,6 +67,6 @@ export class ImageField extends Component {
           <Form.Control.Feedback type='invalid'>{error}</Form.Control.Feedback>
         </Fragment>
       </Fragment>
-    )
+    );
   }
 }

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
-import { toString } from '../utils';
+import React, { Component } from "react";
+import { Form } from "react-bootstrap";
+import { toString } from "../utils";
 
 export class FileField extends Component {
   __handleChange(event, input) {
@@ -13,15 +13,15 @@ export class FileField extends Component {
     const { input, className, placeholder, disabled, label, column } = this.props;
     const { error, invalid } = this.props.meta;
 
-    let classList = ['flex-row'];
-    let labelClassList = ['pr-3', 'mt-2', 'align-self-start'];
+    let classList = ["flex-row"];
+    let labelClassList = ["pr-3", "mt-2", "align-self-start"];
     if (column) {
-      labelClassList = ['pr-2'];
-      classList = ['flex-column'];
+      labelClassList = ["pr-2"];
+      classList = ["flex-column"];
     }
 
     return (
-      <div className={toString(['d-flex', ...classList])}>
+      <div className={toString(["d-flex", ...classList])}>
         {label && <Form.Label className={toString([...labelClassList])}>{label}</Form.Label>}
         <div className='flex-column flex-grow-1'>
           <Form.File
@@ -39,6 +39,6 @@ export class FileField extends Component {
           <Form.Control.Feedback type='invalid'>{error}</Form.Control.Feedback>
         </div>
       </div>
-    )
+    );
   }
 }

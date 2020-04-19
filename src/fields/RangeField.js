@@ -1,15 +1,15 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import { toString } from '../utils';
+import React from "react";
+import { Form } from "react-bootstrap";
+import { toString } from "../utils";
 
 export const RangeField = field => {
   const { error, touched } = field.meta;
 
-  let classList = ['flex-row'];
-  if (field.column) classList = ['flex-column'];
+  let classList = ["flex-row"];
+  if (field.column) classList = ["flex-column"];
 
   return (
-    <div className={toString(['d-flex', ...classList])}>
+    <div className={toString(["d-flex", ...classList])}>
       {field.label && <Form.Label className='pr-2'>{field.label}</Form.Label>}
       <div className='flex-column flex-grow-1'>
         <Form.Control
@@ -28,5 +28,5 @@ export const RangeField = field => {
         <Form.Control.Feedback type='invalid'>{error}</Form.Control.Feedback>
       </div>
     </div>
-  )
-}
+  );
+};

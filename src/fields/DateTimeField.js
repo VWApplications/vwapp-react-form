@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
-import DateTimePickerField from 'react-datetime-picker';
-import DatePicker from 'react-date-picker';
-import TimePicker from 'react-time-picker';
-import { toString } from '../utils';
+import React, { Component } from "react";
+import { Form } from "react-bootstrap";
+import DateTimePickerField from "react-datetime-picker";
+import DatePicker from "react-date-picker";
+import TimePicker from "react-time-picker";
+import { toString } from "../utils";
 
 export class DateTimePicker extends Component {
   render() {
     const { label, input, className, id, maxDate, minDate, disabled, column } = this.props;
     const { error, invalid } = this.props.meta;
 
-    let classList = ['flex-row'];
-    if (column) classList = ['flex-column'];
+    let classList = ["flex-row"];
+    if (column) classList = ["flex-column"];
 
     switch (input.type) {
-      case 'time':
+      case "time":
         return (
-          <div className={toString(['d-flex', ...classList])}>
+          <div className={toString(["d-flex", ...classList])}>
             {label && <Form.Label className='pr-2'>{label}</Form.Label>}
             <div className='flex-column flex-grow-1'>
               <TimePicker
@@ -32,9 +32,9 @@ export class DateTimePicker extends Component {
             </div>
           </div>
         );
-      case 'date':
+      case "date":
         return (
-          <div className={toString(['d-flex', ...classList])}>
+          <div className={toString(["d-flex", ...classList])}>
             {label && <Form.Label className='pr-2'>{label}</Form.Label>}
             <div className='flex-column flex-grow-1'>
               <DatePicker
@@ -54,7 +54,7 @@ export class DateTimePicker extends Component {
         );
       default:
         return (
-          <div className={toString(['d-flex', ...classList])}>
+          <div className={toString(["d-flex", ...classList])}>
             {label && <Form.Label className='pr-2'>{label}</Form.Label>}
             <div className='flex-column flex-grow-1'>
               <DateTimePickerField
@@ -71,7 +71,7 @@ export class DateTimePicker extends Component {
               <p className='text-danger'>{invalid && error}</p>
             </div>
           </div>
-        )
+        );
     }
   }
 }

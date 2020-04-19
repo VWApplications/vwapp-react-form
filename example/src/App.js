@@ -1,11 +1,12 @@
-import React from 'react';
-import { Form as FinalForm, Field } from 'react-final-form';
+import React from "react";
+import { Form as FinalForm, Field } from "react-final-form";
 import {
   InputField, CheckField, TextAreaField, SelectField, RangeField,
   ImageField, InputGroupField, DateTimePicker, Json, Fieldset,
-  ColorField, DataListField, FileField, Utilities
-} from 'vwapp-react-form';
-import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+  ColorField, DataListField, FileField
+} from "vwapp-react-form";
+import Utilities, { To, By } from "vwapp-utilities";
+import { Container, Col, Form, Button, InputGroup, DropdownButton, Dropdown } from "react-bootstrap";
 
 class App extends React.Component {
   __onSubmit = data => {
@@ -23,7 +24,7 @@ class App extends React.Component {
       errors.cpf = "CPF é obrigatório";
     }
 
-    if (values.cpf && !Utilities.validate("cpf", values.cpf)) {
+    if (values.cpf && !Utilities.validate(By.CPF, values.cpf)) {
       errors.cpf = "Formato de CPF inválido.";
     }
 
@@ -75,8 +76,8 @@ class App extends React.Component {
                     name="cpf"
                     placeholder="CPF"
                     label="CPF:"
-                    parse={value => Utilities.normalize("number", value)}
-                    format={value => Utilities.normalize("cpf", value)}
+                    parse={value => Utilities.normalize(To.NUMBER, value)}
+                    format={value => Utilities.normalize(To.CPF, value)}
                     left={<InputGroup.Text>CPF</InputGroup.Text>}
                     right={
                       <DropdownButton
