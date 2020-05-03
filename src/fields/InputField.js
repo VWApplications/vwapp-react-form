@@ -20,6 +20,7 @@ export const InputField = field => {
           {...field.input}
           custom
           as='input'
+          validate={field.validate}
           type={field.input.type ? field.input.type : "text"}
           placeholder={field.placeholder}
           disabled={(field.disabled || field.readOnly) || false}
